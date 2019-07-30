@@ -1,0 +1,21 @@
+
+?
+__manifest__.py,f\b\fb5097a66c279662079e85c889e061a106c5ec0f
+I
+data/salary_rule_data.xml,f\d\fd37a833443806adf4e2a93890147930730b3b73
+O
+views/report_transfer_order.xml,2\d\2d8486b09093b0bac3c2ff02fa81a9615993d0b0
+Q
+!reports/detail_payslip_inherit.py,d\c\dc822c628045b37f4cad4b5c3430052bd21d2d03
+O
+reports/report_bulletin_paie.py,9\d\9d326ea5daab2708332c73e1df4beaf4526e1589
+P
+ reports/report_transfer_order.py,5\6\562b7df609a94e0829219364304d9747fd83e6ac
+R
+"reports/report_cotisation_ipres.py,5\5\55d76d047818a1e5db9bdb9d3e326e462112a19c
+Q
+!views/report_cotisation_ipres.xml,c\9\c99c922b8f767b856cb4834bb83eb55f6eb512ae
+V
+&reports/report_declaration_retenues.py,c\6\c68e93d79e07bc7029d396a581f894b1a630c63e
+H
+models/transfer_order.py,1\2\128d4d063fdf11aacade7f50184b66b41f6336eb
