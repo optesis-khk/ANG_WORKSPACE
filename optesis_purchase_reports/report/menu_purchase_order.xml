@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Print purchase order-->      
+
+        <report
+            string="Bon de commande Optesis"
+            id="optesis_purchase_reports.purchase_order"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            name="optesis_purchase_reports.report_purchase_order"
+            file="optesis_purchase_reports.report_purchase_order"
+        />
+        <record id="optesis_purchase_reports.purchase_order" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_modern_feelings_portrait"/>
+        </record>
+
+    </data>
+</odoo>

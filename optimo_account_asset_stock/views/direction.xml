@@ -1,0 +1,109 @@
+<odoo>
+    <data>
+         <!-- <record model="ir.ui.view" id="department_tree">
+        <field name="name">department.tree</field>
+        <field name="model">optesis.department</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des departements">
+                <field name="name"/>
+                <field name="direction_id"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="department_form">
+        <field name="name">department.form</field>
+        <field name="model">optesis.department</field>
+        <field name="arch" type="xml">
+            <form string="Departement">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Department">
+                        <field name="name"/>
+                        <field name="direction_id"/>
+                        <field name="description"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record> -->
+
+
+        <record model="ir.ui.view" id="direction_tree">
+        <field name="name">direction.tree</field>
+        <field name="model">optesis.direction</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des directions">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="direction_form">
+        <field name="name">direction.form</field>
+        <field name="model">optesis.direction</field>
+        <field name="arch" type="xml">
+            <form string="Direction">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Direction">
+                        <field name="name"/>
+                         <field name="description"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+         <record model="ir.ui.view" id="service_tree">
+        <field name="name">service.tree</field>
+        <field name="model">optesis.service</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des services">
+                <field name="name"/>
+                <field name="direction_id"/>
+                <!-- <field name="department_id"/> -->
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="service_form">
+        <field name="name">service.form</field>
+        <field name="model">optesis.service</field>
+        <field name="arch" type="xml">
+            <form string="service_form">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Service">
+                        <field name="name"/>
+                        <!-- <field name="department_id"/> -->
+                        <field name="direction_id"/>
+                        <field name="description"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+        <act_window id="win004" name="Directions" res_model="optesis.direction" view_mode="tree,form"/>
+        <menuitem id="direction_menu_2" name="Directions" parent="asset_menu_3" action="win004" sequence="6"/>
+
+
+        <!-- <act_window id="win005" name="Departments" res_model="optesis.department" view_mode="tree,form"/>
+        <menuitem id="department_menu_2" name="Departments" parent="asset_menu_3" action="win005" sequence="7"/> -->
+
+
+
+        <act_window id="win006" name="Services" res_model="optesis.service" view_mode="tree,form"/>
+        <menuitem id="service_menu_2" name="Services" parent="asset_menu_3" action="win006" sequence="8"/>
+    </data>
+</odoo>

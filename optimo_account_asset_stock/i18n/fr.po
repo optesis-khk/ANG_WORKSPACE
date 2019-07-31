@@ -1,0 +1,789 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* optesis
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-04 16:06+0000\n"
+"PO-Revision-Date: 2015-08-04 16:39+0000\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.4\n"
+"Last-Translator: \n"
+"Language: fr\n"
+
+#. module: optesis
+#: view:agent:optesis.agent_form
+msgid "7XXXXXXXX"
+msgstr "7XXXXXXXX"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Add an internal note here..."
+msgstr "Ajouter un commentaire ici"
+
+#. module: optesis
+#: field:site,address:0
+msgid "Address"
+msgstr "Adresse"
+
+#. module: optesis
+#: view:agent:optesis.agent_form model:ir.ui.menu,name:optesis.asset_menu_5
+msgid "Agent"
+msgstr "Agent"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win014
+#: model:ir.model,name:optesis.model_article
+#: model:ir.ui.menu,name:optesis.article_menu_2
+msgid "Articles"
+msgstr "Articles"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_account_asset_asset
+msgid "Asset"
+msgstr "Immobilisation"
+
+#. module: optesis
+#: view:product.product:optesis.article_form
+msgid "Asset List"
+msgstr "Liste immobilisation"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win011
+msgid "Asset categories"
+msgstr "Catégories d'immobilisation"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_account_asset_category
+msgid "Asset category"
+msgstr "Catégorie d'immobilisation"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win015
+#: model:ir.ui.menu,name:optesis.condition_menu_2
+msgid "Asset status"
+msgstr "Etat de l'immobilisation"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win001
+#: model:ir.actions.report.xml,name:optesis.asset_asset
+#: model:ir.ui.menu,name:optesis.asset_menu_0
+msgid "Assets"
+msgstr "Immobilisations"
+
+#. module: optesis
+#: field:account.asset.asset,date_assignation:0
+msgid "Assignation date"
+msgstr "Date d'assignation"
+
+#. module: optesis
+#: field:employee,foreign_res:0
+msgid "Automatically created field to link to parent res.partner"
+msgstr "Agent"
+
+#. module: optesis
+#: field:account.asset.asset,code_bar:0
+msgid "Bar code"
+msgstr "Code barre"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Batiment"
+msgstr "Bâtiment"
+
+#. module: optesis
+#: field:account.asset.asset,brand:0
+msgid "Brand"
+msgstr "Marque"
+
+#. module: optesis
+#: field:account.asset.asset,building:0 view:building:optesis.building_form
+#: field:level,building_id:0 field:room,room_building:0
+msgid "Building"
+msgstr "Bâtiment"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win008
+#: model:ir.ui.menu,name:optesis.building_menu_2
+msgid "Buildings"
+msgstr "Bâtiments"
+
+#. module: optesis
+#: selection:account.asset.asset,type_disposal:0
+msgid "Buy"
+msgstr "Acheter"
+
+#. module: optesis
+#: field:account.asset.asset,buyer:0
+msgid "Buyer"
+msgstr "Acheteur"
+
+#. module: optesis
+#: field:employee,cin:0
+msgid "CIN"
+msgstr "NCI"
+
+#. module: optesis
+#: model:ir.ui.menu,name:optesis.category_menu_2
+msgid "Categories"
+msgstr "Catégories"
+
+#. module: optesis
+#: field:product.product,category:0
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Code Barre"
+msgstr "Code Barre"
+
+#. module: optesis
+#: field:account.asset.asset,commissioning:0
+msgid "Commisioning date"
+msgstr "Date de mise en service"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Compute"
+msgstr "Calculer"
+
+#. module: optesis
+#: field:account.asset.asset,condition:0 view:condition:optesis.condition_form
+#: field:condition,name:0
+msgid "Condition"
+msgstr "Condition"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Confirm Asset"
+msgstr "Confirmer"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Create Move"
+msgstr "Générer les mouvements"
+
+#. module: optesis
+#: field:agent,create_uid:0 field:building,create_uid:0
+#: field:condition,create_uid:0 field:department,create_uid:0
+#: field:direction,create_uid:0 field:employee,create_uid:0
+#: field:level,create_uid:0 field:parent,create_uid:0 field:poff,create_uid:0
+#: field:room,create_uid:0 field:service,create_uid:0 field:site,create_uid:0
+msgid "Created by"
+msgstr "Crée par"
+
+#. module: optesis
+#: field:agent,create_date:0 field:building,create_date:0
+#: field:condition,create_date:0 field:department,create_date:0
+#: field:direction,create_date:0 field:employee,create_date:0
+#: field:level,create_date:0 field:parent,create_date:0
+#: field:poff,create_date:0 field:room,create_date:0
+#: field:service,create_date:0 field:site,create_date:0
+msgid "Created on"
+msgstr "Crée le"
+
+#. module: optesis
+#: field:account.asset.asset,department:0
+#: view:department:optesis.department_form field:service,department_id:0
+msgid "Department"
+msgstr "Département"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win005
+#: model:ir.ui.menu,name:optesis.department_menu_2
+msgid "Departments"
+msgstr "Départements"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Depreciation Board"
+msgstr "Tableau des ammortissements"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Depreciation Lines"
+msgstr "Ligne des ammortissements"
+
+#. module: optesis
+#: field:account.asset.asset,description:0 field:building,description:0
+#: field:condition,description:0 field:department,description:0
+#: field:direction,description:0 field:level,description:0
+#: field:room,description:0 field:service,description:0
+#: field:site,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: optesis
+#: field:account.asset.asset,product:0
+msgid "Designation"
+msgstr "Libellé"
+
+#. module: optesis
+#: field:account.asset.asset,direction:0 field:department,direction_id:0
+#: view:direction:optesis.direction_form field:service,direction_id:0
+msgid "Direction"
+msgstr "Direction"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win004
+#: model:ir.ui.menu,name:optesis.direction_menu_2
+msgid "Directions"
+msgstr "Directions"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Disposal"
+msgstr "Cession"
+
+#. module: optesis
+#: field:account.asset.asset,date_disposal:0
+msgid "Disposal Date"
+msgstr "Date de cession"
+
+#. module: optesis
+#: field:account.asset.asset,value_disposal:0
+msgid "Disposal value"
+msgstr "Valeur de la cession"
+
+#. module: optesis
+#: field:account.asset.asset,est_amortie:0
+msgid "Disposal year "
+msgstr "Année de la cession"
+
+#. module: optesis
+#: field:agent,email:0
+msgid "Email"
+msgstr "Email"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win002
+#: model:ir.ui.menu,name:optesis.agent_menu_2
+msgid "Employee"
+msgstr "Employé"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Etat"
+msgstr "Etat"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "FICHE INVENTAIRE"
+msgstr "FICHE INVENTAIRE"
+
+#. module: optesis
+#: field:account.asset.asset,agents:0 field:agent,name:0
+msgid "First Name"
+msgstr "Prénom"
+
+#. module: optesis
+#: selection:account.asset.asset,type:0
+msgid "Fixed"
+msgstr "Fixé"
+
+#. module: optesis
+#: field:agent,fonction:0
+msgid "Fonction"
+msgstr "Fonction"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "General"
+msgstr "Général"
+
+#. module: optesis
+#: model:ir.ui.menu,name:optesis.asset_menu_1
+msgid "General Menu"
+msgstr "Menu Principal"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "History"
+msgstr "Historique"
+
+#. module: optesis
+#: field:agent,id:0 field:building,id:0 field:condition,id:0
+#: field:department,id:0 field:direction,id:0 field:employee,id:0
+#: field:level,id:0 field:parent,id:0 field:poff,id:0
+#: field:report.optesis.asset_print_asset,id:0 field:room,id:0
+#: field:service,id:0 field:site,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: optesis
+#: model:ir.ui.menu,name:optesis.asset_menu_2
+msgid "Inventory"
+msgstr "Inventaire"
+
+#. module: optesis
+#: field:account.asset.asset,inventory_date:0
+msgid "Inventory Date"
+msgstr "Date d'inventaire"
+
+#. module: optesis
+#: field:agent,last_name:0
+msgid "Last Name"
+msgstr "Nom"
+
+#. module: optesis
+#: field:agent,write_uid:0 field:building,write_uid:0
+#: field:condition,write_uid:0 field:department,write_uid:0
+#: field:direction,write_uid:0 field:employee,write_uid:0
+#: field:level,write_uid:0 field:parent,write_uid:0 field:poff,write_uid:0
+#: field:room,write_uid:0 field:service,write_uid:0 field:site,write_uid:0
+msgid "Last Updated by"
+msgstr "Dernièrement mis à jour par"
+
+#. module: optesis
+#: field:agent,write_date:0 field:building,write_date:0
+#: field:condition,write_date:0 field:department,write_date:0
+#: field:direction,write_date:0 field:employee,write_date:0
+#: field:level,write_date:0 field:parent,write_date:0 field:poff,write_date:0
+#: field:room,write_date:0 field:service,write_date:0 field:site,write_date:0
+msgid "Last Updated on"
+msgstr "Dernièrement mis à jour le"
+
+#. module: optesis
+#: field:account.asset.asset,level:0 view:level:optesis.level_form
+#: field:room,level_id:0
+msgid "Level"
+msgstr "Niveau"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win009
+#: model:ir.ui.menu,name:optesis.level_menu_2
+msgid "Levels"
+msgstr "Niveaux"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Libelle"
+msgstr "Libelle"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Local"
+msgstr "Local"
+
+#. module: optesis
+#: field:site,locality:0
+msgid "Locality"
+msgstr "Localité"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Marque"
+msgstr "Marque"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "NOM RESPONSABLE"
+msgstr "NOM RESPONSABLE"
+
+#. module: optesis
+#: field:building,name:0 field:department,name:0 field:direction,name:0
+#: field:level,name:0 field:room,name:0 field:service,name:0 field:site,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "New Asset"
+msgstr "Immobilisation"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Notes"
+msgstr "Notes"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "OPTESIS vous aidez à mieux faire"
+msgstr "OPTESIS vous aidez à mieux faire"
+
+#. module: optesis
+#: model:ir.ui.menu,name:optesis.asset_menu_3
+msgid "Organization"
+msgstr "Organisation"
+
+#. module: optesis
+#: field:account.asset.asset,parent:0 field:account.asset.category,parent:0
+#: field:parent,parent:0
+msgid "Parent"
+msgstr "Parent"
+
+#. module: optesis
+#: view:parent:optesis.parent_form
+msgid "Parent Asset"
+msgstr "Immobilisation Parente"
+
+#. module: optesis
+#: field:parent,name:0
+msgid "Parent asset"
+msgstr "Immobilisation parente"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_res_partner
+msgid "Partner"
+msgstr "Utilisateur"
+
+#. module: optesis
+#: field:account.asset.asset,value:0
+msgid "Price"
+msgstr "Prix"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_product_product
+msgid "Product"
+msgstr "Produit"
+
+#. module: optesis
+#: field:account.asset.asset,reference:0
+msgid "Reference"
+msgstr "Reférence"
+
+#. module: optesis
+#: field:site,region:0
+msgid "Region"
+msgstr "Région"
+
+#. module: optesis
+#: field:account.asset.asset,room:0 view:room:optesis.room_form
+msgid "Room"
+msgstr "Local"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win010
+#: model:ir.ui.menu,name:optesis.room_menu_2
+msgid "Rooms"
+msgstr "Locaux"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Save and new"
+msgstr "Nouveaux"
+
+#. module: optesis
+#: selection:account.asset.asset,type_disposal:0
+msgid "Sell"
+msgstr "Vendre"
+
+#. module: optesis
+#: field:account.asset.asset,num_facture_vente:0
+msgid "Sell billing number"
+msgstr "Numéro de facture de vente"
+
+#. module: optesis
+#: field:account.asset.asset,service:0 field:agent,service:0
+#: view:service:optesis.service_form view:website:optesis.asset_print_asset
+msgid "Service"
+msgstr "Service"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win006
+#: model:ir.ui.menu,name:optesis.service_menu_2
+msgid "Services"
+msgstr "Services"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Set to Close"
+msgstr "Ferme"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_form
+msgid "Set to Draft"
+msgstr "Brouillon"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Signature"
+msgstr "Signature"
+
+#. module: optesis
+#: field:account.asset.asset,site:0 field:building,site_id:0
+#: model:ir.ui.menu,name:optesis.asset_menu_4 field:level,site_level:0
+#: field:room,room_site:0 view:site:optesis.site_form
+#: view:website:optesis.asset_print_asset
+msgid "Site"
+msgstr "Site"
+
+#. module: optesis
+#: model:ir.actions.act_window,name:optesis.win007
+#: model:ir.ui.menu,name:optesis.site_menu_2
+msgid "Sites"
+msgstr "Sites"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Societe"
+msgstr "Société"
+
+#. module: optesis
+#: view:website:optesis.asset_print_asset
+msgid "Sous Total:"
+msgstr "Sous Total"
+
+#. module: optesis
+#: selection:account.asset.asset,type:0
+msgid "Tangible capital"
+msgstr "Immobilisations corporelles"
+
+#. module: optesis
+#: field:account.asset.asset,type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: optesis
+#: field:account.asset.asset,type_disposal:0
+msgid "Type disposal"
+msgstr "Type de cession"
+
+#. module: optesis
+#: field:agent,address:0
+msgid "address"
+msgstr "Adresse"
+
+#. module: optesis
+#: view:agent:optesis.agent_form
+msgid "agent_form"
+msgstr "Formulaire Agent"
+
+#. module: optesis
+#: view:agent:optesis.agent_tree
+msgid "agent_list"
+msgstr "Liste des Agents"
+
+#. module: optesis
+#: view:product.product:optesis.article_form
+msgid "article_form"
+msgstr "Formulaire Article"
+
+#. module: optesis
+#: view:product.product:optesis.article_tree
+msgid "article_list"
+msgstr "Liste des articles"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_condition
+msgid "asset's conditions"
+msgstr "Condition des Immobilisations"
+
+#. module: optesis
+#: view:account.asset.asset:optesis.optesis_asset_tree
+msgid "asset_list"
+msgstr "Liste des immobilisation"
+
+#. module: optesis
+#: view:building:optesis.building_form
+msgid "building_form"
+msgstr "Formulaire Bâtiment"
+
+#. module: optesis
+#: view:building:optesis.building_tree
+msgid "building_list"
+msgstr "Liste des Bâtiments"
+
+#. module: optesis
+#: sql_constraint:account.asset.asset:0
+msgid "can't be duplicate the value of code bar"
+msgstr "La valeur du code barre ne peut etre dupliquée"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_category
+msgid "category de l'immobilisation"
+msgstr "Catégorie de l'immobilisation"
+
+#. module: optesis
+#: view:agent:optesis.agent_form
+msgid "cite X villa Y"
+msgstr "Cite X villa Y"
+
+#. module: optesis
+#: view:condition:optesis.condition_form
+msgid "condition_form"
+msgstr "Formulaire d'Etat"
+
+#. module: optesis
+#: view:condition:optesis.condition_tree
+msgid "condition_list"
+msgstr "Liste des Etats"
+
+#. module: optesis
+#: view:department:optesis.department_form
+msgid "department_form"
+msgstr "Formulaire des départements"
+
+#. module: optesis
+#: view:department:optesis.department_tree
+msgid "department_list"
+msgstr "Liste des départements"
+
+#. module: optesis
+#: field:account.asset.category,description:0 field:parent,description:0
+#: field:poff,description:0
+msgid "description"
+msgstr "Description"
+
+#. module: optesis
+#: view:direction:optesis.direction_form
+msgid "direction_form"
+msgstr "Formulaire des directions"
+
+#. module: optesis
+#: view:direction:optesis.direction_tree
+msgid "direction_list"
+msgstr "Liste des directions"
+
+#. module: optesis
+#: field:account.asset.asset,history:0
+msgid "history"
+msgstr "Historique"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_parent
+msgid "immobilisation parente"
+msgstr "Immobilisation parente"
+
+#. module: optesis
+#: view:level:optesis.level_form
+msgid "level_form"
+msgstr "Formulaire Niveau"
+
+#. module: optesis
+#: view:level:optesis.level_tree
+msgid "level_list"
+msgstr "liste des Niveaux"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_asset
+#: model:ir.model,name:optesis.model_optesis_asset
+msgid "optesis asset first module"
+msgstr "Module de gestion  des immobilisations d'optesis "
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_building
+msgid "optesis building"
+msgstr "Optesis Bâtiment"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_department
+msgid "optesis department"
+msgstr "Optesis département"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_direction
+msgid "optesis direction"
+msgstr "Optesis direction"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_employee
+msgid "optesis employee"
+msgstr "Optesis employee"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_level
+msgid "optesis level"
+msgstr "Optesis niveau"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_room
+msgid "optesis room"
+msgstr "Optesis local"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_service
+msgid "optesis service"
+msgstr "Optesis service"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_site
+msgid "optesis site"
+msgstr "Optesis site"
+
+#. module: optesis
+#: view:parent:optesis.parent_form
+msgid "parent_form"
+msgstr "Formulaire parent"
+
+#. module: optesis
+#: view:parent:optesis.parent_tree
+msgid "parent_list"
+msgstr "Liste parent"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_poff
+msgid "paying-off table"
+msgstr "table "
+
+#. module: optesis
+#: field:agent,phone:0
+msgid "phone Number"
+msgstr "Numéro"
+
+#. module: optesis
+#: field:account.asset.asset,payoff:0
+msgid "poff"
+msgstr "Poff"
+
+#. module: optesis
+#: field:poff,price:0
+msgid "price"
+msgstr "Prix"
+
+#. module: optesis
+#: view:room:optesis.room_form
+msgid "room_form"
+msgstr "Formulaire Local"
+
+#. module: optesis
+#: view:room:optesis.room_tree
+msgid "room_list"
+msgstr "Liste des locaux"
+
+#. module: optesis
+#: view:service:optesis.service_form
+msgid "service_form"
+msgstr "Formulaire service"
+
+#. module: optesis
+#: view:service:optesis.service_tree
+msgid "service_list"
+msgstr "Liste Service"
+
+#. module: optesis
+#: view:site:optesis.site_form
+msgid "site_form"
+msgstr "Formulaire site"
+
+#. module: optesis
+#: view:site:optesis.site_tree
+msgid "site_list"
+msgstr "Liste service"
+
+#. module: optesis
+#: field:account.asset.asset,specifications:0
+msgid "specifications"
+msgstr "Spécifications"
+
+#. module: optesis
+#: sql_constraint:condition:0
+msgid "this condition name already exist"
+msgstr "Ce nom existe déja"
+
+#. module: optesis
+#: model:ir.model,name:optesis.model_agent
+msgid "user database"
+msgstr "Utilisateur"
+
+#. module: optesis
+#: field:poff,year:0
+msgid "year"
+msgstr "Année"
