@@ -1,0 +1,152 @@
+<odoo>
+    <data>
+
+       <!-- <record model="ir.ui.view" id="site_tree">
+        <field name="name">site.tree</field>
+        <field name="model">optesis.site</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des sites">
+                <field name="name"/>
+                <field name="region"/>
+                <field name="locality"/>
+                <field name="address"/>
+                <field name="description"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="site_form">
+        <field name="name">site.form</field>
+        <field name="model">optesis.site</field>
+        <field name="arch" type="xml">
+            <form string="Site">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Site">
+                        <field name="name"/>
+                        <field name="region"/>
+                        <field name="locality"/>
+                        <field name="address"/>
+                        <field name="description"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record> -->
+
+         <record model="ir.ui.view" id="building_tree">
+        <field name="name">building.tree</field>
+        <field name="model">optesis.building</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des batiment">
+                <field name="name"/>
+                <field name="description"/>
+                <!-- <field name="site_id"/> -->
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="building_form">
+        <field name="name">building.form</field>
+        <field name="model">optesis.building</field>
+        <field name="arch" type="xml">
+            <form string="Batiment">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Batiment">
+                        <field name="name"/>
+                         <field name="description"/>
+                        <!-- <field name="site_id"/> -->
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+          <record model="ir.ui.view" id="level_tree">
+        <field name="name">level.tree</field>
+        <field name="model">optesis.level</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des niveaux">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="building_id" />
+                <!-- <field name="site_level"/> -->
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="level_form">
+        <field name="name">level.form</field>
+        <field name="model">optesis.level</field>
+        <field name="arch" type="xml">
+            <form string="Niveau">
+                <group>
+                    <group string="Niveau">
+                        <field name="name"/>
+                         <field name="description"/>
+                        <!-- <field name="site_level"/> -->
+                        <field name="building_id" />
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+           <record model="ir.ui.view" id="room_tree">
+        <field name="name">room.tree</field>
+        <field name="model">optesis.room</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des locals">
+                 <field name="name"/>
+                 <field name="description"/>
+                 <field name="level_id"/>
+                 <field name="room_building"/>
+                 <!-- <field name="room_site"/> -->
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="room_form">
+        <field name="name">room.form</field>
+        <field name="model">optesis.room</field>
+        <field name="arch" type="xml">
+            <form string="Local">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Local">
+                        <field name="name"/>
+                         <field name="description"/>
+                         <!-- <field name="room_site"/> -->
+                         <field name="room_building" />
+                        <field name="level_id" domain="[('building_id','=', room_building)]"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+
+         <!-- <act_window id="win007" name="Sites" res_model="optesis.site" view_mode="tree,form"/>
+        <menuitem id="site_menu_2" name="Sites" parent="asset_menu_4" action="win007" sequence="10"/> -->
+
+        <act_window id="win008" name="Bâtiments" res_model="optesis.building" view_mode="tree,form"/>
+        <menuitem id="building_menu_2" name="Bâtiments" parent="asset_menu_4" action="win008" sequence="11"/>
+
+         <act_window id="win009" name="Niveaux" res_model="optesis.level" view_mode="tree,form"/>
+        <menuitem id="level_menu_2" name="Niveaux" parent="asset_menu_4" action="win009" sequence="12"/>
+
+        <act_window id="win010" name="Locaux" res_model="optesis.room" view_mode="tree,form"/>
+        <menuitem id="room_menu_2" name="Locaux" parent="asset_menu_4" action="win010" sequence="13"/>
+
+    </data>
+</odoo>

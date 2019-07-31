@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+
+           <record model="ir.ui.view" id="agent_tree">
+        <field name="name">agent.tree</field>
+        <field name="model">optesis.agent</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des agents">
+                <field name="name"/>
+                <field name="service" />
+            </tree>
+        </field>
+    </record>
+
+        <record model="ir.ui.view" id="agent_form">
+        <field name="name">agent.form</field>
+        <field name="model">optesis.agent</field>
+        <field name="arch" type="xml">
+
+            <form string="Agent">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2">
+                        <separator string="Agent" colspan="2"/>
+                        <field name="name"/>
+                        <field name="service"/>
+                    </group>
+                </group>
+
+            </form>
+
+        </field>
+    </record>
+
+         <act_window id="win002" name="Employés" res_model="optesis.agent" view_mode="tree,form"/>
+         <menuitem id="agent_menu_2" name="Employés" parent="asset_menu_3" action="win002" sequence="19"/>
+
+
+    </data>
+</odoo>

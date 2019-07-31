@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_modern_feelings" name="modern-feelings assets" inherit_id="report.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/optesis_purchase_reports/static/src/less/modern-feelings-style.less"/>
+            </xpath>
+        </template>
+        <template id="modern-feelings-page-layout">
+            <div class="page" id="modern-feelings-page">
+                <t t-call="optesis_purchase_reports.modern_feelings_layout_header"/>
+                <t t-raw="0"/>
+            </div>
+            <t t-call="optesis_purchase_reports.modern-feelings-footer"/>
+        </template>
+        <template id="modern_feelings_layout_header">
+            <div id="company">
+                <div id="logo-company-name">
+                    <span>République du Sénégal</span>
+                    <div style="border-top:1px solid;margin-left:90px;margin-right:110px;padding-top:10px"></div>
+                    <div style="font-size: 14px;font-weight: bold;">MINISTERE DE LA SANTE</div>
+                    <span style="font-size: 14px;font-weight: bold;">ET DE L'ACTION SOCIALE</span>
+                    <div style="border-top:1px solid;margin-left:90px;margin-right:110px;padding-top:10px"></div>
+                    <div style="font-size: 14px;font-weight: bold;">HOPITAL GENERAL</div>
+                    <span style="font-size: 14px;font-weight: bold;">DE GFRAND YOFF</span>
+                    <div style="border-top:1px solid;margin-left:90px;margin-right:110px;padding-top:10px"></div>
+                    <span>BP: 3270 Dakar-Tel:+221 33 869 40 50</span>
+                    <div style="border-top:1px solid;margin-left:90px;margin-right:110px;padding-top:10px"></div>
+
+                </div>
+                <div style="width:33%;display: table-cell;font-weight: bold;text-align: center;">
+                <span style="font-size: 19px;font-weight: bold;">BON DE COMMANDE</span><br/><br/>
+                 <span style="font-size: 17px;font-weight: bold;color:red">N° 145254</span>
+                </div>
+                <div id="company-address" style="display: table-cell;">
+                        <div><span style="font-weight: bold;padding-right:114px">Date </span><span>14-05-2018</span></div>
+                        <div><span style="font-weight: bold;padding-right:52px">N°du compte </span><span>411 147 580</span></div>
+                        <div><span style="font-weight: bold;padding-right:20px">Intitulé du compte </span><span>Optesis SA</span></div>
+                        <div><span style="font-weight: bold;padding-right:84px">Datation </span><span>12-11-2019</span></div>
+                        <div><span style="font-weight: bold;padding-right:32px">Crédits engagés </span><span>1 000 000 FCFA</span></div>
+                        <div><span style="font-weight: bold;padding-right:68px">Disponible </span><span>45 850 FCFA</span></div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modern-feelings-footer">
+            <div class="footer">
+                <div style="text-align: center;font-size: 14px">
+                    <span>Original du Bon de commande à joindre à l'appui de la facture en trois exemplaires</span>
+                </div>
+                <span style="text-align:center">
+                        <i>
+                            <div>
+                                <span class="page"/>
+                                /
+                                <span class="topage"/>
+                            </div>
+                        </i>
+                    </span>
+            </div>
+        </template>
+    </data>
+</odoo>

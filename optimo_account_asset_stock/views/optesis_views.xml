@@ -1,0 +1,420 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="optesis_asset_tree">
+      <field name="priority" eval="15"/>
+      <field name="name">optesis.asset.tree</field>
+      <field name="model">account.asset.asset</field>
+      <field name="arch" type="xml">
+        <tree string="Liste des immobilisations">
+          <field name="product_id"/>
+          <field name="category_id"/>
+          <field name="code_bar"/>
+          <field name="condition" />
+          <field name="brand"/>
+          <!-- <field name="site" /> -->
+          <field name="room"/>
+          <field name="direction"/>
+          <!-- <field name="department"/> -->
+          <field name="service"/>
+          <field name="inventory_date"/>
+          <field name="last"/>
+          <field name="asset_number"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="optesis_asset_form">
+      <field name="priority" eval="15"/>
+      <field name="name">optesis.asset.form</field>
+      <field name="model">account.asset.asset</field>
+      <field name="arch" type="xml">
+
+        <form>
+          <header>
+            <button name="validate" states="draft" string="Confirm Asset" type="object" class="oe_highlight"/>
+            <button name="set_to_close" states="open" string="Set to Close" type="object" class="oe_highlight"/>
+            <button name="set_to_draft" states="open" string="Set to Draft" type="object" />
+            <field name="state" widget="statusbar" statusbar_visible="draft,open"/>
+          </header>
+          <sheet string="Saisie immobilisations">
+            <separator string="Immobilisation"/>
+            <group>
+              <group>
+                <div class="oe_title">
+                  <label for="code_bar" class="oe_edit_only"/> <br/>
+                  <h1 onkeyup="test_key(event)" type="object" name="asset_renew" id="code"> <field name="code_bar" default_focus="1" class="oe_inline bar" required="True"/>  </h1>
+
+                  <script>
+                    var i = 0;
+                    function test_key(event){
+                    var but = document.getElementById("asset_renew");
+
+                    if (event.keyCode == 45){
+                    this.write;
+                    jQuery('footer button:last').click();
+                    //$("#code").click();
+                    i = i+1;
+                    console.log(window.location.href);
+                    //console.log(window.form.length);
+                    //ass = new odoo.web.Model('account.asset.asset');
+                    //ass.create;
+                    }
+                    }
+                  </script>
+
+                </div>
+
+              </group>
+              <group>
+                <div class="oe_title">
+                  <label for="product_id" class="oe_edit_only"/> <br/>
+                  <h1> <field name="product_id" class="oe_inline" required="True"/> </h1>
+                </div>
+              </group>
+            </group>
+            <group>
+              <group>
+                <field name="service" required="True" />
+                <!-- <field name="department" required="True"/> -->
+                <field name="direction" required="True"/>
+                <field name="agents" domain="[('service', '=', service)]"/>
+              </group>
+
+              <group>
+                <!-- <field name="site" required="True"/> -->
+                <field name="building"  required="True"/>
+                <field name="level"  domain="[('building_id', '=', building)]" required="True"/>
+                <field name="room"  domain="[('level_id', '=', level)]" required="True"/>
+              </group>
+            </group>
+
+            <group>
+              <group>
+                <field name="condition" required="True"/>
+                <field name="brand"/>
+                <field name="specifications"/>
+              </group>
+              <group>
+                <field name="category_id" required="True"/>
+                <field name="inventory_date"/>
+                <field name="last"  invisible='1'/>
+                <field name="date"/>
+
+              </group>
+              <notebook colspan="4">
+                <page string="General">
+                  <group>
+                    <group>
+                      <field name="value" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                      <field name="salvage_value" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                      <field name="value_residual" widget="monetary" options="{'currency_field': 'currency_id'}" string="Base amortissable"/>
+                      <field name="partner_id"/>
+                      <field name="num_bc"/>
+                      <field name="num_br"/>
+                    </group>
+                    <group>
+                      <field name="method"/>
+                      <field name="method_progress_factor" attrs="{'invisible':[('method','=','linear')], 'required':[('method','=','degressive')]}"/>
+                      <label for="method_time"/>
+
+                      <div>
+                        <field name="method_time" class="oe_inline"/>
+
+                      </div>
+                      <field name="prorata" attrs="{'invisible': [('method_time','=','end')]}"/>
+                      <field name="method_number" attrs="{'invisible':[('method_time','=','end')], 'required':[('method_time','=','number')]}"/>
+                      <field name="method_period"/>
+                      <field name="method_end" attrs="{'required': [('method_time','=','end')], 'invisible':[('method_time','=','number')]}"/>
+                    </group>
+                  </group>
+                </page>
+                <page string="Depreciation Board" groups="base.group_erp_manager">
+                  <field name="depreciation_line_ids" mode="tree">
+                    <tree string="Depreciation Lines" colors="blue:(move_check == False);black:(move_check == True)">
+                      <field name="depreciation_date"/>
+                      <field name="sequence" invisible="1"/>
+                      <field name="depreciated_value" readonly="1"/>
+                      <field name="amount"/>
+                      <field name="remaining_value" readonly="1"/>
+                      <field name="move_check"/>
+                      <field name="parent_state" invisible="1"/>
+                      <button name="create_move" attrs="{'invisible':['|',('move_check','!=',False),('parent_state','!=','open')]}" icon="gtk-execute" string="Create Move" type="object"/>
+                    </tree>
+                    <form string="Depreciation Lines">
+                      <group>
+                        <group>
+                          <field name="parent_state" invisible="1"/>
+                          <field name="name"/>
+                          <field name="amount"/>
+                          <field name="move_id"/>
+                          <field name="move_check"/>
+                          <field name="parent_state" invisible="1"/>
+                        </group>
+                        <group>
+                          <field name="sequence"/>
+                          <field name="depreciation_date"/>
+                          <field name="depreciated_value"/>
+                          <field name="remaining_value"/>
+                        </group>
+                      </group>
+                    </form>
+                  </field>
+                  <button type="object" name="compute_depreciation_board" string="Compute" icon="terp-stock_format-scientific" colspan="2" attrs="{'invisible':[('state','=','close')]}"/>
+                </page>
+                <page string="Notes">
+                  <field name="note" placeholder="Add an internal note here..."/>
+                </page>
+                <page string="Disposal" groups="base.group_erp_manager">
+                  <group>
+                    <group>
+                      <field name="date_disposal"/>
+                      <field name="num_facture_vente"/>
+                      <field name="type_disposal"/>
+                    </group>
+                    <group>
+                      <field name="value_disposal"/>
+                      <field name="buyer"/>
+                      <field name="est_amortie"/>
+                    </group>
+                  </group>
+                </page>
+                <page string="Historique">
+                  <field name="log_ids" readonly="1">
+                    <tree>
+                      <field name="date"/>
+                      <field name="description"/>
+                    </tree>
+                  </field>
+                </page>
+              </notebook>
+            </group>
+            <footer>
+              <button  type="object" string="Save and new" name="asset_renew" id="but" />
+            </footer>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="account_asset_asset_purchase_tree_inherit">
+      <field name="name">account.asset.asset.purchase.tree.inherit</field>
+      <field name="model">account.asset.asset</field>
+      <field name="inherit_id" ref="account_asset.view_account_asset_asset_purchase_tree"/>
+      <field name="arch" type="xml">
+        <field name="name" position="after">
+          <field name='code_bar'/>
+        </field>
+      </field>
+    </record>
+
+    <record id="optesis_asset_graph" model="ir.ui.view">
+      <field name="name">optesis.asset.graph</field>
+      <field name="model">account.asset.asset</field>
+      <field name="arch" type="xml">
+        <graph string="Analyse Graphique" type="pivot" stacked="True">
+          <field name="product_id"/>
+          <field name="category_id"/>
+          <field name="code_bar"/>
+          <field name="condition" />
+          <field name="brand"/>
+          <!-- <field name="site" /> -->
+          <field name="room"/>
+          <field name="direction"/>
+          <!-- <field name="department"/> -->
+          <field name="service"/>
+          <field name="inventory_date"/>
+          <field name="last"/>
+        </graph>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="condition_tree">
+      <field name="name">condition.tree</field>
+      <field name="model">optesis.condition</field>
+      <field name="arch" type="xml">
+        <tree string="Liste des conditions">
+          <field name="name"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="condition_form">
+      <field name="name">condition.form</field>
+      <field name="model">optesis.condition</field>
+      <field name="arch" type="xml">
+        <form string="Condition">
+          <sheet>
+            <group colspan="4">
+              <group colspan="2" rowspan="2" string="Condition">
+                <field name="name" />
+                <field name="description" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="asset_seacrh_view">
+      <field name="priority" eval="1"/>
+      <field name="name">optesis.asset.search</field>
+      <field name="model">account.asset.asset</field>
+      <field name="arch" type="xml">
+        <search>
+          <group expand="0" string="group_by">
+            <filter name='group_category_id' string="Category" context="{'group_by':'category_id'}" />
+            <filter name='group_product' string="Product" context="{'group_by':'product_id'}"/>
+            <filter name='group_direction' string="Direction" context="{'group_by':'direction'}"/>
+            <filter name='group_service' string="Service" context="{'group_by':'service'}" />
+            <!-- <filter name='group_site' string="Site" context="{'group_by':'site'}" /> -->
+            <filter name='group_room' string="Room" context="{'group_by':'room'}" />
+          </group>
+          <field name="product_id"/>
+          <field name="code_bar"/>
+          <field name="brand"/>
+          <field name="category_id" />
+          <field name="direction" />
+          <!-- <field name="department"/> -->
+          <field name="service"/>
+          <!-- <field name="site" /> -->
+          <field name="building"/>
+          <field name="level" />
+          <field name="room" />
+          <field name="date_assignation" />
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="condition_form">
+      <field name="name">control.form</field>
+      <field name="model">optesis.control</field>
+      <field name="arch" type="xml">
+        <form string="Inventaires">
+          <header>
+            <button name="start_control" string="Commencer" type="object" class="oe_highlight" states="draft"/>
+            <button name="validate_control" string="Valider" type="object" class="oe_highlight" states="open"/>
+            <field name="state" widget="statusbar" statusbar_visible="draft,open,end"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <!-- <field name="site_id" /> -->
+                <field name="building_id" required="True"/>
+                <field name="room_id" domain="[('level_id', '=', level_id)]" required="True"/>
+                <field name="condition_id" required="True"/>
+              </group>
+              <group>
+                <field name="level_id" domain="[('building_id', '=', building_id)]" required="True"/>
+                <field name="service_id" required="True"/>
+              </group>
+            </group>
+            <div class="oe_title">
+              <label for="code_barre" class="oe_edit_only"/> <br/>
+              <h1 onkeyup="get_code(event)" type="object" name="change_code_barre">
+                <field name="code_barre" class="oe_inline bar" placeholder="Recherche du code barre" default_focus="1" attrs="{'invisible':[('state', '!=', 'open')]}"/>  </h1>
+                <script>
+                  var i = 0;
+                  function get_code(event){
+                  if (event.keyCode == 45){
+                  jQuery('footer button:last').click();
+
+                  }
+                  }
+                </script>
+
+              </div>
+              <notebook>
+                <page string="inventaire" attrs="{'invisible':[('state', '=', 'draft')]}">
+                  <field name="asset_ids" attrs="{'readonly':[('state','=','end')]}">
+                    <tree>
+                      <field name="product_id"/>
+                      <field name="category_id"/>
+                      <field name="code_bar"/>
+                      <field name="condition" />
+                      <field name="brand"/>
+                      <field name="room"/>
+                      <field name="direction"/>
+                      <field name="service"/>
+                      <field name="inventory_date"/>
+                      <field name="last"/>
+                      <field name="asset_number"/>
+                    </tree>
+                  </field>
+                </page>
+              </notebook>
+              <footer>
+                <button  type="object" string="verifier" name="change_code_barre" id="check" invisible="1"/>
+              </footer>
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <record id="action_optimo_open_all" model="ir.actions.server">
+        <field name="name">Confirmer</field>
+        <field name="model_id" ref="model_account_asset_asset"/>
+        <field name="state">code</field>
+        <field name="condition">True</field>
+        <field name="code">object.pass_to_openall()</field>
+      </record>
+      <record id="id_of_the_action_open" model="ir.values">
+        <field name="name">Confirmer</field>
+        <field name="model">account.asset.asset</field>
+        <field name="key" >action</field>
+        <field name="key2">client_action_multi</field>
+        <field name="value" eval="'ir.actions.server,%d'%action_optimo_open_all"/>
+      </record>
+
+      <record id="action_optimo_close_all" model="ir.actions.server">
+        <field name="name">Fermer</field>
+        <field name="model_id" ref="model_account_asset_asset"/>
+        <field name="state">code</field>
+        <field name="condition">True</field>
+        <field name="code">object.pass_to_closeall()</field>
+      </record>
+      <record id="id_of_the_action_close" model="ir.values">
+        <field name="name">Fermer</field>
+        <field name="model">account.asset.asset</field>
+        <field name="key" >action</field>
+        <field name="key2">client_action_multi</field>
+        <field name="value" eval="'ir.actions.server,%d'%action_optimo_close_all"/>
+      </record>
+
+
+
+
+
+      <act_window id="win001" name="Saisie Immobilisations" res_model="account.asset.asset" view_mode="tree,form" />
+      <menuitem id="asset_menu_0" name="Immobilisations" web_icon="optimo_account_asset_stock,static/description/icon.png" sequence="100"/>
+
+
+      <menuitem id="asset_menu_1" name="Menu Général" parent="asset_menu_0" sequence="1"/>
+      <menuitem id="asset_menu_5" name="Catalogues" parent="asset_menu_0" sequence="2"/>
+      <menuitem id="asset_menu_3" name="Organisation" parent="asset_menu_0" sequence="3"/>
+      <menuitem id="asset_menu_4" name="Sites" parent="asset_menu_0" sequence="9"/>
+
+      <menuitem id="asset_menu_2" name="Immobilisations" parent="asset_menu_1" action="win001" sequence="2"/>
+
+      <act_window id="win011" name="Categories" res_model="account.asset.category" view_mode="tree,form"/>
+      <menuitem id="category_menu_2" name="Categories" parent="asset_menu_5" action="win011" sequence="14"/>
+
+
+      <act_window id="win014" name="Standards" res_model="product.template" view_mode="tree,form"/>
+      <menuitem id="article_menu_2" name="Standards" parent="asset_menu_5" action="win014" sequence="17"/>
+
+      <act_window id="win015" name="États" res_model="optesis.condition" view_mode="tree,form"/>
+      <menuitem id="condition_menu_2" name="États" parent="asset_menu_5" action="win015" sequence="18"/>
+
+      <act_window id="win_inv_100" name="Inventaire" res_model="optesis.control" view_mode="tree,form" />
+      <menuitem id="asset_menu_controle" name="Inventaire" parent="asset_menu_1" action="win_inv_100" sequence="19"/>
+
+      <act_window id="win_inv_101" name="Reporting" res_model="account.asset.asset" view_mode="pivot,graph" />
+      <menuitem id="asset_menu_report" name="Reporting" parent="asset_menu_1" action="win_inv_101" sequence="201"/>
+
+    </data>
+  </odoo>
