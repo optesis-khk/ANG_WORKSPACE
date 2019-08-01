@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 {
-  "name": "Stylish report templates",
+  "name": "Quotation & purchase reports",
   "version": "10.0",
   "author": "Optesis SA",
   "category": 'Quotation & purchase reports',
