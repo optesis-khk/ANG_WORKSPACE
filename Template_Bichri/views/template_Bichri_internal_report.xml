@@ -6,22 +6,23 @@
         <report
                 id="optesis_report_header"
                 model="purchase.order"
-                string="purchase"
+                string="Template Bichri"
                 report_type="qweb-pdf"
                 name="Template_Bichri.report_Template_Bichri_header_view"
                 file="Template_Bichri.report_Template_Bichri_header"
                 menu="True"
         />
-
-        <template id="report_procedure_header_view">
+        <template id="report_Template_Bichri_header_view">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-
-                    <t t-call="Template_Bichri.optesis_external_view">
+                    <t t-call="Template_Bichri.bichri_external_view">
+                        
                         <div class="page">
-                            
-
+                            <div class="backgroundimage">
+                                <img src="/Template_Bichri/static/src/img/background.png"/>
+                            </div>
                         </div>
+                        
                     </t>
                 </t>
             </t>
