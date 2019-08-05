@@ -1,0 +1,94 @@
+ .Row
+                    {
+                    display: table;
+                    table-layout: fixed; /*Optional*/
+                    width:100%;
+
+                    }
+                    .Column
+                    {
+                    display: table-cell;
+                    background-color: white;
+
+                    /*Optional*/
+                    }
+                    .mytop{
+                    margin-top:-30px;
+                    }
+                    .petit_titre{
+                    font-size: 15px;
+                    }
+                    .reglagage_hr{
+                    border: 0.5px solid black;
+                    width:25%;
+                    height:1px;
+                    background-color:black;
+
+                    margin-left: 10%;
+                    }
+
+                    .normal_paragraph{
+                    font-size: 17px;
+                    }
+                    .margin-add{
+                    margin-top: 20px;
+                    }
+                    .margin-retrait{
+                    margin-top: 10px;
+                    }
+                    h6{
+                    text-align: center;
+                    margin-top:20%;
+                    }
+                    .margin-perso{
+                    margin-top:5%;
+                    margin-left:30px;
+                    }
+                    .margin-perso-left-right{
+                    margin-left:-10px;
+                    /*margin-right: 40%;*/
+                    }
+                    .myborder{
+                    border: 7px solid black;
+                    width: 1000%;
+                    margin-left:5px;
+                    }
+                    th{
+                    border: 4px solid black;
+
+                    }
+                    td{
+                    border: 4px solid black;
+
+                    }
+                    tr{
+                    border: 2px solid black;
+
+                    }
+                    table{
+                    width: 100%;
+                    margin-left:-10px;
+                    margin-right:0px;
+                    margin-top:10px;
+                    margin-bottom: 30px;
+
+                    }
+                    .lefth6{
+                    margin-left: -105px;
+                    }
+                    #margin-end{
+                    margin-left:75px;
+                    margin-top: 17px;
+                    }
+                    .paragraphe{
+                    margin:1px;
+                    padding:1px;
+                    }
+
+                    th{
+                    text-align:center;
+                    margin:10px;
+                    }
+                    td{
+                    margin:10px;
+                    }
