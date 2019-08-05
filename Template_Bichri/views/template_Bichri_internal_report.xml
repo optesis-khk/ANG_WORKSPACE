@@ -18,8 +18,8 @@
                     <t t-call="Template_Bichri.bichri_external_view">
                         
                         <div class="page">
-                            <div class="backgroundimage">
-                                <img src="/Template_Bichri/static/img/last.png"/>
+                            <div class="backgroundimage" style="width:100%;">
+                                <img src="/Template_Bichri/static/img/last.png" style="width:100%;height:auto"/>
                             </div>
                         </div>
                         

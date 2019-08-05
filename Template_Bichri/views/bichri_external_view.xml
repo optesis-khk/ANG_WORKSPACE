@@ -17,7 +17,7 @@
                 </t>
             </t>
 
-            <div class="header">
+            <div class="header" style="margin-left:30px;padding-left:30px">
                 <div class="row">
                     <div class="col-12">
                         <a href="#default">
@@ -35,26 +35,15 @@
             </div>
 
             <div class="footer o_standard_footer">
-                <div class="row" style="margin-top:10%;">
-                    <div class="col-12">
-                        <hr/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-5">
-                        
-                    </div>
-                    <div class="col-10"></div>
-                </div>
-                <div class="row" style="margin-bottom:7%;">
-                    <div class="col-3"></div>
-                    <div class="col-4">
-                        <div class="container">
-                            <img src="/Template_Bichri/static/img/FOOTER.png" align="right"
-                                 style="margin-right:-120%; margin-left:100%;"/>
-                        </div>
-                    </div>
-                </div>
+               
+                
+                <div class="row" style="margin-bottom:7%;padding-leftt:10%;margin-left:10%">
+                        <div class="row"  style="padding-right:-50px;margin-right:-50px">
+                            <img src="/Template_Bichri/static/img/FOOTER.png"
+                                 style="padding-right:-40px;margin-right:-40px"/>
+                       
+                          </div>
+            </div>
             </div>
         </template>
     </data>
