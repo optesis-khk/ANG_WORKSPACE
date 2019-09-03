@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supply_request_user,supply.request,model_supply_request,group_supply_request_user,1,1,1,1
+access_supply_request_manager,supply.request,model_supply_request,group_supply_request_manager,1,1,1,1
+access_supply_request_line_user,supply.request.line,model_supply_request_line,group_supply_request_user,1,1,1,1
+access_supply_request_line_manager,supply.request.line,model_supply_request_line,group_supply_request_manager,1,1,1,1

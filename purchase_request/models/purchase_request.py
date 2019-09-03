@@ -2,9 +2,9 @@
 # Copyright 2016 Eficent Business and IT Consulting Services S.L.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0).
 
-from openerp import api, fields, models, _
-from openerp.exceptions import ValidationError
-import openerp.addons.decimal_precision as dp
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
+import odoo.addons.decimal_precision as dp
 
 _STATES = [
     ('draft', 'Draft'),
@@ -19,7 +19,7 @@ class PurchaseRequest(models.Model):
 
     _name = 'purchase.request'
     _description = 'Purchase Request'
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     @api.model
     def _company_get(self):
@@ -68,14 +68,6 @@ class PurchaseRequest(models.Model):
                 return 'purchase_request.mt_request_done'
         return super(PurchaseRequest, self)._track_subtype(init_values)
 
-    @api.multi
-    @api.constrains('picking_type_id')
-    def _check_picking_type_id(self):
-        for rec in self:
-            if rec.picking_type_id.code != 'incoming':
-                raise ValidationError(_(
-                    "Picking type operation must be 'Suppliers'."))
-
     name = fields.Char('Request Reference', size=32, required=True,
                        default=_get_default_name,
                        track_visibility='onchange')
@@ -92,6 +84,7 @@ class PurchaseRequest(models.Model):
                                    default=_get_default_requested_by)
     assigned_to = fields.Many2one('res.users', 'Approver',
                                   track_visibility='onchange')
+    partner_id = fields.Many2one('res.partner', string='Fournisseur', required=True)
     description = fields.Text('Description')
     company_id = fields.Many2one('res.company', 'Company',
                                  required=True,
@@ -112,10 +105,50 @@ class PurchaseRequest(models.Model):
     is_editable = fields.Boolean(string="Is editable",
                                  compute="_compute_is_editable",
                                  readonly=True)
-    picking_type_id = fields.Many2one(
-        comodel_name='stock.picking.type', string='Picking Type',
-        required=True, default=_default_picking_type,
-        domain="[('code', '=', 'incoming')]")
+    to_approve_allowed = fields.Boolean(
+        compute='_compute_to_approve_allowed')
+    picking_type_id = fields.Many2one('stock.picking.type',
+                                      'Picking Type', required=True,
+                                      default=_default_picking_type)
+
+    line_count = fields.Integer(
+        string='Purchase Request Line count',
+        compute='_compute_line_count',
+        readonly=True
+    )
+
+    @api.depends('line_ids')
+    def _compute_line_count(self):
+        self.line_count = len(self.mapped('line_ids'))
+
+    @api.multi
+    def action_view_purchase_request_line(self):
+        action = self.env.ref(
+            'purchase_request.purchase_request_line_form_action').read()[0]
+        lines = self.mapped('line_ids')
+        if len(lines) > 1:
+            action['domain'] = [('id', 'in', lines.ids)]
+        elif lines:
+            action['views'] = [(self.env.ref(
+                'purchase_request.purchase_request_line_form').id, 'form')]
+            action['res_id'] = lines.id
+        return action
+
+    @api.multi
+    @api.depends(
+        'state',
+        'line_ids.product_qty',
+        'line_ids.cancelled',
+    )
+    def _compute_to_approve_allowed(self):
+        for rec in self:
+            rec.to_approve_allowed = (
+                rec.state == 'draft' and
+                any([
+                    not line.cancelled and line.product_qty
+                    for line in rec.line_ids
+                ])
+            )
 
     @api.multi
     def copy(self, default=None):
@@ -123,55 +156,89 @@ class PurchaseRequest(models.Model):
         self.ensure_one()
         default.update({
             'state': 'draft',
-            'name': self._get_default_name(),
+            'name': self.env['ir.sequence'].next_by_code('purchase.request'),
         })
         return super(PurchaseRequest, self).copy(default)
+
+    @api.multi
+    def message_subscribe_users(self, user_ids=None, subtype_ids=None):
+        """ Wrapper on message_subscribe, using users. If user_ids is not
+            provided, subscribe uid instead. """
+        if user_ids is None:
+            user_ids = [self._uid]
+        return self.message_subscribe(self.env['res.users'].browse(user_ids).mapped('partner_id').ids, subtype_ids=subtype_ids)
 
     @api.model
     def create(self, vals):
         request = super(PurchaseRequest, self).create(vals)
         if vals.get('assigned_to'):
-            request._subscribe_assigned_to_user()
+            request.message_subscribe_users(user_ids=[request.assigned_to.id])
         return request
 
     @api.multi
     def write(self, vals):
         res = super(PurchaseRequest, self).write(vals)
-        if vals.get('assigned_to'):
-            self._subscribe_assigned_to_user()
+        for request in self:
+            if vals.get('assigned_to'):
+                self.message_subscribe_users(user_ids=[request.assigned_to.id])
         return res
 
     @api.multi
     def button_draft(self):
-        for rec in self:
-            rec.state = 'draft'
-            rec.line_ids.do_uncancel()
-        return True
+        self.mapped('line_ids').do_uncancel()
+        return self.write({'state': 'draft'})
 
     @api.multi
     def button_to_approve(self):
-        for rec in self:
-            rec.state = 'to_approve'
-        return True
+        self.to_approve_allowed_check()
+        return self.write({'state': 'to_approve'})
 
     @api.multi
     def button_approved(self):
-        for rec in self:
-            rec.state = 'approved'
-        return True
+        return self.write({'state': 'approved'})
 
     @api.multi
     def button_rejected(self):
-        for rec in self:
-            rec.state = 'rejected'
-            rec.line_ids.do_cancel()
-        return True
+        self.mapped('line_ids').do_cancel()
+        return self.write({'state': 'rejected'})
+
+    @api.multi
+    def _prepare_line_values(self):
+        res = dict()
+        for record in self:
+            lines = []
+            for line in record.line_ids:
+                lines.append((0, 0,
+                             {
+                                'product_id': line.product_id.id,
+                                'product_uom': line.product_id.id,
+                                'name': line.name,
+                                'account_id': line.account_id.id,
+                                'product_uom':line.product_uom_id.id,
+                                'account_analytic_id': line.account_analytic_id.id,
+                                'product_qty': line.product_qty,
+                                'price_unit':0,
+                                'date_planned': line.date_required,
+                             }))
+            res[record.id] = {
+                'partner_id': record.partner_id.id,
+                'order_line': lines,
+            }
+        return res
 
     @api.multi
     def button_done(self):
-        for rec in self:
-            rec.state = 'done'
-        return True
+        for record in self:
+            self.ensure_one()
+            record.state = "done"
+            values = self._prepare_line_values()
+            purchase_order = self.env['purchase.order'].create(values[self.id])
+            return {
+                "type": "ir.actions.act_window",
+                "res_model": "purchase.order",
+                "views": [[False, "form"]],
+                "res_id": purchase_order.id,
+            }
 
     @api.multi
     def check_auto_reject(self):
@@ -182,24 +249,23 @@ class PurchaseRequest(models.Model):
                 pr.write({'state': 'rejected'})
 
     @api.multi
-    def _subscribe_assigned_to_user(self, subtype_ids=None):
-        """If the assigned to user is set on the PR, subscribe him."""
+    def to_approve_allowed_check(self):
         for rec in self:
-            if not rec.assigned_to:
-                continue
-            rec.message_subscribe_users(
-                user_ids=[rec.assigned_to.id], subtype_ids=subtype_ids)
+            if not rec.to_approve_allowed:
+                raise UserError(
+                    _("You can't request an approval for a purchase request "
+                      "which is empty. (%s)") % rec.name)
 
 
 class PurchaseRequestLine(models.Model):
 
     _name = "purchase.request.line"
     _description = "Purchase Request Line"
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     @api.multi
     @api.depends('product_id', 'name', 'product_uom_id', 'product_qty',
-                 'analytic_account_id', 'date_required', 'specifications')
+                 'account_analytic_id', 'date_required', 'specifications')
     def _compute_is_editable(self):
         for rec in self:
             if rec.request_id.state in ('to_approve', 'approved', 'rejected',
@@ -221,10 +287,10 @@ class PurchaseRequestLine(models.Model):
         track_visibility='onchange')
     name = fields.Char('Description', size=256,
                        track_visibility='onchange')
-    product_uom_id = fields.Many2one('product.uom', 'Product Unit of Measure',
+    product_uom_id = fields.Many2one('uom.uom', 'Product Unit of Measure',
                                      track_visibility='onchange')
     product_qty = fields.Float('Quantity', track_visibility='onchange',
-                               digits_compute=dp.get_precision(
+                               digits=dp.get_precision(
                                    'Product Unit of Measure'))
     request_id = fields.Many2one('purchase.request',
                                  'Purchase Request',
@@ -233,7 +299,13 @@ class PurchaseRequestLine(models.Model):
                                  related='request_id.company_id',
                                  string='Company',
                                  store=True, readonly=True)
-    analytic_account_id = fields.Many2one('account.analytic.account',
+
+    account_id = fields.Many2one('account.account', string='Compte',
+                                    required=True,
+                                    domain=[('deprecated', '=', False)],
+                                    help="The income or expense account related to the selected product.")
+
+    account_analytic_id = fields.Many2one('account.analytic.account',
                                           'Analytic Account',
                                           track_visibility='onchange')
     requested_by = fields.Many2one('res.users',
@@ -278,12 +350,13 @@ class PurchaseRequestLine(models.Model):
     def onchange_product_id(self):
         if self.product_id:
             name = self.product_id.name
+            self.account_id = self.product_id.property_account_expense_id.id or self.product_id.categ_id.property_account_expense_categ_id
             if self.product_id.code:
-                name = '[%s] %s' % (self.product_id.code, name)
+                name = '[%s] %s' % (name, self.product_id.code)
             if self.product_id.description_purchase:
                 name += '\n' + self.product_id.description_purchase
             self.product_uom_id = self.product_id.uom_id.id
-            self.product_qty = 1.0
+            self.product_qty = 1
             self.name = name
 
     @api.multi

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- Menu principale-->
+  <menuitem id="menu_principale" name="Comptabilité Matière" web_icon="compta_matiere,static/description/icon.png" sequence="28"/>
+
+  <!-- Menu-->
+  <menuitem action="stock.stock_picking_type_action" id="stock_picking_type_menu_cm"  parent="menu_principale" sequence="0" name="Vue d'ensemble"/>
+
+  <!-- <menuitem id="menu_reception" action="action_menu_reception" name="Réception" parent="menu_principale" sequence="1"/> -->
+  <menuitem id="menu_entree_matiere" name="Entrée de matières" parent="menu_principale" sequence="2"/>
+  <menuitem id="menu_mouvement" name="Mouvements interne" parent="menu_principale" sequence="3"/>
+  <menuitem id="menu_sorti_temp" name="Sorties temporaires" parent="menu_principale" sequence="4"/>
+  <menuitem id="menu_sorti_def" name="Sorties définitives" parent="menu_principale" sequence="5"/>
+  <menuitem id="menu_report" name="Rapports" parent="menu_principale" sequence="6"/>
+
+  <!-- Sous menu entrée matière-->
+
+  <menuitem id="menu_entre_matiere_commande" action="action_menu_reception" name="Réception et entrée de matières commandées" parent="menu_entree_matiere" sequence="1"/>
+
+  <menuitem id="menu_reception_dons_leg" action="action_menu_reception_dons_leg" name="Réception des dons et legs" parent="menu_entree_matiere" sequence="1"/>
+
+  <menuitem id="menu_reception_marchandise_transfere" action="action_menu_reception_marchandise_transfere" name="Réception marchandises transférées" parent="menu_entree_matiere" sequence="1"/>
+
+  <menuitem id="menu_regularisation" action="action_menu_regularisation" name="Régularisation suite inventaire" parent="menu_entree_matiere" sequence="1"/>
+
+  <!-- Sous menu mouvement interne-->
+
+  <menuitem id="menu_affectation" action="action_menu_affectation" name="Affectation des matières" parent="menu_mouvement" sequence="1"/>
+
+  <menuitem id="menu_mutation" action="action_menu_mutation" name="Mutation des matières" parent="menu_mouvement" sequence="1"/>
+
+  <!-- Sous menu sortie temporaires-->
+
+  <menuitem id="menu_reparation" action="action_menu_repartion" name="Réparation des matières" parent="menu_sorti_temp" sequence="1"/>
+
+  <menuitem id="menu_pret" action="action_menu_pret" name="Prêt des matières" parent="menu_sorti_temp" sequence="1"/>
+
+  <menuitem id="menu_location" action="action_menu_location" name="Location des matière" parent="menu_sorti_temp" sequence="1"/>
+
+  <!-- Sous menu sortie définitives-->
+
+  <menuitem id="menu_sortie_conso" action="action_menu_sortie_conso" name="Sortie suite consommation" parent="menu_sorti_def" sequence="1"/>
+
+  <menuitem id="menu_transfert_structure" action="action_menu_transfert_structure" name="Transfert entre structure" parent="menu_sorti_def" sequence="1"/>
+
+  <menuitem id="menu_sortie" action="action_menu_sortie" name="Sortie (immobilisation)" parent="menu_sorti_def" sequence="1"/>
+
+  <menuitem id="menu_reforme" action="action_menu_reforme" name="Réforme (immobilisation)" parent="menu_sorti_def" sequence="1"/>
+
+  <!-- Sous menu Rapports-->
+  <act_window id="action_menu_fiche_stock" name="Fiche de stock des matières" res_model="stock.picking" view_mode="tree,form"/>
+  <menuitem id="menu_fiche_stock" action="action_menu_fiche_stock" name="Fiche de stock des matières" parent="menu_report" sequence="1"/>
+
+  <act_window id="action_menu_grand_livre" name="Grand livre des matières" res_model="stock.picking" view_mode="tree,form"/>
+  <menuitem id="menu_grand_livre" action="action_menu_grand_livre" name="Grand livre des matières" parent="menu_report" sequence="1"/>
+
+  <act_window id="action_menu_livre_journal" name="Livre journal" res_model="stock.picking" view_mode="tree,form"/>
+  <menuitem id="menu_livre_journal" action="action_menu_livre_journal" name="Livre journal" parent="menu_report" sequence="1"/>
+
+  <act_window id="action_menu_compte_gestion" name="Compte de gestion" res_model="stock.picking" view_mode="tree,form"/>
+  <menuitem id="menu_compte_gestion" action="action_menu_compte_gestion" name="Compte de gestion" parent="menu_report" sequence="1"/>
+
+
+</odoo>

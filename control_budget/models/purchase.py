@@ -1,43 +1,113 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models, exceptions, SUPERUSER_ID, _
+from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
-from odoo.tools.float_utils import float_is_zero, float_compare
-from odoo.exceptions import UserError, AccessError, ValidationError, Warning
+from odoo.tools.float_utils import float_compare
+from odoo.exceptions import UserError, AccessError
 from odoo.tools.misc import formatLang
-from odoo.addons.base.res.res_partner import WARNING_MESSAGE, WARNING_HELP
-import odoo.addons.decimal_precision as dp
-from odoo.tools import ustr
-
-from odoo.tools.amount_to_text import amount_to_text_fr
-
+from odoo.addons import decimal_precision as dp
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class PurchaseOrder(models.Model):
+    _name = "purchase.order"
     _inherit = "purchase.order"
 
     crossovered_budget_line = fields.One2many('crossovered.budget.lines', 'analytic_account_id','Budgets', compute='_get_lines')
     amount_total_to_word = fields.Char(compute='_compute_amount_total_to_word', store=True)
 
-    @api.multi
-    @api.depends('amount_total')
-    def _compute_amount_total_to_word(self):
-        self.amount_total_to_word = amount_to_text_fr(self.amount_total, currency='')[:-10]
+    to_19_fr = ( u'zĂŠro',  'un',   'deux',  'trois', 'quatre',   'cinq',   'six',
+          'sept', 'huit', 'neuf', 'dix',   'onze', 'douze', 'treize',
+          'quatorze', 'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf' )
+    tens_fr  = ( 'vingt', 'trente', 'quarante', 'Cinquante', 'Soixante', 'Soixante-dix', 'Quatre-vingts', 'Quatre-vingt Dix')
+    denom_fr = ( '',
+              'Mille',     'Millions',         'Milliards',       'Billions',       'Quadrillions',
+              'Quintillion',  'Sextillion',      'Septillion',    'Octillion',      'Nonillion',
+              'DĂŠcillion',    'Undecillion',     'Duodecillion',  'Tredecillion',   'Quattuordecillion',
+              'Sexdecillion', 'Septendecillion', 'Octodecillion', 'Icosillion', 'Vigintillion' )
 
+    state = fields.Selection(selection_add=[
+        ('finance_approval', 'Waiting Finance Approval'),
+        ('director_approval', 'Waiting Director Approval'),
+        ('refuse', 'Refuse')],
+        string='Status',
+    )
+    po_refuse_user_id = fields.Many2one(
+        'res.users',
+        string="Refused By",
+        readonly = True,
+    )
+    po_refuse_date = fields.Date(
+        string="Refused Date",
+        readonly=True
+    )
+    refuse_reason_note = fields.Text(
+        string="Refuse Reason",
+        readonly=True
+    )
+    dept_manager_id = fields.Many2one(
+        'res.users',
+        string='Purchase/Department Manager',
+        states={'done':[('readonly',True)], 'cancel':[('readonly',True)]}
+    )
+    finance_manager_id = fields.Many2one(
+        'res.users',
+        string='Finance Manager',
+        states={'done':[('readonly',True)], 'cancel':[('readonly',True)]}
+    )
+    director_manager_id = fields.Many2one(
+        'res.users',
+        string='Director Manager',
+        states={'done':[('readonly',True)], 'cancel':[('readonly',True)]}
+    )
 
-    @api.multi
-    @api.depends('order_line')
-    def _get_lines(self):
-        temoin = []
-        for line in self.order_line:
-            budgets = self.env['crossovered.budget.lines'].search([('analytic_account_id','=',line.account_analytic_id.id),('general_budget_id.account_ids','=',line.account_id.id)])
-            if budgets:
-                for budget in budgets:
-                    if budget.id not in temoin:
-                        #_logger.info("budget_id => %s , temoin => %s",budget.id, temoin)
-                        self.crossovered_budget_line += budget
-                        temoin.append(budget.id)
+    confirm_manager_id = fields.Many2one(
+        'res.users',
+        string='Confirm Manager',
+        readonly=True,
+    )
+
+    approve_dept_manager_id = fields.Many2one(
+        'res.users',
+        string='Approve Department Manager',
+        readonly=True,
+    )
+    approve_finance_manager_id = fields.Many2one(
+        'res.users',
+        string='Approve Finance Manager',
+        readonly=True,
+    )
+    approve_director_manager_id = fields.Many2one(
+        'res.users',
+        string='Approve Director Manager',
+        readonly=True,
+    )
+
+    manager_confirm_date = fields.Datetime(
+        string='Confirm Manager Date',
+        readonly=True,
+    )
+
+    dept_manager_approve_date = fields.Datetime(
+        string='Department Manager Approve Date',
+        readonly=True,
+    )
+    finance_manager_approve_date = fields.Datetime(
+        string='Finance Manager Approve Date',
+        readonly=True,
+    )
+    director_manager_approve_date = fields.Datetime(
+        string='Director Manager Approve Date',
+        readonly=True,
+    )
+    purchase_user_id = fields.Many2one(
+        'res.users',
+        string='Purchase User',
+        compute='_set_purchase_user',
+        store=True,
+    )
 
     @api.depends('state')
     def _set_purchase_user(self):
@@ -75,74 +145,79 @@ class PurchaseOrder(models.Model):
         refuse_template_id = self.env.user.company_id.refuse_template_id
         return refuse_template_id
 
-    state = fields.Selection(selection_add=[
-        ('finance_approval', 'Waiting Finance Approval'),
-        ('director_approval', 'Waiting Director Approval'),
-        ('refuse', 'Refuse')],
-        string='Status',
-    )
-    po_refuse_user_id = fields.Many2one(
-        'res.users',
-        string="Refused By",
-        readonly = True,
-    )
-    po_refuse_date = fields.Date(
-        string="Refused Date",
-        readonly=True
-    )
-    refuse_reason_note = fields.Text(
-        string="Refuse Reason",
-        readonly=True
-    )
-    dept_manager_id = fields.Many2one(
-        'res.users',
-        string='Purchase/Department Manager',
-        states={'done':[('readonly',True)], 'cancel':[('readonly',True)]}
-    )
-    finance_manager_id = fields.Many2one(
-        'res.users',
-        string='Finance Manager',
-        states={'done':[('readonly',True)], 'cancel':[('readonly',True)]}
-    )
-    director_manager_id = fields.Many2one(
-        'res.users',
-        string='Director Manager',
-        states={'done':[('readonly',True)], 'cancel':[('readonly',True)]}
-    )
-    approve_dept_manager_id = fields.Many2one(
-        'res.users',
-        string='Approve Department Manager',
-        readonly=True,
-    )
-    approve_finance_manager_id = fields.Many2one(
-        'res.users',
-        string='Approve Finance Manager',
-        readonly=True,
-    )
-    approve_director_manager_id = fields.Many2one(
-        'res.users',
-        string='Approve Director Manager',
-        readonly=True,
-    )
-    dept_manager_approve_date = fields.Datetime(
-        string='Department Manager Approve Date',
-        readonly=True,
-    )
-    finance_manager_approve_date = fields.Datetime(
-        string='Finance Manager Approve Date',
-        readonly=True,
-    )
-    director_manager_approve_date = fields.Datetime(
-        string='Director Manager Approve Date',
-        readonly=True,
-    )
-    purchase_user_id = fields.Many2one(
-        'res.users',
-        string='Purchase User',
-        compute='_set_purchase_user',
-        store=True,
-    )
+    def _convert_nn_fr(self, val):
+        """ convert a value < 100 to French
+        """
+        if val < 20:
+            return self.to_19_fr[val]
+        for (dcap, dval) in ((k, 20 + (10 * v)) for (v, k) in enumerate(self.tens_fr)):
+            if dval + 10 > val:
+                if val % 10:
+                    return dcap + '-' + self.to_19_fr[val % 10]
+                return dcap
 
+    def _convert_nnn_fr(self, val):
+        """ convert a value < 1000 to french
+
+            special cased because it is the level that kicks
+            off the < 100 special case.  The rest are more general.  This also allows you to
+            get strings in the form of 'forty-five hundred' if called directly.
+        """
+        word = ''
+        (mod, rem) = (val % 100, val // 100)
+        if rem > 0:
+            word = self.to_19_fr[rem] + ' Cent'
+            if mod > 0:
+                word += ' '
+        if mod > 0:
+            word += self._convert_nn_fr(mod)
+        return word
+
+    def french_number(self, val):
+        if val < 100:
+            return self._convert_nn_fr(val)
+        if val < 1000:
+             return self._convert_nnn_fr(val)
+        for (didx, dval) in ((v - 1, 1000 ** v) for v in range(len(self.denom_fr))):
+            if dval > val:
+                mod = 1000 ** didx
+                l = val // mod
+                r = val - (l * mod)
+                ret = self._convert_nnn_fr(l) + ' ' + self.denom_fr[didx]
+                if r > 0:
+                    ret = ret + ', ' + self.french_number(r)
+                return ret
+
+    def amount_to_text_fr(self, number, currency):
+        number = '%.2f' % number
+        units_name = currency
+        list = str(number).split('.')
+        start_word = self.french_number(abs(int(list[0])))
+        end_word = self.french_number(int(list[1]))
+        cents_number = int(list[1])
+        cents_name = (cents_number > 1) and ' Cents' or ' Cent'
+        final_result = start_word +' '+units_name+' '+ end_word +' '+cents_name
+        return final_result
+
+    @api.multi
+    @api.depends('amount_total')
+    def _compute_amount_total_to_word(self):
+        for record in self:
+            record.amount_total_to_word = record.amount_to_text_fr(record.amount_total, currency='')[:-10]
+
+
+    @api.multi
+    @api.depends('order_line')
+    def _get_lines(self):
+        temoin = []
+        for line in self.order_line:
+            budgets = self.env['crossovered.budget.lines'].search([('analytic_account_id','=',line.account_analytic_id.id),('general_budget_id.account_ids','=',line.account_id.id)])
+            if budgets:
+                for budget in budgets:
+                    if budget.id not in temoin:
+                        _logger.info("budget_id => %s , temoin => %s",budget.id, temoin)
+                        self.crossovered_budget_line += budget
+                        temoin.append(budget.id)
 
     @api.multi
     def _write(self, vals):
@@ -193,6 +268,13 @@ class PurchaseOrder(models.Model):
                     if email_template_id:
                         email_template_id.with_context(ctx).send_mail(self.id, email_values={'email_to': email_to, 'subject': _('Purchase Order: ') + order.name + _(' (Approval Waiting)')})
 
+            if order.state == 'draft' and vals.get('state') == 'purchase':
+                order.confirm_manager_id = self.env.user.id
+                order.manager_confirm_date = fields.Datetime.now()
+            elif order.state == 'draft' and vals.get('state') == 'to approve':
+                order.confirm_manager_id = self.env.user.id
+                order.manager_confirm_date = fields.Datetime.now()
+
             if order.state == 'to approve' and vals.get('state') == 'purchase':
                 order.approve_dept_manager_id = self.env.user.id
                 order.dept_manager_approve_date = fields.Datetime.now()
@@ -231,13 +313,14 @@ class PurchaseOrder(models.Model):
             order.with_context(call_super=True).button_approve()
         return True
 
+
     @api.multi
     def button_approve(self, force=False):
         for line in self.order_line:
             if line.price_subtotal and line.available:
                 ok = line.available - line.price_subtotal
-                if ok < 0 or line.available == 0 :
-                    raise Warning('Attention votre budget est insusffisant vour effectuer l\'achat')
+                # if ok < 0:
+                #     raise UserError(_('Attention votre budget est insusffisant vour effectuer l\'achat'))
         if self._context.get('call_super', False):
             if self.crossovered_budget_line:
                 for crossovered_line in self.crossovered_budget_line:
@@ -263,20 +346,23 @@ class PurchaseOrder(models.Model):
                 if amount_total > po_double_validation_amount and order.state != 'to approve':
                     order.write({'state': 'to approve'})
                 elif amount_total < finance_validation_amount and order.state == 'to approve':
-                    if self.crossovered_budget_line:
-                        for crossovered_line in self.crossovered_budget_line:
-                            self.order_line.create_budget_lines(crossovered_line.general_budget_id.id, crossovered_line.analytic_account_id)
+                    # if self.crossovered_budget_line:
+                    #     for crossovered_line in self.crossovered_budget_line:
+                    #         self.order_line.create_budget_lines(crossovered_line.general_budget_id.id, crossovered_line.analytic_account_id)
                     return super(PurchaseOrder, self).button_approve()
                 elif order.state == 'to approve':
                     order.state = 'finance_approval'
                 else:
+                    # if self.crossovered_budget_line:
+                    #     for crossovered_line in self.crossovered_budget_line:
+                    #         self.order_line.create_budget_lines(crossovered_line.general_budget_id.id, crossovered_line.analytic_account_id)
                     return super(PurchaseOrder, self).button_approve()
 
 #                 if order.state == 'to approve':
 #                     order.state = 'finance_approval'
-        if self.crossovered_budget_line:
-                for crossovered_line in self.crossovered_budget_line:
-                    self.order_line.create_budget_lines(crossovered_line.general_budget_id.id, crossovered_line.analytic_account_id)
+        # if self.crossovered_budget_line:
+        #     for crossovered_line in self.crossovered_budget_line:
+        #         self.order_line.create_budget_lines(crossovered_line.general_budget_id.id, crossovered_line.analytic_account_id)
         return True
 
 class PurchaseOrderLine(models.Model):
@@ -346,12 +432,17 @@ class PurchaseOrderLine(models.Model):
                         break
 
 
-    @api.onchange('price_subtotal','available')
+    @api.onchange('price_subtotal','account_analytic_id')
     def _budget_control(self):
-        if self.price_subtotal and self.available:
+        if self.price_subtotal and self.account_analytic_id:
             ok = self.available - self.price_subtotal
-            if ok < 0 or self.available == 0:
-                raise Warning('Attention votre budget est insusffisant vour effectuer l\'achat')
+            if ok < 0:
+                message = _('Attention votre budget est insuffisant vour effectuer l\'achat')
+                mess= {
+                            'title': _('Budget insuffisant'),
+                            'message' : message
+                        }
+                return {'warning': mess}
 
 
     @api.multi
@@ -359,6 +450,7 @@ class PurchaseOrderLine(models.Model):
         """ Create analytic items upon validation of an account.move.line having an budget account. This
             method first remove any existing analytic item related to the line before creating any new one.
         """
+        _logger.info("fonction create budget_line ")
         for obj_line in self:
             if obj_line.account_analytic_id == analytic_account_id:
                 vals_line = obj_line._prepare_budget_line(general_budget_id)[0]

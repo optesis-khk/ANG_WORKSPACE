@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2016 Eficent Business and IT Consulting Services S.L.
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
-<openerp>
-    <data>
-        <record model="ir.ui.view" id="view_purchase_request_form">
+<odoo>
+
+        <record id="view_purchase_request_form" model="ir.ui.view">
             <field name="name">purchase.request.form</field>
             <field name="model">purchase.request</field>
             <field name="arch" type="xml">
@@ -38,19 +38,33 @@
                            statusbar_visible="draft,to_approve,approved,done,rejected"
                            statusbar_colors='{"approved":"blue"}'/>
                 </header>
+
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"
+                            name="action_view_purchase_request_line"
+                            class="oe_stat_button"
+                            attrs="{'invisible':[('line_count', '=', 0)]}"
+                            icon="fa-list">
+                            <field name="line_count" widget="statinfo"
+                                   string="Lines"/>
+                        </button>
+                    </div>
+
+
                     <div class="oe_edit_only">
                         <label for="name" class="oe_inline"/>
                         <label for="origin" class="oe_inline"/>
                     </div>
+
+
                     <h1>
                         <field name="is_editable" invisible="1"/>
-                        <field name="name" class="oe_inline"
-                               attrs="{'readonly': [('is_editable','=', False)]}"/>
-                        <label string=","/>
-                        <field name="origin" class="oe_inline"
-                               attrs="{'readonly': [('is_editable','=', False)]}"/>
+                        <field name="name" class="oe_inline" attrs="{'readonly': [('is_editable','=', False)]}"/>
+                        <span class="o_form_label" string=","/>
+                        <field name="origin" class="oe_inline" attrs="{'readonly': [('is_editable','=', False)]}"/>
                     </h1>
+
                     <group>
                         <group>
                             <field name="requested_by"
@@ -59,6 +73,7 @@
                                    attrs="{'readonly': [('is_editable','=', False)]}"/>
                         </group>
                         <group>
+                            <field name="partner_id" domain="[('supplier', '=', True)]"/>
                             <field name="description"
                                    attrs="{'readonly': [('is_editable','=', False)]}"/>
                         </group>
@@ -71,15 +86,17 @@
                                    attrs="{'readonly': [('is_editable','=', False)]}"/>
                         </group>
                     </group>
+
                     <notebook>
                         <page string="Products">
                             <field name="line_ids">
                                 <tree decoration-muted="cancelled == True">
                                     <field name="product_id"/>
+                                    <field name="account_id"/>
                                     <field name="name"/>
                                     <field name="product_qty"/>
                                     <field name="product_uom_id" groups="product.group_uom"/>
-                                    <field name="analytic_account_id"
+                                    <field name="account_analytic_id"
                                            groups="analytic.group_analytic_accounting"/>
                                     <field name="date_required"/>
                                     <field name="cancelled" invisible="1"/>
@@ -92,6 +109,9 @@
                                                 <field name="is_editable" invisible="1"/>
                                                 <field name="product_id"
                                                        attrs="{'readonly': [('is_editable','=', False)]}"/>
+
+                                                <field name="account_id"
+                                                              attrs="{'readonly': [('is_editable','=', False)]}"/>
                                                 <field name="name"
                                                        attrs="{'readonly': [('is_editable','=', False)]}"/>
                                                 <label for="product_qty"
@@ -105,9 +125,8 @@
                                                            class="oe_inline"
                                                            attrs="{'readonly': [('is_editable','=', False)]}"/>
                                                 </div>
-                                                <field name="analytic_account_id"
+                                                <field name="account_analytic_id"
                                                        groups="analytic.group_analytic_accounting"
-                                                       domain="[('account_type','=','normal')]"
                                                        attrs="{'readonly': [('is_editable','=', False)]}"/>
                                                 <field name="date_required"
                                                        attrs="{'readonly': [('is_editable','=', False)]}"/>
@@ -130,6 +149,7 @@
                         </page>
                     </notebook>
                 </sheet>
+
                 <div class="oe_chatter">
                   <field name="message_follower_ids" widget="mail_followers"/>
                   <field name="message_ids" widget="mail_thread"/>
@@ -150,7 +170,6 @@
                     <field name="name"/>
                     <field name="date_start"/>
                     <field name="requested_by"/>
-                    <field name="assigned_to"/>
                     <field name="company_id" groups="base.group_multi_company" widget="selection"/>
                     <field name="origin"/>
                     <field name="state"/>
@@ -163,46 +182,31 @@
             <field name="model">purchase.request</field>
             <field name="arch" type="xml">
                 <search string="Search Purchase Request">
-                    <field name="name" string="Purchase Request"/>
+                   <field name="name" string="Purchase Request"/>
+
                     <separator/>
                     <field name="state"/>
-                    <filter name="unassigned" string="Unassigned"
-                            domain="[('assigned_to','=', False)]"
-                            help="Unassigned Request"/>
-                    <filter name="state_draft" string="Draft"
-                            domain="[('state','=','draft')]"
-                            help="Request is to be approved"/>
-                    <filter name="state_to_approve" string="To Approve"
-                            domain="[('state','=','to_approve')]"
-                            help="Request is to be approved"/>
-                    <filter name="state_approved" string="Approved"
-                            domain="[('state','=','approved')]"
-                            help="Request is approved"/>
-                    <filter name="state_rejected" string="Rejected"
-                            domain="[('state','=','rejected')]"
-                            help="Request is rejected"/>
-                    <filter name="state_done" string="Done"
-                            domain="[('state','=','done')]"
-                            help="Request is done"/>
-                    <filter string="Unread Messages"
-                            name="message_needaction"
-                            domain="[('message_needaction','=',True)]"/>
-                    <filter domain="[('assigned_to','=', uid)]"
-                            help="Assigned to me"/>
-                    <filter domain="[('requested_by','=', uid)]"
-                            help="My requests"/>
+
+                    <filter name="unassigned" string="Unassigned" domain="[('assigned_to','=', False)]" help="Unassigned Request"/>
+
+                    <filter name="state_draft" string="Draft" domain="[('state','=','draft')]" help="Request is to be approved"/>
+
+                    <filter name="state_to_approve" string="To Approve" domain="[('state','=','to_approve')]" help="Request is to be approved"/>
+                    <filter name="state_approved" string="Approved"  domain="[('state','=','approved')]"   help="Request is approved"/>
+                    <filter name="state_rejected" string="Rejected"  domain="[('state','=','rejected')]"   help="Request is rejected"/>
+                    <filter name="state_done" string="Done" domain="[('state','=','done')]" help="Request is done"/>
+                    <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction','=',True)]"/>
+                    <!-- <filter domain="[('assigned_to','=', uid)]" help="Assigned to me"/>
+                    <filter domain="[('requested_by','=', uid)]" help="My requests"/> -->
                     <field name="requested_by" />
                     <field name="assigned_to" />
                     <field name="picking_type_id"/>
+
                     <group expand="0" string="Group By...">
-                        <filter string="Requested by" icon="terp-personal"
-                                domain="[]"
-                                context="{'group_by':'requested_by'}"/>
-                        <filter string="Assigned to" icon="terp-personal"
-                                domain="[]"
-                                context="{'group_by':'assigned_to'}"/>
-                        <filter string="Source" icon="terp-gtk-jump-to-rtl" domain="[]" context="{'group_by':'origin'}"/>
-                        <filter string="Start Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_start'}"/>
+                        <filter string="Requested by" name="Requested by" domain="[]" context="{'group_by':'requested_by'}"/>
+                        <filter string="Assigned to" name="Assigned to" domain="[]" context="{'group_by':'assigned_to'}"/>
+                        <filter string="Source" name="Source" domain="[]" context="{'group_by':'origin'}"/>
+                        <filter string="Start Date" name="Start Date" domain="[]" context="{'group_by':'date_start'}"/>
                     </group>
                 </search>
             </field>
@@ -246,10 +250,11 @@
                     <field name="assigned_to"/>
                     <field name="date_required"/>
                     <field name="product_id"/>
+                    <field name="account_id"/>
                     <field name="name"/>
                     <field name="product_qty"/>
                     <field name="product_uom_id" groups="product.group_uom"/>
-                    <field name="analytic_account_id"
+                    <field name="account_analytic_id"
                            groups="analytic.group_analytic_accounting"/>
                     <field name="supplier_id"/>
                     <field name="cancelled" invisible="1"/>
@@ -288,6 +293,8 @@
                             <group>
                                 <field name="product_id"
                                        attrs="{'readonly': [('is_editable','=', False)]}"/>
+                                <field name="account_id"
+                                       attrs="{'readonly': [('is_editable','=', False)]}"/>
                                 <field name="name"
                                        attrs="{'readonly': [('is_editable','=', False)]}"/>
                                 <label for="product_qty"/>
@@ -300,7 +307,7 @@
                                            class="oe_inline"
                                            attrs="{'readonly': [('is_editable','=', False)]}"/>
                                 </div>
-                                <field name="analytic_account_id"
+                                <field name="account_analytic_id"
                                        groups="analytic.group_analytic_accounting"
                                        domain="[('type','not in',('view','template'))]"
                                        attrs="{'readonly': [('is_editable','=', False)]}"/>
@@ -335,16 +342,18 @@
                 <search string="Search Purchase Request">
                     <field name="request_id"/>
                     <field name="product_id"/>
+                    <field name="account_id"/>
                     <field name="requested_by"/>
                     <field name="assigned_to"/>
                     <field name="date_start"/>
                     <field name="date_required"/>
-                    <field name="analytic_account_id"/>
+                    <field name="account_analytic_id"/>
                     <field name="procurement_id"/>
                     <field name="cancelled" invisible="1"/>
                     <filter name="request_state_draft" string="Draft"
                             domain="[('request_state','=','draft')]"
                             help="Request is to be approved"/>
+
                     <filter name="request_state_to_approve" string="To Approve"
                             domain="[('request_state','=','to_approve')]"
                             help="Request is to be approved"/>
@@ -354,28 +363,31 @@
                     <filter name="request_state_rejected" string="Rejected"
                             domain="[('request_state','=','rejected')]"
                             help="Request is rejected"/>
-                    <filter domain="[('assigned_to','=', uid)]"
+                    <!-- <filter domain="[('assigned_to','=', uid)]"
                             help="Assigned to me"/>
                     <filter domain="[('requested_by','=', uid)]"
-                            help="My requests"/>
+                            help="My requests"/> -->
                     <filter name="uncancelled"
                             domain="[('cancelled','=', False)]"
                             string="Uncancelled"/>
+
                     <group expand="0" string="Group By...">
-                        <filter string="Product"
+                        <filter string="Product" name="Product"
                                 domain="[]" context="{'group_by' : 'product_id'}" />
-                        <filter string="Requested by"
+                      <filter string="Compte" name="Product"
+                                domain="[]" context="{'group_by' : 'account_id'}" />
+                        <filter string="Requested by" name="Requested by"
                                 domain="[]"
                                 context="{'group_by':'requested_by'}"/>
-                        <filter string="Assigned to"
+                        <filter string="Assigned to" name="Assigned to"
                                 domain="[]"
                                 context="{'group_by':'assigned_to'}"/>
-                        <filter string="Request status"
+                        <filter string="Request status" name="Request status"
                                 domain="[]"
                                 context="{'group_by':'request_state'}"/>
-                        <filter string="Analytic Account"
+                        <filter string="Analytic Account" name="Analytic Account"
                                 domain="[]"
-                                context="{'group_by':'analytic_account_id'}"/>
+                                context="{'group_by':'account_analytic_id'}"/>
                     </group>
                 </search>
             </field>
@@ -426,6 +438,7 @@
         <menuitem id="parent_menu_purchase_request"
             name="Purchase requests"
             groups="group_purchase_request_user,group_purchase_request_manager"
+            web_icon="purchase_request,static/description/icon.png"
             />
 
         <menuitem id="menu_purchase_request"
@@ -446,5 +459,4 @@
             action="purchase_request_line_form_action"
             />
 
-    </data>
-</openerp>
+</odoo>

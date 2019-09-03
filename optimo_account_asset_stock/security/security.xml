@@ -1,0 +1,16 @@
+<openerp>
+    <data>
+        <record id="group_manager" model="res.groups">
+            <field name="name">Optimo / Manager</field>
+        </record>
+        <record id="group_admin" model="res.groups">
+            <field name="name">Optimo / Admin</field>
+        </record>
+        <record id="group_inventaire" model="res.groups">
+            <field name="name">Optimo / Inventaire</field>
+        </record>
+        <record id="group_user" model="res.groups">
+            <field name="name">Optimo / User</field>
+        </record>
+    </data>
+</openerp>

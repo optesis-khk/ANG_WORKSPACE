@@ -18,16 +18,22 @@
       <field name="inherit_id" ref="stock.view_picking_form"/>
       <field name="arch" type="xml">
         <xpath expr="//form/header/button[last()]" position="after">
-          <button string="Creer Immobilisations" type="object" name="create_immo" states="done" class="oe_highlight" attrs="{'invisible' : ['|',('immo', '=', False)]}" />
+          <button string="Creer Immobilisations" type="object" name="create_immo"  class="oe_highlight" attrs="{'invisible' : [('immo', '=', False)]}"/>
         </xpath>
         <field name="state" position="attributes">
-          <attribute name="statusbar_visible">draft,confirmed,partially_available,assigned,done,immo</attribute>
+          <attribute name="statusbar_visible">draft,assigned,confirmer,done,immo</attribute>
         </field>
         <field name="origin" position="after">
-            <field name='immo' invisible="1"/>
+          <field name='immo' invisible="1"/>
+          <field name='is_immo' readonly='1' attrs="{'invisible':[('state', '=', 'immo')]}"/>
         </field>
+        <xpath expr="//form/sheet/notebook/page[2]/field/tree/field[@name='product_uom_qty']" position="before">
+          <field name='price_unit'/>
+          <field name="immo_id" attrs="{'invisible':[('picking_type_id', 'not in', (16,17))]}"/>
+        </xpath>
       </field>
     </record>
+
 
   </data>
 </odoo>

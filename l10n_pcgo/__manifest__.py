@@ -5,26 +5,21 @@
 
 {
     'name': 'Syscohada révisé',
-    'version': '10.0.1.1.1',
+    'version': '12.2',
     'author': 'Optesis',
     'category': 'Localization',
     'description': """
-
-Ce module permet de gérer le nouveau plan compable SYSCOHADA Révisé applicable à partir du 1er janvier 2018 pour tous les pays faisant partie de l'espace OHADA.
-========================================================================
-
-Ce module permet de gérer le nouveau plan compable SYSCOHADA Révisé applicable à partir du 1er janvier 2018 pour tous les pays faisant partie de l'espace OHADA.
-
-
-**Credits:** cabinet d'expertise comptable www.kyriex.com.
-""",
+                    Ce module permet de gérer le nouveau plan compable SYSCOHADA Révisé.
+                    Ce module permet de gérer le nouveau plan compable SYSCOHADA Révisé
+                    applicable à partir du 1er janvier 2018 pour tous les pays faisant partie de l'espace OHADA.
+                    **Credits:** cabinet d'expertise comptable www.kyriex.com.
+                    """,
+    'website': 'http://www.optesis.com',
     'depends': ['account','account_accountant'],
     'data': [
         'data/l10n_pcgo_chart_data.xml',
         'data/account_chart_template_data.xml',
         'data/account_tax_data.xml',
-        'data/account_chart_template_data.yml',
-
     ],
 
 }

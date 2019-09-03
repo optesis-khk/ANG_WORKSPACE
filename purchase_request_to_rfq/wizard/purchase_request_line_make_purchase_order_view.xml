@@ -28,9 +28,12 @@
                                   <field name="line_id"
                                        options="{'no_open': true}"
                                        invisible="1"/>
-                                  <field name="request_id"/>
+                                  <field name="request_id" readonly="0"/>
                                   <field name="product_id"/>
+                                  <field name="account_id"/>
+                                  <field name="account_analytic_id"/>
                                   <field name="name"/>
+                                  <field name="date_planned"/>
                                   <field name="product_qty"/>
                                   <field name="product_uom_id"
                                          groups="product.group_uom"/>
@@ -59,15 +62,16 @@
             <field name="target">new</field>
         </record>
 
-        <record model="ir.values" id="purchase_request_line_make_purchase_order">
-            <field name="model_id" ref="model_purchase_request_line" />
-            <field name="name">Create RFQ</field>
-            <field name="key2">client_action_multi</field>
-            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_purchase_request_line_make_purchase_order'))" />
-            <field name="key">action</field>
-            <field name="model">purchase.request.line</field>
-        </record>
-   
+        <act_window
+            id="purchase_request_line_make_purchase_order"
+            name="Create RFQ"
+            multi="True"
+            key2="client_action_multi"
+            res_model="purchase.request.line.make.purchase.order"
+            src_model="purchase.request.line"
+            view_mode="form"
+            target="new"
+            view_type="form"/>
+
     </data>
 </odoo>
-

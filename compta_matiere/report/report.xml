@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+      <report
+          id="id_pv_reception"
+          model="stock.picking"
+          string="PV de réception"
+          report_type="qweb-pdf"
+          name="compta_matiere.pv_reception"
+          file="compta_matiere.pv_reception"
+      />
+
+      <report
+          id="id_bon_entree"
+          model="stock.picking"
+          string="Bon d'entrée"
+          report_type="qweb-pdf"
+          name="compta_matiere.bon_entree"
+          file="compta_matiere.bon_entree"
+      />
+
+      <report
+          id="id_fiche_detenteur"
+          model="stock.picking"
+          string="Fiche de remise au détenteur"
+          report_type="qweb-pdf"
+          name="compta_matiere.fiche_detenteur"
+          file="compta_matiere.fiche_detenteur"
+      />
+
+      <report
+          id="id_bordereau_affectation"
+          model="stock.picking"
+          string="Bordereau d'affectation des matières"
+          report_type="qweb-pdf"
+          name="compta_matiere.bordereau_affectation"
+          file="compta_matiere.bordereau_affectation"
+      />
+
+      <report
+          id="id_bordereau_mutation"
+          model="stock.picking"
+          string="Bordereau de mutation des matières"
+          report_type="qweb-pdf"
+          name="compta_matiere.bordereau_mutation"
+          file="compta_matiere.bordereau_mutation"
+      />
+
+      <report
+          id="id_bordereau_mouvement"
+          model="stock.picking"
+          string="Bordereau de mouvement divers"
+          report_type="qweb-pdf"
+          name="compta_matiere.bordereau_mouvement"
+          file="compta_matiere.bordereau_mouvement"
+      />
+
+      <report
+          id="id_bon_sortie"
+          model="stock.picking"
+          string="Bon de sortie définitive"
+          report_type="qweb-pdf"
+          name="compta_matiere.bon_sortie"
+          file="compta_matiere.bon_sortie"
+      />
+
+      <report
+          id="id_pv_vente"
+          model="stock.picking"
+          string="PV de vente, destruction ou démolition"
+          report_type="qweb-pdf"
+          name="compta_matiere.pv_vente"
+          file="compta_matiere.pv_vente"
+      />
+
+      <report
+          id="id_pv_reforme"
+          model="stock.picking"
+          string="PV de réforme"
+          report_type="qweb-pdf"
+          name="compta_matiere.pv_reforme"
+          file="compta_matiere.pv_reforme"
+      />
+
+    </data>
+</odoo>

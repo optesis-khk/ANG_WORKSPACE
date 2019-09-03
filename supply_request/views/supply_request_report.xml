@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Eficent Business and IT Consulting Services S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+
+        <report
+            string="Supply Request"
+            id="action_report_supply_requests"
+            model="supply.request"
+            report_type="qweb-pdf"
+            name="supply_request.report_supplyrequests"
+            file="supply_request.report_supplyrequests"
+         />
+
+</odoo>

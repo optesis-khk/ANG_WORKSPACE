@@ -1,21 +1,22 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * purchase_request
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 08:23+0000\n"
-"PO-Revision-Date: 2017-10-23 08:23+0000\n"
+"POT-Creation-Date: 2016-09-17 00:52+0000\n"
+"PO-Revision-Date: 2016-09-17 00:52+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: Turkish (Turkey) (https://www.transifex.com/oca/teams/23907/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/oca/teams/23907/"
+"tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: purchase_request
@@ -92,12 +93,6 @@ msgid ""
 msgstr ""
 
 #. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_needaction
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_needaction
-msgid "Action Needed"
-msgstr ""
-
-#. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_analytic_account_id
 #: model:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 msgid "Analytic Account"
@@ -153,23 +148,17 @@ msgstr "Firma"
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_create_uid
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_create_uid
 msgid "Created by"
-msgstr "Oluşturan"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_create_date
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_create_date
 msgid "Created on"
-msgstr "Oluşturulma tarihi"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_date_start
 msgid "Creation date"
-msgstr ""
-
-#. module: purchase_request
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_line_message_last_post
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_message_last_post
-msgid "Date of the last message posted on the record."
 msgstr ""
 
 #. module: purchase_request
@@ -183,13 +172,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_description
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_name
 msgid "Description"
-msgstr "Açıklama"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_display_name
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_display_name
 msgid "Display Name"
-msgstr "Görünen ad"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_form
@@ -206,24 +195,6 @@ msgid "Draft"
 msgstr "Taslak"
 
 #. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_follower_ids
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_follower_ids
-msgid "Followers"
-msgstr ""
-
-#. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_channel_ids
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_channel_ids
-msgid "Followers (Channels)"
-msgstr ""
-
-#. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_partner_ids
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_partner_ids
-msgid "Followers (Partners)"
-msgstr ""
-
-#. module: purchase_request
 #: model:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_search
 msgid "Group By..."
@@ -233,24 +204,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_id
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_id
 msgid "ID"
-msgstr "Kimlik"
-
-#. module: purchase_request
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_line_message_unread
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_message_unread
-msgid "If checked new messages require your attention."
-msgstr ""
-
-#. module: purchase_request
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_line_message_needaction
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_message_needaction
-msgid "If checked, new messages require your attention."
-msgstr ""
-
-#. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_is_follower
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_is_follower
-msgid "Is Follower"
 msgstr ""
 
 #. module: purchase_request
@@ -260,38 +213,26 @@ msgid "Is editable"
 msgstr ""
 
 #. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_last_post
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_last_post
-msgid "Last Message Date"
-msgstr ""
-
-#. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request___last_update
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line___last_update
 msgid "Last Modified on"
-msgstr "En son güncelleme tarihi"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_write_uid
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_write_uid
 msgid "Last Updated by"
-msgstr "En son güncelleyen "
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_write_date
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_write_date
 msgid "Last Updated on"
-msgstr "En son güncelleme tarihi"
-
-#. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_procurement_order_request_id
-msgid "Latest Purchase Request"
 msgstr ""
 
 #. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_ids
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_ids
-msgid "Messages"
+#: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_form
+msgid "Lines"
 msgstr ""
 
 #. module: purchase_request
@@ -301,43 +242,14 @@ msgid "My requests"
 msgstr ""
 
 #. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_needaction_counter
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_needaction_counter
-msgid "Number of Actions"
-msgstr ""
-
-#. module: purchase_request
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_line_message_needaction_counter
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr ""
-
-#. module: purchase_request
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_line_message_unread_counter
-#: model:ir.model.fields,help:purchase_request.field_purchase_request_message_unread_counter
-msgid "Number of unread messages"
-msgstr ""
-
-#. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_picking_type_id
 msgid "Picking Type"
-msgstr ""
-
-#. module: purchase_request
-#: code:addons/purchase_request/models/purchase_request.py:76
-#, python-format
-msgid "Picking type operation must be 'Suppliers'."
 msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_supplier_id
 msgid "Preferred supplier"
 msgstr ""
-
-#. module: purchase_request
-#: model:ir.model,name:purchase_request.model_procurement_order
-msgid "Procurement"
-msgstr "Satın alma"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_procurement_id
@@ -348,7 +260,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_product_id
 #: model:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 msgid "Product"
-msgstr "Ürün"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_product_uom_id
@@ -359,7 +271,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:purchase_request.report_purchaserequests
 #: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_form
 msgid "Products"
-msgstr "Ürünler"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_ids
@@ -385,6 +297,11 @@ msgid "Purchase Request Line"
 msgstr ""
 
 #. module: purchase_request
+#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_count
+msgid "Purchase Request Line count"
+msgstr ""
+
+#. module: purchase_request
 #: model:ir.actions.act_window,name:purchase_request.purchase_request_line_form_action
 #: model:ir.ui.menu,name:purchase_request.menu_purchase_request_line
 #: model:ir.ui.menu,name:purchase_request.menu_purchase_request_line_act
@@ -395,11 +312,6 @@ msgstr ""
 #. module: purchase_request
 #: model:res.groups,name:purchase_request.group_purchase_request_manager
 msgid "Purchase Request Manager"
-msgstr ""
-
-#. module: purchase_request
-#: model:mail.message.subtype,description:purchase_request.mt_request_rejected
-msgid "Purchase Request Rejected"
 msgstr ""
 
 #. module: purchase_request
@@ -414,12 +326,17 @@ msgid "Purchase Request approved"
 msgstr ""
 
 #. module: purchase_request
-#: model:mail.message.subtype,description:purchase_request.mt_request_done
 #: model:mail.message.subtype,name:purchase_request.mt_request_done
 msgid "Purchase Request done"
 msgstr ""
 
 #. module: purchase_request
+#: model:mail.message.subtype,description:purchase_request.mt_request_done
+msgid "Purchase Request is done"
+msgstr ""
+
+#. module: purchase_request
+#: model:mail.message.subtype,description:purchase_request.mt_request_rejected
 #: model:mail.message.subtype,name:purchase_request.mt_request_rejected
 msgid "Purchase Request rejected"
 msgstr ""
@@ -447,7 +364,7 @@ msgstr ""
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_product_qty
 msgid "Quantity"
-msgstr "Miktar"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_form
@@ -555,12 +472,17 @@ msgstr ""
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_state
 msgid "Status"
-msgstr "Durum"
+msgstr ""
 
 #. module: purchase_request
 #: model:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_search
 msgid "To Approve"
+msgstr ""
+
+#. module: purchase_request
+#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_to_approve_allowed
+msgid "To approve allowed"
 msgstr ""
 
 #. module: purchase_request
@@ -584,14 +506,13 @@ msgid "Uncancelled"
 msgstr ""
 
 #. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_unread
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_unread
 #: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_search
 msgid "Unread Messages"
 msgstr ""
 
 #. module: purchase_request
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_message_unread_counter
-#: model:ir.model.fields,field_description:purchase_request.field_purchase_request_message_unread_counter
-msgid "Unread Messages Counter"
+#: code:addons/purchase_request/models/purchase_request.py:213
+#, python-format
+msgid ""
+"You can't request an approval for a purchase request which is empty. (%s)"
 msgstr ""

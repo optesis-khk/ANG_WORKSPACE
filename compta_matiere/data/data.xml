@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+      <!-- sequences  -->
+
+      <!-- <record id="sequence_em" model="ir.sequence">
+        <field name="name">Entree en matiere</field>
+        <field name="prefix">WH/EM/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record> -->
+
+      <record id="sequence_dl" model="ir.sequence">
+        <field name="name">dons et legs</field>
+        <field name="prefix">WH/DL/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_rmt" model="ir.sequence">
+        <field name="name">reception marchandises transf</field>
+        <field name="prefix">WH/RMT/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_rsi" model="ir.sequence">
+        <field name="name">régulation suite inventaire</field>
+        <field name="prefix">WH/RSI/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_am" model="ir.sequence">
+        <field name="name">Affectation des matières</field>
+        <field name="prefix">WH/AM/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_mm" model="ir.sequence">
+        <field name="name">Mutation des matières</field>
+        <field name="prefix">WH/MM/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_rm" model="ir.sequence">
+        <field name="name">Réparation des matières</field>
+        <field name="prefix">RM/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_pm" model="ir.sequence">
+        <field name="name">Prêt de matières</field>
+        <field name="prefix">WH/PM/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_lm" model="ir.sequence">
+        <field name="name">Location de matières</field>
+        <field name="prefix">WH/LM/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_ssc" model="ir.sequence">
+        <field name="name">Sortie suite consommation</field>
+        <field name="prefix">WH/SSC/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_ts" model="ir.sequence">
+        <field name="name">Transfert entre structure</field>
+        <field name="prefix">WH/TS/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_si" model="ir.sequence">
+        <field name="name">Sortie immobilisation</field>
+        <field name="prefix">WH/SI/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <record id="sequence_ri" model="ir.sequence">
+        <field name="name">Réforme immobilisation</field>
+        <field name="prefix">WH/RI/</field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+
+      <!-- type d'operation -->
+
+      <!-- <record id="compta_matiere_em" model="stock.picking.type">
+        <field name="name">Entrée de matières commandées</field>
+        <field name="code">incoming</field>
+        <field name="sequence_id" ref="sequence_em"/>
+        <field name="barcode">WH-entree-matiere</field>
+      </record> -->
+
+      <record id="compta_matiere_dl" model="stock.picking.type">
+        <field name="name">Réceptions des dons et legs</field>
+        <field name="code">incoming</field>
+        <field name="sequence_id" ref="sequence_dl"/>
+        <field name="barcode">WH-dons-legs</field>
+      </record>
+
+      <record id="compta_matiere_rmt" model="stock.picking.type">
+        <field name="name">Réceptions marchandises transférées</field>
+        <field name="code">incoming</field>
+        <field name="sequence_id" ref="sequence_rmt"/>
+        <field name="barcode">WH-marchandise-transférées</field>
+      </record>
+
+      <record id="compta_matiere_rsi" model="stock.picking.type">
+        <field name="name">Régulation suite inventaire</field>
+        <field name="code">incoming</field>
+        <field name="sequence_id" ref="sequence_rsi"/>
+        <field name="barcode">WH-regul-inventaire</field>
+      </record>
+
+      <record id="compta_matiere_am" model="stock.picking.type">
+        <field name="name">Affectation des matières</field>
+        <field name="code">internal</field>
+        <field name="sequence_id" ref="sequence_am"/>
+        <field name="barcode">WH-affectation-matière</field>
+      </record>
+
+      <record id="compta_matiere_mm" model="stock.picking.type">
+        <field name="name">Mutation des matières</field>
+        <field name="code">internal</field>
+        <field name="sequence_id" ref="sequence_mm"/>
+        <field name="barcode">WH-mutation-matière</field>
+      </record>
+
+      <record id="compta_matiere_rm" model="stock.picking.type">
+        <field name="name">Réparation des matières</field>
+        <field name="code">outgoing</field>
+        <field name="sequence_id" ref="sequence_rm"/>
+        <field name="barcode">WH-reparation-matière</field>
+      </record>
+
+      <record id="compta_matiere_pm" model="stock.picking.type">
+        <field name="name">Prêt de matières</field>
+        <field name="code">outgoing</field>
+        <field name="sequence_id" ref="sequence_pm"/>
+        <field name="barcode">WH-pret-matière</field>
+      </record>
+
+      <record id="compta_matiere_lm" model="stock.picking.type">
+        <field name="name">Location de matières</field>
+        <field name="code">outgoing</field>
+        <field name="sequence_id" ref="sequence_lm"/>
+        <field name="barcode">WH-location-matière</field>
+      </record>
+
+      <record id="compta_matiere_ssc" model="stock.picking.type">
+        <field name="name">Sortie suite consommation</field>
+        <field name="code">outgoing</field>
+        <field name="sequence_id" ref="sequence_ssc"/>
+        <field name="barcode">WH-sortie-conso</field>
+      </record>
+
+      <record id="compta_matiere_ts" model="stock.picking.type">
+        <field name="name">Transfert entre structure</field>
+        <field name="code">outgoing</field>
+        <field name="sequence_id" ref="sequence_ts"/>
+        <field name="barcode">WH-transfert-structure</field>
+      </record>
+
+      <record id="compta_matiere_si" model="stock.picking.type">
+        <field name="name">Sortie immobilisation</field>
+        <field name="code">outgoing</field>
+        <field name="sequence_id" ref="sequence_si"/>
+        <field name="barcode">WH-sortie-immo</field>
+      </record>
+
+      <record id="compta_matiere_ri" model="stock.picking.type">
+        <field name="name">Réforme immobilisation</field>
+        <field name="code">outgoing</field>
+        <field name="sequence_id" ref="sequence_ri"/>
+        <field name="barcode">WH-reforme-immo</field>
+      </record>
+
+    </data>
+</odoo>

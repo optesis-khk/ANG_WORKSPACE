@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="view_picking_internal_search_inherit">
+    <field name="name">view_picking_internal_search.inherit</field>
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+    <field name="arch" type="xml">
+      <filter name="available" position="attributes">
+        <attribute name="string">Prêt ou Confirmé</attribute>
+        <attribute name="domain">[('state','in',('assigned', 'partially_available','confirmer'))]</attribute>
+      </filter>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="view_picking_form_inherit">
+    <field name="name">stock.picking.form.inherit</field>
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//form/header/button[@name='button_validate']" position="before">
+        <button name="button_confirm" string="Confirmer" type="object" class="oe_highlight" states="draft,waiting,confirmed,assigned"/>
+      </xpath>
+      <xpath expr="//form/header/button[@name='button_validate']" position="attributes">
+        <attribute name="attrs"> {'invisible': [('state', '!=', 'confirmer')]} </attribute>
+      </xpath>
+      <xpath expr="//form/header/button[last()]" position="after">
+        <button string="Imprimer PV réception" type="action" name="%(id_pv_reception)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', '!=', 1)]}"/>
+        <button string="Imprimer Bon d'entrer"   type="action" name="%(id_bon_entree)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', 'not in', (1,6,7,8))]}"/>
+        <button string="Imprimer fiche de remise au détenteur"   type="action" name="%(id_fiche_detenteur)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', '!=', 9)]}"/>
+        <button string="Imprimer Bordereau d'affectation des matières"   type="action" name="%(id_bordereau_affectation)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', '!=', 10)]}"/>
+        <button string="Imprimer Bordereau de mutation des matières"   type="action" name="%(id_bordereau_mutation)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', '!=', 11)]}"/>
+        <button string="Imprimer de mouvement divers" type="action"   name="%(id_bordereau_mouvement)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', 'not in', (12,13,14))]}"/>
+        <button string="Imprimer bon de sortie définitive"   type="action" name="%(id_bon_sortie)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', 'not in', (15,16))]}"/>
+        <button string="Imprimer pv de vente, destruction ou démolition"   type="action" name="%(id_pv_vente)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', '!=', 17)]}"/>
+        <button string="Imprimer pv de réforme" type="action"   name="%(id_pv_reforme)d" class="oe_highlight" attrs="{'invisible':[('picking_type_id', '!=', 18)]}"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="action_menu_reception" model="ir.actions.act_window">
+    <field name="name">Réceptions</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 1}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle réception
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_entree_matiere_commande" model="ir.actions.act_window">
+    <field name="name">Entrée de matières commandées</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 6}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle entrée de matières commandées
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_reception_dons_leg" model="ir.actions.act_window">
+    <field name="name">Réception des dons et legs</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 7}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle réception des dons et legs
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_reception_marchandise_transfere" model="ir.actions.act_window">
+    <field name="name">Réception marchandises transférées</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 8}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle réception marchandises transférées
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_regularisation" model="ir.actions.act_window">
+    <field name="name">Régularisation suite inventaire</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 9}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle régularisation suite inventaire
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_affectation" model="ir.actions.act_window">
+    <field name="name">Affectation des matières</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 10}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle affectation des matière
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_mutation" model="ir.actions.act_window">
+    <field name="name">Mutation des matières</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 11}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle mutation des matière
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_repartion" model="ir.actions.act_window">
+    <field name="name">Réparation des matières</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 12}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle réparation des matières
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_pret" model="ir.actions.act_window">
+    <field name="name">Prêt des matières</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 13}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle prêt des matières
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_location" model="ir.actions.act_window">
+    <field name="name">Location des matières</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 14}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle location des matière
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_sortie_conso" model="ir.actions.act_window">
+    <field name="name">Sortie suite consommation</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 15}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle sortie suite consommation
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_transfert_structure" model="ir.actions.act_window">
+    <field name="name">Transfert entre structure</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 16}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle transfert entre structure
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_sortie" model="ir.actions.act_window">
+    <field name="name">Sortie (immobilisation)</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 17}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle sortie (immobilisation)
+        </p>
+      </field>
+  </record>
+
+  <record id="action_menu_reforme" model="ir.actions.act_window">
+    <field name="name">Réforme (immobilisation)</field>
+    <field name="res_model">stock.picking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,kanban,form,calendar</field>
+    <field name="domain"></field>
+    <field name="context">
+      {'search_default_picking_type_id': 18}
+    </field>
+      <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Définir une nouvelle réforme (immobilisation)
+        </p>
+      </field>
+  </record>
+
+
+</odoo>

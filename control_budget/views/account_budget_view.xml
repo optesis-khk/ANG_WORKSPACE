@@ -58,6 +58,7 @@
   </p>
 </field>
 </record>
+
 <record id="view_account_budget_line_form" model="ir.ui.view">
   <field name="name">account.budget.line.form</field>
   <field name="model">account.budget.line</field>
@@ -70,7 +71,6 @@
             <field name="name"/>
             <field name="account_id"/>
             <field name="general_budget_id"/>
-            <field name="general_account_id"/>
             <field name="ref"/>
             <field name="partner_id"/>
             <field name="date"/>
@@ -89,6 +89,7 @@
     </form>
   </field>
 </record>
+
 <record id="view_account_budget_line_filter" model="ir.ui.view">
   <field name="name">account.budget.line.select</field>
   <field name="model">account.budget.line</field>
@@ -100,16 +101,17 @@
       <field name="partner_id" filter_domain="[('partner_id','child_of',self)]"/>
       <field name="account_id"/>
       <group string="Group By..." expand="0" name="groupby">
-        <filter string="Financial Account" context="{'group_by':'general_account_id'}"/>
-        <filter string="Product" context="{'group_by':'product_id'}"/>
-        <filter string="Partner" context="{'group_by':'partner_id'}"/>
-        <filter string="Analytic Account" context="{'group_by':'account_id'}" name="account_id"/>
-        <filter string="Tasks Month" context="{'group_by':'date'}" name="group_date"/>
+        <filter string="Financial Account" name="Financial Account" context="{'group_by':'general_account_id'}"/>
+        <filter string="Product" name="Product" context="{'group_by':'product_id'}"/>
+        <filter string="Partner" name="Partner" context="{'group_by':'partner_id'}"/>
+        <filter string="Analytic Account"  context="{'group_by':'account_id'}" name="account_id"/>
+        <filter string="Tasks Month"  context="{'group_by':'date'}" name="group_date"/>
         <filter string="Poste budgétaire"  context="{'group_by':'general_budget_id'}" name="general_budget_id"/>
       </group>
     </search>
   </field>
 </record>
+
 <record id="view_account_budget_line_graph" model="ir.ui.view">
   <field name="name">account.budget.line.graph</field>
   <field name="model">account.budget.line</field>
@@ -161,11 +163,25 @@ on expenses (e.g. reinvoicing of travel costs).
 </p>
 </field>
 </record>
+
+<record model="ir.ui.view" id="view_crossovered_budget_line_pivot_inherit">
+      <field name="name">crossovered.budget.line.pivot.inherit</field>
+      <field name="model">crossovered.budget.lines</field>
+      <field name="inherit_id" ref="account_budget.view_crossovered_budget_line_pivot"/>
+      <field name="arch" type="xml">
+        <field name="practical_amount" position="after">
+          <field name="engage_amount" type="measure" string="Montant engagé"/>
+          <field name="available_amount" type="measure" string="Montant disponible"/>
+        </field>
+      </field>
+    </record>
+
 <menuitem
   name="Ecriture budgetaire"
   parent="account.menu_finance_entries"
   action="account_budget_line_action_entries"
   id="menu_action_budget_lines_reporting"
   sequence="35"/>
+
 </data>
 </odoo>

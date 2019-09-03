@@ -27,10 +27,10 @@ class inventory_transfert(models.Model):
 
     @api.model
     def create(self, vals):
-		if vals.get('name', '/') == '/':
-			vals['name'] = self.env['ir.sequence'].next_by_code('optesis.asset.transfert') or '/'
-		result = super(inventory_transfert, self).create(vals)
-		return result
+        if vals.get('name', '/') == '/':
+            vals['name'] = self.env['ir.sequence'].next_by_code('optesis.asset.transfert') or '/'
+        result = super(inventory_transfert, self).create(vals)
+        return result
 
     @api.one
     def do_transfer(self):

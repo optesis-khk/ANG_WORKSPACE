@@ -77,7 +77,7 @@
                         <label for="order_id" readonly="1" class="oe_edit_only"/>
                         <h1>
                             <field name="order_id" readonly="1" class="oe_inline"/>
-                            <label string="," readonly="1" attrs="{'invisible':[('date_order','=',False)]}"/>
+                            <span string="," readonly="1" attrs="{'invisible':[('date_order','=',False)]}"/>
                             <field name="date_order" readonly="1" class="oe_inline"/>
                         </h1>
                         <label for="partner_id" readonly="1" class="oe_edit_only"/>
@@ -135,13 +135,13 @@
             <field name="name">purchase.order.line.search</field>
             <field name="model">purchase.order.line</field>
             <field name="arch" type="xml">
-                <search string="Search Purchase Order Line" create="false">
+                <search string="Search Purchase Order Line" >
                     <field name="order_id"/>
                     <field name="product_id"/>
                     <field name="partner_id" string="Vendor" filter_domain="[('partner_id', 'child_of', self)]"/>
                     <filter name="hide_cancelled" string="Hide cancelled lines" domain="[('state', '!=', 'cancel')]"/>
                     <group expand="0" string="Group By">
-                        <filter string="Order Reference" domain="[]" context="{'group_by': 'order_id'}"/>
+                        <filter string="Order Reference" name="Order Reference" domain="[]" context="{'group_by': 'order_id'}"/>
                         <filter name="groupby_supplier" string="Vendor" domain="[]" context="{'group_by': 'partner_id'}"/>
                     </group>
                 </search>
@@ -172,9 +172,9 @@
                                 help="At least a PO has been completed"/>
                     </field>
                     <group position="inside">
-                        <filter string="Purchase Status"
+                        <filter string="Purchase Status" name="Purchase Status"
                                 domain="[]" context="{'group_by':'purchase_state'}"/>
-                        <filter string="Request"
+                        <filter string="Request" name="Request"
                                 domain="[]" context="{'group_by':'request_id'}"/>
                     </group>
             </field>

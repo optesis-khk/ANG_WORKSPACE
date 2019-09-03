@@ -54,5 +54,7 @@
         <act_window id="act_transfer" name="Affectation" res_model="optesis.asset.transfert" view_mode="tree,form"/>
         <menuitem id="menu_transfer" name="Affectation" parent="asset_menu_1" action="act_transfer" sequence="40"/>
 
+        <menuitem id="menu_transfer" name="Affectation" parent="menu_general" action="act_transfer" sequence="3"/>
+
     </data>
 </odoo>

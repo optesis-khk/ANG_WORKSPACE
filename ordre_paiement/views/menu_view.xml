@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Menu principale-->
+  <menuitem id="menu_principale" name="Ordre Paiement" web_icon="ordre_paiement,static/description/icon.png" sequence="29"/>
+
+  <!-- Menu-->
+  <act_window id="action_menu_ordre_paiement" name="Ordre de paiement" res_model="optesis.ordre.paiement" view_mode="tree,form"/>
+  <menuitem id="menu_ordre_paiement" name="Ordre de paiement" parent="menu_principale" action="action_menu_ordre_paiement" sequence="1"/>
+
+</odoo>

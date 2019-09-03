@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+      <record id="ordre_paiement_form" model="ir.ui.view">
+            <field name="name">optesis.ordre.paiement.form</field>
+            <field name="model">optesis.ordre.paiement</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <form string="Ordre de paiement">
+                  <header>
+                      <button  name="button_confirm" type="object" states="draft" string="Confirmer" class="oe_highlight" groups="account.group_account_invoice"/>
+                      <button  name="button_valide" type="object" states="confirm" string="Valider" groups="account.group_account_invoice" class="oe_highlight"/>
+                      <button name="button_cancel"  string='Annuler' type="object" groups="account.group_account_invoice" states="confirm,validate"/>
+                      <button name="button_draft"  string='Remettre en brouillon' type="object" groups="account.group_account_invoice" states="cancel"/>
+                      <field name="state" widget="statusbar" statusbar_visible="draft,confirm,validate,compta,paye" />
+                  </header>
+                  <sheet string="Ordre de Paiement">
+                      <div>
+                          <h1 class="mt0">
+                              <field name="name" class="oe_inline"/>
+                          </h1>
+                      </div>
+                      <group>
+                          <group>
+                              <field string="Fournisseur" name="partner_id"  widget="res_partner_many2one"  domain="[('supplier', '=', True)]" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}"/>
+                              <field name="reference" string="Reference fournisseur" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}"/>
+                              <field name="vendor_bill_id"  placeholder="Selection de PVR"  domain ="[('state', 'in', ('done','immo')), ('op', '=', False), ('picking_type_id.default_location_dest_id', '!=', False )]"  options="{'no_create': True}" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}"/>
+                              <field name="currency_id" invisible="1"/>
+                          </group>
+                          <group>
+                              <field name="date" options="{'datepicker': {'warn_future': true}}" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}"/>
+                              <field name="date_due" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}"/>
+                              <field name="partner_bank_id" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}"/>
+                          </group>
+                      </group>
+                      <notebook>
+                          <page string="Lignes ordre paiement">
+                              <field name="line_ids" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}">
+                                  <tree string="Lignes" editable="bottom" create="false">
+                                      <field name="product_id" groups="account.group_products_in_bills"/>
+                                      <field name="name"/>
+                                      <field name="account_id" groups="account.group_account_user"/>
+                                      <field name="account_analytic_id" groups="account.group_account_user"/>
+                                      <field name="quantity"/>
+                                      <field name="price_unit"/>
+                                      <field name="currency_id" invisible="1"/>
+                                      <field name="taxes_id" widget="many2many_tags"/>
+                                      <field name="price_subtotal" string="Sous total" options="{'currency_field': 'currency_id'}"/>
+                                      <field name="origin" invisible="1"/>
+                                  </tree>
+                              </field>
+                              <group class="oe_subtotal_footer oe_right">
+                                <field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                          </page>
+
+                          <page string="Autres informations" name="other_info">
+                            <field name="infos_lines" attrs="{'readonly' : [('state', 'in', ('validate','cancel','compta','paye'))]}">
+                                <tree string="Lignes d'informations" editable="bottom" create="false">
+                                    <field name="bc_number"/>
+                                    <field name="be_number"/>
+                                </tree>
+                            </field>
+                          </page>
+
+                      </notebook>
+                  </sheet>
+                  <div class="o_attachment_preview" attrs="{'invisible': ['|',('state', '!=', 'draft')]}" />
+                  <div class="oe_chatter">
+                      <field name="message_follower_ids" widget="mail_followers"/>
+                      <field name="activity_ids" widget="mail_activity"/>
+                      <field name="message_ids" widget="mail_thread"/>
+                  </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ordre_paiement_ree">
+          <field name="name">optesis.ordre.paiement.tree</field>
+          <field name="model">optesis.ordre.paiement</field>
+          <field name="arch" type="xml">
+            <tree string="Ordre de paiement">
+              <field name="name"/>
+              <field name="partner_id"/>
+              <field name="reference"/>
+              <field name="date"/>
+              <field name="date_due"/>
+              <field name="amount_untaxed"/>
+              <field name="amount_tax"/>
+              <field name="amount_total"/>
+              <field name="state"/>
+            </tree>
+          </field>
+        </record>
+
+    </data>
+</odoo>

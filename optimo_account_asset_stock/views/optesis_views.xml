@@ -356,35 +356,26 @@
       </record>
 
       <record id="action_optimo_open_all" model="ir.actions.server">
-        <field name="name">Confirmer</field>
-        <field name="model_id" ref="model_account_asset_asset"/>
-        <field name="state">code</field>
-        <field name="condition">True</field>
-        <field name="code">object.pass_to_openall()</field>
-      </record>
-      <record id="id_of_the_action_open" model="ir.values">
-        <field name="name">Confirmer</field>
-        <field name="model">account.asset.asset</field>
-        <field name="key" >action</field>
-        <field name="key2">client_action_multi</field>
-        <field name="value" eval="'ir.actions.server,%d'%action_optimo_open_all"/>
+          <field name="name">Confirmer</field>
+          <field name="model_id" ref="model_account_asset_asset"/>
+          <field name="binding_model_id" ref="optimo_account_asset_stock.model_account_asset_asset"/>
+          <field name="state">code</field>
+          <field name="code">
+            for rec in records:
+              rec.pass_to_openall()
+          </field>
       </record>
 
       <record id="action_optimo_close_all" model="ir.actions.server">
-        <field name="name">Fermer</field>
-        <field name="model_id" ref="model_account_asset_asset"/>
-        <field name="state">code</field>
-        <field name="condition">True</field>
-        <field name="code">object.pass_to_closeall()</field>
+          <field name="name">Fermer</field>
+          <field name="model_id" ref="model_account_asset_asset"/>
+          <field name="binding_model_id" ref="optimo_account_asset_stock.model_account_asset_asset"/>
+          <field name="state">code</field>
+          <field name="code">
+            for rec in records:
+              rec.pass_to_closeall()
+          </field>
       </record>
-      <record id="id_of_the_action_close" model="ir.values">
-        <field name="name">Fermer</field>
-        <field name="model">account.asset.asset</field>
-        <field name="key" >action</field>
-        <field name="key2">client_action_multi</field>
-        <field name="value" eval="'ir.actions.server,%d'%action_optimo_close_all"/>
-      </record>
-
 
 
 
@@ -415,6 +406,26 @@
 
       <act_window id="win_inv_101" name="Reporting" res_model="account.asset.asset" view_mode="pivot,graph" />
       <menuitem id="asset_menu_report" name="Reporting" parent="asset_menu_1" action="win_inv_101" sequence="201"/>
+
+
+      <!-- Menu dans module compta matiere -->
+
+      <menuitem id="menu_immo" name="Immobilisations" parent="compta_matiere.menu_principale" sequence="5"/>
+      <menuitem id="menu_general" name="Menu Général" parent="menu_immo" sequence="1"/>
+      <menuitem id="menu_catalogue" name="Catalogues" parent="menu_immo" sequence="2"/>
+
+      <menuitem id="menu_saisi_immo" name="Saisie Immobilisation" parent="menu_general" action="win001" sequence="1"/>
+      <menuitem id="menu_controle" name="Inventaire" parent="menu_general" action="win_inv_100" sequence="2"/>
+      <menuitem id="menu_sortie" action="compta_matiere.action_menu_sortie" name="Sortie (immobilisation)" parent="menu_general" sequence="4"/>
+      <menuitem id="menu_reforme" action="compta_matiere.action_menu_reforme" name="Réforme (immobilisation)" parent="menu_general" sequence="5"/>
+      <menuitem id="menu_report" name="Reporting (Immobilisation)" parent="compta_matiere.menu_report" action="win_inv_101" sequence="4"/>
+
+      <menuitem id="menu_categorie" name="Categories" parent="menu_catalogue" action="win011" sequence="1"/>
+      <menuitem id="menu_standard" name="Standards" parent="menu_catalogue" action="win014" sequence="2"/>
+      <menuitem id="menu_condition" name="États" parent="menu_catalogue" action="win015" sequence="3"/>
+
+
+
 
     </data>
   </odoo>

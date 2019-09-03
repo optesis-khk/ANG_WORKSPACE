@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="budget_control_wizard" model="ir.ui.view">
+        <field name="name">budget.control.wizard.view.form</field>
+        <field name="model">budget.control.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Attention!!!">
+                <group>
+                    <p>
+                        Attention votre budget est inssufisant vour effectuer cet achat
+                    </p>
+                </group>
+                <footer>
+                    <button name="action_confirm" string="Continuer" type="object" class="btn-primary"/>
+                    <button string="Annuler" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

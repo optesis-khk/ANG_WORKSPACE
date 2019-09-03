@@ -1,0 +1,532 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * supply_request
+#
+# Translators:
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016
+# leemannd <denis.leemann@camptocamp.com>, 2017
+# dglucose <eric.lemesre@gmail.com>, 2016
+# François Kortleven <frkor@smile.fr>, 2016
+# guillaume bauer <guillaume.bauer@syentys.com>, 2017
+# Jonathan Nemry (ACSONE) <jonathan.nemry@acsone.eu>, 2016
+# leemannd <denis.leemann@camptocamp.com>, 2017
+# Maxime Chambreuil <mchambreuil@ursainfosystems.com>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2016
+# Stéphane Bidoul (ACSONE), 2016
+# Stéphane Bidoul (ACSONE), 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: supply-workflow (10.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-24 07:53+0000\n"
+"PO-Revision-Date: 2017-11-24 07:55+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: French (http://www.transifex.com/oca/OCA-supply-"
+"workflow-10-0/language/fr/)\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Analytic Account</strong>"
+msgstr "<strong>Compte analytique</strong>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Assigned to:</strong><br/>"
+msgstr "<strong>Assigné à:</strong><br/>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Creation Date:</strong><br/>"
+msgstr "<strong>Date de création:</strong><br/>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Description:</strong><br/>"
+msgstr "<strong>Description:</strong><br/>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Description</strong>"
+msgstr "<strong>Description</strong>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Picking Type:</strong><br/>"
+msgstr "<strong>Type de prélèvement:</strong><br/>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Product UoM</strong>"
+msgstr "<strong>Unité de Mesure</strong>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Qty</strong>"
+msgstr "<strong>Qté</strong>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Request Reference:</strong><br/>"
+msgstr "<strong>Demande de référence:</strong><br/>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Requested Date</strong>"
+msgstr "<strong>Date demandée</strong>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Requested by:</strong><br/>"
+msgstr "<strong>Demandé par:</strong><br/>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Source:</strong><br/>"
+msgstr "<strong>Origine:</strong><br/>"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+msgid "<strong>Specifications</strong>"
+msgstr "<strong>Caractéristiques</strong>"
+
+#. module: supply_request
+#: model:ir.actions.act_window,help:supply_request.supply_request_form_action
+msgid ""
+"A Supply request is an instruction to Purchasing to procure\n"
+"                a certain quantity of materials services, so that they are\n"
+"                available at a certain point in time."
+msgstr ""
+"Une demande de fourniture est une instruction de fourniture pour se procurer\n"
+"une certaine quantité de matériaux, de sorte qu'ils soient\n"
+"disponible à un certain moment."
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_analytic_account_id
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+msgid "Analytic Account"
+msgstr "Compte analytique"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+msgid "Approve"
+msgstr "Approuvé"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+#: selection:supply.request,state:0
+msgid "Approved"
+msgstr "Approuver"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_assigned_to
+msgid "Approver"
+msgstr "Approbateur"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_assigned_to
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Assigned to"
+msgstr "Assigné à"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Assigned to me"
+msgstr "M'est assigné"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: supply_request
+#: model:ir.actions.act_window,help:supply_request.supply_request_form_action
+msgid "Click to start a new Supply request process."
+msgstr "Cliquez pour démarrer une nouvelle demande de fourniture."
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_company_id
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_create_uid
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_create_date
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_create_date
+msgid "Created on"
+msgstr "Date"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_date_start
+msgid "Creation date"
+msgstr "Date de création"
+
+#. module: supply_request
+#: model:ir.model.fields,help:supply_request.field_supply_request_date_start
+#: model:ir.model.fields,help:supply_request.field_supply_request_line_date_start
+msgid "Date when the user initiated the request."
+msgstr "Date à laquelle l'utilisateur a initié la demande"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_description
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_description
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_name
+msgid "Description"
+msgstr "Descriptions"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_display_name
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+#: selection:supply.request,state:0
+msgid "Done"
+msgstr ""
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+#: selection:supply.request,state:0
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Group By..."
+msgstr "Regrouper par..."
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_id
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_is_editable
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_is_editable
+msgid "Is editable"
+msgstr "Est éditable"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request___last_update
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line___last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_write_uid
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_write_date
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+msgid "Lines"
+msgstr ""
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "My requests"
+msgstr "Mes demandes"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_picking_type_id
+msgid "Picking Type"
+msgstr "Type de préparation"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_supplier_id
+msgid "Preferred supplier"
+msgstr "Fournisseur favori"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_procurement_id
+msgid "Procurement Order"
+msgstr "Ordre d'approvisionnement"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_product_id
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+msgid "Product"
+msgstr "Article"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_product_uom_id
+msgid "Product Unit of Measure"
+msgstr "Unité de mesure de l'article"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+msgid "Products"
+msgstr "Articles"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_ids
+msgid "Products to supply"
+msgstr "Articles à acheter"
+
+#. module: supply_request
+#: model:ir.actions.report.xml,name:supply_request.action_report_supply_requests
+#: model:ir.model,name:supply_request.model_supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_request_id
+#: model:ir.module.category,name:supply_request.module_category_supply_request
+#: model:ir.ui.view,arch_db:supply_request.report_supplyrequests
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_tree
+msgid "Supply Request"
+msgstr "Demande de fourniture"
+
+#. module: supply_request
+#: model:ir.model,name:supply_request.model_supply_request_line
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_form
+msgid "Supply Request Line"
+msgstr "Ligne de demande de fourniture"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_count
+#, fuzzy
+msgid "Supply Request Line count"
+msgstr "Ligne de demande de fourniture"
+
+#. module: supply_request
+#: model:ir.actions.act_window,name:supply_request.supply_request_line_form_action
+#: model:ir.ui.menu,name:supply_request.menu_supply_request_line
+#: model:ir.ui.menu,name:supply_request.menu_supply_request_line_act
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_tree
+msgid "Supply Request Lines"
+msgstr "Lignes de demande de fourniture"
+
+#. module: supply_request
+#: model:res.groups,name:supply_request.group_supply_request_manager
+msgid "Supply Request Manager"
+msgstr "Responsable demande de fourniture"
+
+#. module: supply_request
+#: model:res.groups,name:supply_request.group_supply_request_user
+msgid "Supply Request User"
+msgstr "Utilisateur demande de fourniture"
+
+#. module: supply_request
+#: model:mail.message.subtype,description:supply_request.mt_request_approved
+#: model:mail.message.subtype,name:supply_request.mt_request_approved
+msgid "Supply Request approved"
+msgstr "Demande de fourniture approuvée"
+
+#. module: supply_request
+#: model:mail.message.subtype,name:supply_request.mt_request_done
+msgid "Supply Request done"
+msgstr ""
+
+#. module: supply_request
+#: model:mail.message.subtype,description:supply_request.mt_request_done
+msgid "Supply Request is done"
+msgstr ""
+
+#. module: supply_request
+#: model:mail.message.subtype,description:supply_request.mt_request_rejected
+#: model:mail.message.subtype,name:supply_request.mt_request_rejected
+msgid "Supply Request rejected"
+msgstr "Demande de fourniture rejetée"
+
+#. module: supply_request
+#: model:mail.message.subtype,description:supply_request.mt_request_to_approve
+#: model:mail.message.subtype,name:supply_request.mt_request_to_approve
+msgid "Supply Request to be approved"
+msgstr "Demande de fourniture devant être approuvée"
+
+#. module: supply_request
+#: model:ir.actions.act_window,name:supply_request.action_supply_request_line_product_tree
+#: model:ir.actions.act_window,name:supply_request.supply_request_form_action
+#: model:ir.ui.menu,name:supply_request.menu_supply_request
+#: model:ir.ui.menu,name:supply_request.menu_supply_request_act
+#: model:ir.ui.menu,name:supply_request.menu_supply_request_pro_mgt
+msgid "Supply Requests"
+msgstr "Demandes de fourniture"
+
+#. module: supply_request
+#: model:ir.ui.menu,name:supply_request.parent_menu_supply_request
+msgid "Supply requests"
+msgstr "Demandes de fourniture"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_product_qty
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+msgid "Reject"
+msgstr "Rejeter"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+#: selection:supply.request,state:0
+msgid "Rejected"
+msgstr "Refusé"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_date_required
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_date_start
+msgid "Request Date"
+msgstr "Date de la demande"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_name
+msgid "Request Reference"
+msgstr "Référence de la demande"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+msgid "Request approval"
+msgstr "Demander l'autorisation"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Request is approved"
+msgstr "Demande acceptée"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Request is done"
+msgstr ""
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Request is rejected"
+msgstr "Demande rejetée"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Request is to be approved"
+msgstr "La demande doit être approuvée"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_request_state
+msgid "Request state"
+msgstr "État de la demande"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+msgid "Request status"
+msgstr "Statut de la demande"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_requested_by
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_requested_by
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Requested by"
+msgstr "Demandé par"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Search Supply Request"
+msgstr "Recherche demande de fourniture"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Source"
+msgstr "Source"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_origin
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_origin
+msgid "Source Document"
+msgstr "Document Source"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_line_specifications
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_form
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_form
+msgid "Specifications"
+msgstr "Caractéristiques"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_state
+msgid "Status"
+msgstr "État"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "To Approve"
+msgstr "A approuver"
+
+#. module: supply_request
+#: model:ir.model.fields,field_description:supply_request.field_supply_request_to_approve_allowed
+msgid "To approve allowed"
+msgstr ""
+
+#. module: supply_request
+#: selection:supply.request,state:0
+msgid "To be approved"
+msgstr "A approuver"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Unassigned"
+msgstr "Non assignée"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Unassigned Request"
+msgstr "Demande non assignée"
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.supply_request_line_search
+msgid "Uncancelled"
+msgstr ""
+
+#. module: supply_request
+#: model:ir.ui.view,arch_db:supply_request.view_supply_request_search
+msgid "Unread Messages"
+msgstr "Messages non lus"
+
+#. module: supply_request
+#: code:addons/supply_request/models/supply_request.py:213
+#, python-format
+msgid ""
+"You can't request an approval for a Supply request which is empty. (%s)"
+msgstr ""

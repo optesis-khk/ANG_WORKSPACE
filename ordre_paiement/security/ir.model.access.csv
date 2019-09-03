@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_optesis_ordre_paiement,optesis.ordre.paiement,model_optesis_ordre_paiement,base.group_user,1,1,1,1
+access_optesis_ordre_paiement_line,optesis.ordre_paiement.line,model_optesis_ordre_paiement_line,base.group_user,1,1,1,1
+access_optesis_infos_line,optesis.infos.line,model_optesis_infos_line,base.group_user,1,1,1,1

@@ -1,2 +1,3 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 control_budget_employee,Control budget employee,model_account_budget_line,purchase.group_purchase_user,1,1,1,1
+access_optesis_budget_info,optesis.budget.info,model_optesis_budget_info,purchase.group_purchase_user,1,1,1,1

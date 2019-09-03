@@ -6,6 +6,9 @@ import time
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.tools.float_utils import float_compare, float_round, float_is_zero
 
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class Direction(models.Model):
     _name = "optesis.direction"
@@ -136,10 +139,10 @@ class Control(models.Model):
 
     @api.model
     def create(self, vals):
-		if vals.get('name', '/') == '/':
-			vals['name'] = self.env['ir.sequence'].next_by_code('optesis.control') or '/'
-		result = super(Control, self).create(vals)
-		return result
+        if vals.get('name', '/') == '/':
+            vals['name'] = self.env['ir.sequence'].next_by_code('optesis.control') or '/'
+        result = super(Control, self).create(vals)
+        return result
 
 
     @api.multi
@@ -271,6 +274,7 @@ class Asset(models.Model):
     _name = "account.asset.asset"
     _inherit = "account.asset.asset"
     _description = "optesis asset first module"
+    _order = "code_bar"
     _sql_constraints = [('code_bar_unique', 'unique(code_bar)', "can't be duplicate the value of code bar")]
 
 
@@ -358,6 +362,7 @@ class Asset(models.Model):
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('account.asset.asset') or '/'
         vals['asset_number'] = seq
+        # vals['name'] = vals['code_bar'] or "/"
         return super(Asset, self).create(vals)
 
 
@@ -440,8 +445,11 @@ class asset_account_invoice_line(models.Model):
 class StockMove(models.Model):
     _inherit = "stock.move"
 
+    immo_id = fields.Many2one("account.asset.asset", "Immobilisation")
+
     @api.one
     def asset_create(self):
+        _logger.info("fonction_asset_create")
         if self.product_id.asset_category_id:
             vals = {
                 'name': self.product_id.name,
@@ -454,7 +462,7 @@ class StockMove(models.Model):
                 'num_bc':self.picking_id.origin,
                 'num_br':self.picking_id.name,
                 # 'currency_id': False,
-                'date': self.picking_id.min_date,
+                'date': self.picking_id.date,
                 # 'invoice_id': self.picking_id.id,
             }
             changed_vals = self.env['account.asset.asset'].onchange_category_id_values(vals['category_id'])
@@ -464,6 +472,7 @@ class StockMove(models.Model):
                 asset.validate()
         return True
 
+
 class Picking(models.Model):
     _inherit = "stock.picking"
 
@@ -472,6 +481,7 @@ class Picking(models.Model):
         ('waiting', 'Waiting Another Operation'),
         ('confirmed', 'Waiting'),
         ('assigned', 'Ready'),
+        ('confirmer', 'Confirmé'),
         ('done', 'Done'),
         ('immo', 'Immobilisé'),
         ('cancel', 'Cancelled'),
@@ -485,158 +495,86 @@ class Picking(models.Model):
              " * Cancelled: has been cancelled, can't be confirmed anymore.")
 
     immo = fields.Boolean("Contient Immo", compute="detect_immo")
+    is_immo = fields.Selection([('immo', 'Oui'), ('no_immo','Non')], 'Est immobilisé', default='no_immo')
 
     def create_immo(self):
-        for line in self.move_lines:
+        _logger.info("fonction_create_immo")
+        for line in self.move_ids_without_package:
             line.asset_create()
         self.state = "immo"
+        self.is_immo = "immo"
 
-    @api.depends("move_lines")
+    @api.depends("move_ids_without_package")
     def detect_immo(self):
-        if self.move_lines:
-            for line in self.move_lines:
+        if self.move_ids_without_package:
+            for line in self.move_ids_without_package:
                 if line.product_id.asset_category_id:
                     self.immo = True
                     break
 
-    # @api.multi
-    # def action_done(self):
-    #     """ Process completely the moves given and if all moves are done, it will finish the picking. """
-    #     self.filtered(lambda move: move.state == 'draft').action_confirm()
+
+
+    # def _action_done(self):
+    #     self.filtered(lambda move: move.state == 'draft')._action_confirm()  # MRP allows scrapping draft moves
+    #     moves = self.exists().filtered(lambda x: x.state not in ('done', 'cancel'))
+    #     moves_todo = self.env['stock.move']
     #
-    #     Uom = self.env['product.uom']
-    #     Quant = self.env['stock.quant']
+    #     # Cancel moves where necessary ; we should do it before creating the extra moves because
+    #     # this operation could trigger a merge of moves.
+    #     for move in moves:
+    #         if move.quantity_done <= 0:
+    #             if float_compare(move.product_uom_qty, 0.0, precision_rounding=move.product_uom.rounding) == 0:
+    #                 move._action_cancel()
     #
-    #     pickings = self.env['stock.picking']
-    #     procurements = self.env['procurement.order']
-    #     operations = self.env['stock.pack.operation']
+    #     # Create extra moves where necessary
+    #     for move in moves:
+    #         if move.state == 'cancel' or move.quantity_done <= 0:
+    #             continue
+    #         # extra move will not be merged in mrp
+    #         if not move.picking_id:
+    #             moves_todo |= move
+    #         moves_todo |= move._create_extra_move()
     #
-    #     remaining_move_qty = {}
+    #     # Split moves where necessary and move quants
+    #     for move in moves_todo:
+    #         # To know whether we need to create a backorder or not, round to the general product's
+    #         # decimal precision and not the product's UOM.
+    #         rounding = self.env['decimal.precision'].precision_get('Product Unit of Measure')
+    #         if float_compare(move.quantity_done, move.product_uom_qty, precision_digits=rounding) < 0:
+    #             # Need to do some kind of conversion here
+    #             qty_split = move.product_uom._compute_quantity(move.product_uom_qty - move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')
+    #             new_move = move._split(qty_split)
+    #             for move_line in move.move_line_ids:
+    #                 if move_line.product_qty and move_line.qty_done:
+    #                     # FIXME: there will be an issue if the move was partially available
+    #                     # By decreasing `product_qty`, we free the reservation.
+    #                     # FIXME: if qty_done > product_qty, this could raise if nothing is in stock
+    #                     try:
+    #                         move_line.write({'product_uom_qty': move_line.qty_done})
+    #                     except UserError:
+    #                         pass
+    #             move._unreserve_initial_demand(new_move)
+    #     moves_todo.mapped('move_line_ids')._action_done()
+    #     # Check the consistency of the result packages; there should be an unique location across
+    #     # the contained quants.
+    #     for result_package in moves_todo\
+    #             .mapped('move_line_ids.result_package_id')\
+    #             .filtered(lambda p: p.quant_ids and len(p.quant_ids) > 1):
+    #         if len(result_package.quant_ids.mapped('location_id')) > 1:
+    #             raise UserError(_('You cannot move the same package content more than once in the same transfer or split the same package into two location.'))
+    #     picking = moves_todo and moves_todo[0].picking_id or False
+    #     moves_todo.write({'state': 'done', 'date': fields.Datetime.now()})
+    #     moves_todo.mapped('move_dest_ids')._action_assign()
     #
-    #     for move in self:
-    #         if move.picking_id:
-    #             pickings |= move.picking_id
-    #         remaining_move_qty[move.id] = move.product_qty
-    #         for link in move.linked_move_operation_ids:
-    #             operations |= link.operation_id
-    #             pickings |= link.operation_id.picking_id
+    #     # We don't want to create back order for scrap moves
+    #     if all(move_todo.scrapped for move_todo in moves_todo):
+    #         return moves_todo
     #
-    #     # Sort operations according to entire packages first, then package + lot, package only, lot only
-    #     operations = operations.sorted(key=lambda x: ((x.package_id and not x.product_id) and -4 or 0) + (x.package_id and -2 or 0) + (x.pack_lot_ids and -1 or 0))
+    #     if picking:
+    #         picking._create_backorder()
     #
-    #     for operation in operations:
-    #
-    #         # product given: result put immediately in the result package (if False: without package)
-    #         # but if pack moved entirely, quants should not be written anything for the destination package
-    #         quant_dest_package_id = operation.product_id and operation.result_package_id.id or False
-    #         entire_pack = not operation.product_id and True or False
-    #
-    #         # compute quantities for each lot + check quantities match
-    #         lot_quantities = dict((pack_lot.lot_id.id, operation.product_uom_id._compute_quantity(pack_lot.qty, operation.product_id.uom_id)
-    #         ) for pack_lot in operation.pack_lot_ids)
-    #         if operation.pack_lot_ids and float_compare(sum(lot_quantities.values()), operation.product_qty, precision_rounding=operation.product_uom_id.rounding) != 0.0:
-    #             raise UserError(_('You have a difference between the quantity on the operation and the quantities specified for the lots. '))
-    #
-    #         quants_taken = []
-    #         false_quants = []
-    #         lot_move_qty = {}
-    #
-    #         prout_move_qty = {}
-    #         for link in operation.linked_move_operation_ids:
-    #             prout_move_qty[link.move_id] = prout_move_qty.get(link.move_id, 0.0) + link.qty
-    #
-    #         # Process every move only once for every pack operation
-    #         for move in prout_move_qty.keys():
-    #             # TDE FIXME: do in batch ?
-    #             move.check_tracking(operation)
-    #
-    #             # TDE FIXME: I bet the message error is wrong
-    #             if not remaining_move_qty.get(move.id):
-    #                 raise UserError(_("The roundings of your unit of measure %s on the move vs. %s on the product don't allow to do these operations or you are not transferring the picking at once. ") % (move.product_uom.name, move.product_id.uom_id.name))
-    #
-    #             if not operation.pack_lot_ids:
-    #                 preferred_domain_list = [[('reservation_id', '=', move.id)], [('reservation_id', '=', False)], ['&', ('reservation_id', '!=', move.id), ('reservation_id', '!=', False)]]
-    #                 quants = Quant.quants_get_preferred_domain(
-    #                     prout_move_qty[move], move, ops=operation, domain=[('qty', '>', 0)],
-    #                     preferred_domain_list=preferred_domain_list)
-    #                 Quant.quants_move(quants, move, operation.location_dest_id, location_from=operation.location_id,
-    #                                   lot_id=False, owner_id=operation.owner_id.id, src_package_id=operation.package_id.id,
-    #                                   dest_package_id=quant_dest_package_id, entire_pack=entire_pack)
-    #             else:
-    #                 # Check what you can do with reserved quants already
-    #                 qty_on_link = prout_move_qty[move]
-    #                 rounding = operation.product_id.uom_id.rounding
-    #                 for reserved_quant in move.reserved_quant_ids:
-    #                     if (reserved_quant.owner_id.id != operation.owner_id.id) or (reserved_quant.location_id.id != operation.location_id.id) or \
-    #                             (reserved_quant.package_id.id != operation.package_id.id):
-    #                         continue
-    #                     if not reserved_quant.lot_id:
-    #                         false_quants += [reserved_quant]
-    #                     elif float_compare(lot_quantities.get(reserved_quant.lot_id.id, 0), 0, precision_rounding=rounding) > 0:
-    #                         if float_compare(lot_quantities[reserved_quant.lot_id.id], reserved_quant.qty, precision_rounding=rounding) >= 0:
-    #                             lot_quantities[reserved_quant.lot_id.id] -= reserved_quant.qty
-    #                             quants_taken += [(reserved_quant, reserved_quant.qty)]
-    #                             qty_on_link -= reserved_quant.qty
-    #                         else:
-    #                             quants_taken += [(reserved_quant, lot_quantities[reserved_quant.lot_id.id])]
-    #                             lot_quantities[reserved_quant.lot_id.id] = 0
-    #                             qty_on_link -= lot_quantities[reserved_quant.lot_id.id]
-    #                 lot_move_qty[move.id] = qty_on_link
-    #
-    #             remaining_move_qty[move.id] -= prout_move_qty[move]
-    #
-    #         # Handle lots separately
-    #         if operation.pack_lot_ids:
-    #             # TDE FIXME: fix call to move_quants_by_lot to ease understanding
-    #             self._move_quants_by_lot(operation, lot_quantities, quants_taken, false_quants, lot_move_qty, quant_dest_package_id)
-    #
-    #         # Handle pack in pack
-    #         if not operation.product_id and operation.package_id and operation.result_package_id.id != operation.package_id.parent_id.id:
-    #             operation.package_id.sudo().write({'parent_id': operation.result_package_id.id})
-    #
-    #
-    #     # Check for remaining qtys and unreserve/check move_dest_id in
-    #     move_dest_ids = set()
-    #     for move in self:
-    #         if float_compare(remaining_move_qty[move.id], 0, precision_rounding=move.product_id.uom_id.rounding) > 0:  # In case no pack operations in picking
-    #             move.check_tracking(False)  # TDE: do in batch ? redone ? check this
-    #
-    #             preferred_domain_list = [[('reservation_id', '=', move.id)], [('reservation_id', '=', False)], ['&', ('reservation_id', '!=', move.id), ('reservation_id', '!=', False)]]
-    #             quants = Quant.quants_get_preferred_domain(
-    #                 remaining_move_qty[move.id], move, domain=[('qty', '>', 0)],
-    #                 preferred_domain_list=preferred_domain_list)
-    #             Quant.quants_move(
-    #                 quants, move, move.location_dest_id,
-    #                 lot_id=move.restrict_lot_id.id, owner_id=move.restrict_partner_id.id)
-    #
-    #         # If the move has a destination, add it to the list to reserve
-    #         if move.move_dest_id and move.move_dest_id.state in ('waiting', 'confirmed'):
-    #             move_dest_ids.add(move.move_dest_id.id)
-    #
-    #         if move.procurement_id:
-    #             procurements |= move.procurement_id
-    #
-    #         # unreserve the quants and make them available for other operations/moves
-    #         move.quants_unreserve()
-    #
-    #     # Check the packages have been placed in the correct locations
-    #     self.mapped('quant_ids').filtered(lambda quant: quant.package_id and quant.qty > 0).mapped('package_id')._check_location_constraint()
-    #
-    #     # set the move as done
-    #     self.write({'state': 'done', 'date': time.strftime(DEFAULT_SERVER_DATETIME_FORMAT)})
-    #     procurements.check()
-    #     # assign destination moves
-    #     if move_dest_ids:
-    #         # TDE FIXME: record setise me
-    #         self.browse(list(move_dest_ids)).action_assign()
-    #
-    #     pickings.filtered(lambda picking: picking.state == 'done' and not picking.date_done).write({'date_done': time.strftime(DEFAULT_SERVER_DATETIME_FORMAT)})
-    #
-    #     context = dict(self.env.context)
-    #
-    #     pickings.move_lines.with_context(context).asset_create()
-    #
-    #     return True
+    #     moves_todo.asset_create()
+    #     return moves_todo
 
 class ParticularReport(models.AbstractModel):
     _name = 'report.optesis.asset_print_inventory'

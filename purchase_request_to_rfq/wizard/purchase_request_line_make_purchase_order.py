@@ -4,6 +4,8 @@
 
 import odoo.addons.decimal_precision as dp
 from odoo import _, api, exceptions, fields, models
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
@@ -27,10 +29,12 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
             'line_id': line.id,
             'request_id': line.request_id.id,
             'product_id': line.product_id.id,
+            'account_id': line.account_id.id,
+            'account_analytic_id': line.account_analytic_id.id,
             'name': line.name or line.product_id.name,
             'product_qty': line.product_qty,
             'product_uom_id': line.product_uom_id.id,
-        }
+            'date_planned':line.date_required,        }
 
     @api.model
     def _check_valid_request_line(self, request_line_ids):
@@ -116,8 +120,8 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
             'partner_id': self.supplier_id.id,
             'fiscal_position_id': supplier.property_account_position_id and
             supplier.property_account_position_id.id or False,
-            'picking_type_id': picking_type.id,
-            'company_id': company.id,
+            # 'picking_type_id': picking_type.id,
+            # 'company_id': company.id,
             }
         return data
 
@@ -141,30 +145,25 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
                         obj[field], obj)
 
     @api.model
-    def _prepare_purchase_order_line(self, po, item):
+    def _prepare_purchase_order_line(self,purchase,item):
+        res = dict()
         product = item.product_id
-        # Keep the standard product UOM for purchase order so we should
-        # convert the product quantity to this UOM
-        qty = item.product_uom_id._compute_quantity(
-            item.product_qty, product.uom_po_id)
-        # Suggest the supplier min qty as it's done in Odoo core
-        min_qty = item.line_id._get_supplier_min_qty(product, po.partner_id)
-        qty = max(qty, min_qty)
-        vals = {
-            'name': product.name,
-            'order_id': po.id,
-            'product_id': product.id,
-            'product_uom': product.uom_po_id.id,
-            'price_unit': 0.0,
-            'product_qty': qty,
-            'account_analytic_id': item.line_id.analytic_account_id.id,
-            'purchase_request_lines': [(4, item.line_id.id)],
-            'date_planned': item.line_id.date_required
-        }
-        if item.line_id.procurement_id:
-            vals['procurement_ids'] = [(4, item.line_id.procurement_id.id)]
-        self._execute_purchase_line_onchange(vals)
-        return vals
+        for record in self:
+            lines = []
+            for line in record.item_ids:
+                _logger.info("quantité => %s",(line.product_qty))
+                lines.append((0, 0, {
+                    'name': line.product_id.name,
+                    'order_id': purchase.id,
+                    'product_id': line.product_id.id,
+                    'account_id':line.product_id.property_account_expense_id.id or line.product_id.categ_id.property_account_expense_categ_id.id,
+                    'account_analytic_id': line.account_analytic_id.id,
+                    'product_qty': line.product_qty,
+                    'price_unit': 0.0,
+                    'product_uom': product.uom_po_id.id,
+                    'date_planned':line.date_planned,
+                }))
+        return lines
 
     @api.model
     def _get_purchase_line_name(self, order, line):
@@ -184,18 +183,19 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
         order_line_data = [('order_id', '=', order.id),
                            ('name', '=', name),
                            ('product_id', '=', item.product_id.id or False),
-                           ('date_planned', '=', item.line_id.date_required),
+                           ('account_id', '=', item.account_id.id or False),
+                           # ('date_planned', '=', item.line_id.date_required),
                            ('product_uom', '=', vals['product_uom']),
                            ('account_analytic_id', '=',
-                            item.line_id.analytic_account_id.id or False),
+                            item.account_analytic_id.id or False),
                            ]
         if not item.product_id:
             order_line_data.append(('name', '=', item.name))
-        if not item.line_id.procurement_id and \
-                item.line_id.procurement_id.location_id:
-            order_line_data.append(
-                ('location_id', '=',
-                 item.line_id.procurement_id.location_id.id))
+        # if not item.line_id.procurement_id and \
+        #         item.line_id.procurement_id.location_id:
+        #     order_line_data.append(
+        #         ('location_id', '=',
+        #          item.line_id.procurement_id.location_id.id))
         return order_line_data
 
     @api.multi
@@ -205,13 +205,8 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
         po_line_obj = self.env['purchase.order.line']
         pr_line_obj = self.env['purchase.request.line']
         purchase = False
-
         for item in self.item_ids:
             line = item.line_id
-            if item.product_qty <= 0.0:
-                raise exceptions.Warning(
-                    _('Enter a positive quantity.'))
-
             location = line.request_id.picking_type_id.default_location_dest_id
             if self.purchase_order_id:
                 purchase = self.purchase_order_id
@@ -220,43 +215,19 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
                     line.request_id.picking_type_id, location,
                     line.company_id)
                 purchase = purchase_obj.create(po_data)
-
-            # Look for any other PO line in the selected PO with same
-            # product and UoM to sum quantities instead of creating a new
-            # po line
-            domain = self._get_order_line_search_domain(purchase, item)
-            available_po_lines = po_line_obj.search(domain)
-            new_pr_line = True
-            if available_po_lines and not item.keep_description:
-                new_pr_line = False
-                po_line = available_po_lines[0]
-                po_line.purchase_request_lines = [(4, line.id)]
-            else:
-                po_line_data = self._prepare_purchase_order_line(purchase,
-                                                                 item)
-                if item.keep_description:
-                    po_line_data['name'] = item.name
-                po_line = po_line_obj.create(po_line_data)
-            new_qty = pr_line_obj._calc_new_qty(
-                line, po_line=po_line,
-                new_pr_line=new_pr_line)
-            po_line.product_qty = new_qty
-            po_line._onchange_quantity()
-            # The onchange quantity is altering the scheduled date of the PO
-            # lines. We do not want that:
-            po_line.date_planned = item.line_id.date_required
+            values = self._prepare_purchase_order_line(purchase,item)
+            purchase_order_line = po_line_obj.create(values)
             res.append(purchase.id)
-
-        return {
-            'domain': [('id', 'in', res)],
-            'name': _('RFQ'),
-            'view_type': 'form',
-            'view_mode': 'tree,form',
-            'res_model': 'purchase.order',
-            'view_id': False,
-            'context': False,
-            'type': 'ir.actions.act_window'
-        }
+            return {
+                'domain': [('id', 'in', res)],
+                'name': _('RFQ'),
+                'view_type': 'form',
+                'view_mode': 'tree,form',
+                'res_model': 'purchase.order',
+                'view_id': False,
+                'context': False,
+                'type': 'ir.actions.act_window'
+            }
 
 
 class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
@@ -266,33 +237,46 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
     wiz_id = fields.Many2one(
         'purchase.request.line.make.purchase.order',
         string='Wizard', required=True, ondelete='cascade',
-        readonly=True)
+       )
     line_id = fields.Many2one('purchase.request.line',
                               string='Purchase Request Line',
-                              required=True,
-                              readonly=True)
+                              )
     request_id = fields.Many2one('purchase.request',
                                  related='line_id.request_id',
                                  string='Purchase Request',
-                                 readonly=True)
+                                 )
     product_id = fields.Many2one('product.product', string='Product')
+
+    account_id = fields.Many2one('account.account', string='Compte',
+                                    required=True,
+                                    domain=[('deprecated', '=', False)],
+                                    help="The income or expense account related to the selected product.")
+
+    account_analytic_id = fields.Many2one('account.analytic.account',
+                                          'Analytic Account',
+                                          track_visibility='onchange')
+
     name = fields.Char(string='Description', required=True)
     product_qty = fields.Float(string='Quantity to purchase',
                                digits=dp.get_precision('Product UoS'),
-                               readonly=True)
-    product_uom_id = fields.Many2one('product.uom', string='UoM',
+                               )
+    product_uom_id = fields.Many2one('uom.uom', string='UoM',
                                      readonly=True)
     keep_description = fields.Boolean(string='Copy descriptions to new PO',
                                       help='Set true if you want to keep the '
                                            'descriptions provided in the '
                                            'wizard in the new PO.',
                                       default=False)
+    date_planned = fields.Date(string='Request Date', required=True,
+                                track_visibility='onchange',
+                                default=fields.Date.context_today)
 
     @api.onchange('product_id')
     def onchange_product_id(self):
         if self.product_id:
             name = self.product_id.name
             code = self.product_id.code
+            self.account_id = self.product_id.property_account_expense_id.id or self.product_id.categ_id.property_account_expense_categ_id
             sup_info_id = self.env['product.supplierinfo'].search([
                 '|', ('product_id', '=', self.product_id.id),
                 ('product_tmpl_id', '=', self.product_id.product_tmpl_id.id),
