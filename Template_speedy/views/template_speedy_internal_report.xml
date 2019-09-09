@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- by ang -->
+<odoo>
+    <data>
+
+        <report
+                id="optesis_report_header"
+                model="purchase.order"
+                string="Template Speedy"
+                report_type="qweb-pdf"
+                name="Template_speedy.report_Template_speedy_header_view"
+                file="Template_speedy.report_Template_speedy_header"
+                menu="True"
+        />
+        <template id="report_Template_speedy_header_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="Template_speedy.speedy_external_view">
+                        
+                        <div class="page">
+                            <div  style="width:100%;" class="backgroundimage">
+                                <img src="/Template_speedy/static/img/Speedy_foot.png" style="width:100%;height:auto"/>
+                            </div>
+                            <div class="row text-right">
+                                <div class="col-12" style="color:#105BAC;font-size:14px;padding-top:150px;padding-left:25px"> SPEEDY SERVICES ,MEMBRE DU RESEAU FRANCHISÉ DE SPEEDY</div>
+                            </div>
+                        </div>
+                        
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
