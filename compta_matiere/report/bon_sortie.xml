@@ -4,9 +4,242 @@
       <template id="bon_sortie">
           <t t-call="web.html_container">
               <t t-foreach="docs" t-as="o">
-                  <t t-call="web.external_layout">
-                      <div class="page">
-                          <h2>Bon de sortie définitive en attende de Anta</h2>
+                 <t t-call="compta_matiere.bon_sortie_external_view">
+                      <div class="page" style="">
+                          <style>
+                              
+                             
+                             
+                          </style>
+                        <div class="" style="border:2px solid;width:99%;padding:3px ">
+                                <table style="width:100%;border:1px solid;padding:2px;border-collapse:collapse;">
+                                    <th class="text-center" colspan="2" style="font-size:20px;height:30px;border:1px solid;border-right:2px solid;font-size:15px;font-weight:bold;" align="center">DESIGNATION DES MATIÉRES </th>
+                                        <th  colspan="4" class="text-center"  style="font-size:20px;height:30px;border:1px solid;border-right:2px solid;font-size:15px;font-weight:bold" align="center">CHIFFRES  COMPTABILISER</th>
+                                    <th  rowspan="3" class="text-center"  style="font-size:20px;height:30px;border:1px solid;border-right:2px solid;" align="center"><p style="padding:0;margin:0;font-size:15px;font-weight:bold">OBSERVATIONS</p></th>
+                                    <tr>
+                                        <td style="border:1px solid;border-right:2px solid;font-size:15px;" align="center" rowspan="2">
+                                                <p style="padding:0;margin:0;">N° Compte</p> <p style="padding:0;margin:0;">Nomenclature</p>
+                                                <p style="padding:0;margin:0;"> (2)</p>
+                                         </td>
+                                        <td style="border:1px solid;border-right:2px solid;font-size:15px;" align="center" rowspan="2">
+                                                <p style="padding:0;margin:0;">NATURE DES MATIERES ET ARTICLES</p> 
+                                         </td>
+                                        <td style="border:1px solid;border-right:2px solid;font-size:15px;font-weight:bold" align="center" colspan="2" >
+                                                <p style="padding:0;margin:0;">QUANTITÉS</p> 
+                                         </td>
+                                        <td style="border:1px solid;border-right:2px solid;font-size:15px;font-weight:bold" align="center" rowspan="2">
+                                                <p style="padding:0;margin:0;">PRIX UNITAIRE </p> 
+                                         </td>
+                                        <td style="border:1px solid;border-right:2px solid;font-size:15px;font-weight:bold" align="center" rowspan="2">
+                                                <p style="padding:0;margin:0;">MONTANT</p> 
+                                         </td>
+                                        
+                                    </tr>
+                                                <tr style="border:1px solid;"> 
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                 <p class="c" style="padding:0;margin:0;margin-left:10px;margin-right:10px">Nombre d'Unités (3)</p>
+
+                                         </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c" style="padding:0;margin:0;margin-left:10px;margin-right:10px">Nature des unités (4)</p>
+
+                                            </td>
+                                        
+                                         </tr>
+                                         <tr style="border:1px solid;"> 
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                         </tr>
+                                         <tr style="border:1px solid;"> 
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                         </tr>
+                                         <tr style="border:1px solid;"> 
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                         </tr>
+                                         <tr style="border:1px solid;"> 
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                         </tr>
+                                         <tr style="border:1px solid;"> 
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                         </tr>
+                                 
+                                    <tr style="border:1px solid;"> 
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c" style="margin-left:80px">TOTAUX: </p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                        <td style="border:1px solid;border-right:2px solid;">
+                                                <p class="c"><![CDATA[&nbsp;]]></p>
+                                            </td>
+                                         </tr>
+                                    
+                                    <table style="width:100%">
+                                        <tr style="border:1px solid;"> 
+                                        <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
+                                                <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>CERTIFICATION</p>
+                                                <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>Arrêté le présent bon à <![CDATA[&nbsp;]]> ......................... <![CDATA[&nbsp;]]> unités</p>
+                                            <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>représentant ue valeur de .........................   <![CDATA[&nbsp;]]>  francs </p>
+                                          
+                                               <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>dont je certifie l'entrée</p>
+                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>A <![CDATA[&nbsp;]]> ......................, le ...........................20........</p>
+                                              <p class="text-center" style="font-size:15px;font-weight:bold;font-style:italic"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>l'ordonnateur des matiéres</p>
+                                          
+                                        </td>
+                                        
+                                         <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
+                                               <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>AUGMENTATION DES PRISES EN CHARGE</p><div style="border-top:1px solid;width:25%;margin-left:30%;margin-top:-10px"></div>
+                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> Le Comptable Matiéres soussigné déclare ce jour  </p>
+                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> augmenter ses prises enCharge de ........................ unités représentant une valeur de  ........................................... francs  </p>
+                                               <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>A <![CDATA[&nbsp;]]> ......................, le ...........................20........</p>
+                                             <p class="text-left" style="font-size:15px;font-weight:bold;font-style:italic"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> Le Comptable Matiéres</p>
+                                             
+                                        </td>
+                                             <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
+                                                <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>RECEPISSE</p>
+                                                <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>Je soussigné ........................................  </p> <p>........................................ <![CDATA[&nbsp;]]> (4)</p>
+                                            <p class="text-left" style="font-size:15px">reconnais avoir reçus les matiéres portées au present bon. </p>
+                                          
+                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>A <![CDATA[&nbsp;]]> ......................, le ...........................20........</p>
+                                              
+                                          
+                                        </td>
+                                            
+                                            
+                                         <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
+                                                <p class="text-center" style="font-weight:bold;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>EMPLOI DE L 'IMPRIME</p>
+                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (1) Numérotation ininterrompue pour la gestion.  </p>
+                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (2) Dans l'ordre des piéces décrits sur les piéces justificatives ou  </p>
+                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> dans l'ordre des comptes de la nomenclature.  </p>
+                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (3) Nombre de litres ,de Kgs ,de Métres ,Nombre,etc ...... ou objets</p>
+                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (4) Timbre et Signature</p>
+                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (5) Marque,Code ,etc .....</p>
+                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> NB: Bon à établir  en trois exemplaires dont un destiné aux archives du Service.</p>
+                                        </td>
+                                        
+                                        
+                                         
+                                    </tr>
+                                        <div style="border-top:1px solid;width:100%"></div>
+                                        
+                                    </table>
+                                    
+                                    
+                                   
+                                </table>
+                            </div>
                       </div>
                   </t>
               </t>

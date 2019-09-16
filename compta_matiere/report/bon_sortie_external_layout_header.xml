@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="bon_sortie_external_layout_header">
+            <div class="header">
+                 <style>
+                                .Row
+                                {
+                                display: table;
+                                table-layout: fixed; /*Optional*/
+                                width:100%;
+
+                                }
+                                .Column
+                                {
+                                display: table-cell;
+                                background-color: white;
+
+                                /*Optional*/
+                                }
+                                .mytop{
+                                margin-top:-30px;
+                                }
+                                .petit_titre{
+                                font-size: 15px;
+                                }
+                                .reglagage_hr{
+                                border: 0.5px solid black;
+                                width:25%;
+                                height:1px;
+                                background-color:black;
+
+                                margin-left: 10%;
+                                }
+
+                                .normal_paragraph{
+                                font-size: 16px;
+                                }
+                                .margin-add{
+                                margin-top: 20px;
+                                }
+                                .margin-retrait{
+                                margin-top: 10px;
+                                }
+                                h6{
+                                text-align: center;
+                                margin-top:20%;
+                                }
+                                .margin-perso{
+                                margin-top:5%;
+                                margin-left:30px;
+                                }
+                                .margin-perso-left-right{
+                                margin-left:-10px;
+                                /*margin-right: 40%;*/
+                                }
+                                .myborder{
+                                border: 7px solid black;
+                                width: 1000%;
+                                margin-left:5px;
+                                }
+                                th{
+                           
+                                text-align:center;
+                                padding:3px;
+                        
+                                }
+                                .normal_paragraph1{
+                                    font-size:25px;
+                                    font-style:bold;
+                                font-weight:bold;
+                                }
+                                         
+                               
+                            </style>
+                          <div class="row">
+                              <div class="col-3">
+                                   <p  style="font-size:14px;margin-left:50px">
+                                        RÉPUBLIQUE DU SENEGAL
+                                    </p>
+                                    <div style="border-top:1px solid;width:18%;align:center;margin-top:-10px;margin-left:120px;"></div>
+                                    <p style="font-size:14px; margin-top:5px;margin-left:-5px;margin-top:-5px;font-weight:bold;">
+                                        MINISTERE:  <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>
+                                        ..........................................
+                                    </p>
+                                   <div style="border-top:1px solid;width:18%;align:center;margin-top:-10px;margin-left:120px"></div>
+                                    <p  style="font-size:14px;margin-top:5px;margin-left:15px">
+                                        SERVICE OU ETABLISSEMENT:  <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>
+
+                                    </p>
+                                     <p style="font-size:16px; margin-top:-20px;margin-left:-5px;font-weight:bold;">
+            
+                                        ....................................................................
+                                    </p>
+                                      <div style="border-top:1px solid;width:18%;align:center;margin-top:-10px;margin-left:120px"></div>
+                              </div>
+                              <div class="col-6 text-center" style="margin-top:10px;margin-right:-5%">
+                                  <h1 style=""  >BON DE SORTIE DEFINITIVE</h1>
+                                  <p style="font-size:25px;margin-left:-10px;" >DE L'EXISTANT  <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> N° ................... (1)  </p>
+                                  
+                              </div>
+                               <div class="col-3" style="margin-left:100px;margin-top:-2px">
+                                  <p style="font-size:12px;text-align:center;padding:0;margin:0;">MODÉLE N°2</p>
+                                                                          <p style="font-size:12px;margin-left:30px;padding:0;margin:0;font-weight:bold;">Instruction générale,Art.12 a,12 c,19 a</p>
+                                   <table style="width:100%;border-collapse: separate;border-spacing: 2px;" >
+                                       <td  height="50px" style="padding:8px;margin-left:10px;border-right:1px solid">
+                                         <p  style="font-size:12px;padding-left:30px;padding:0;margin:0;">Référence dela corresp.</p>   <p style="font-size:12px;margin-left:30px;padding:0;margin:0;">Comptabilité des deniers.</p>
+                                          
+                                           
+                                       </td>
+                                       
+                                       
+                                        <td height="50px" style="padding:8px;margin-left:20px;border-left:1px solid">
+                                          <p style="font-size:12px;margin-left:30px;padding:0;margin:0;">Année financiere</p>  <p style="font-size:12px;margin-left:30px;padding:0;margin:0;">Chapitre.</p>
+                                             <p style="font-size:12px;margin-left:30px;padding:0;margin:0;">N° du BE ,du BC ou du Mandat</p>  
+                                       </td>
+
+
+                                 
+                                       </table>
+                              </div>
+                          </div>
+                            
+
+
+                            
+            </div>
+             <div class="footer">
+                <style>
+                    .Row
+                    {
+                    display: table;
+                    table-layout: fixed; /*Optional*/
+                    width:100%;
+
+                    }
+                    .Column
+                    {
+                    display: table-cell;
+                    background-color: white;
+
+                    /*Optional*/
+                    }
+                    .mytop{
+                    margin-top:-30px;
+                    }
+                    .petit_titre{
+                    font-size: 15px;
+                    }
+                    .reglagage_hr{
+                    border: 0.5px solid black;
+                    width:25%;
+                    height:1px;
+                    background-color:black;
+
+                    margin-left: 10%;
+                    }
+
+                    .normal_paragraph{
+                    font-size: 17px;
+                    }
+                    .margin-add{
+                    margin-top: 20px;
+                    }
+                    .margin-retrait{
+                    margin-top: 10px;
+                    }
+                    h6{
+                    text-align: center;
+                    margin-top:20%;
+                    }
+                    .margin-perso{
+                    margin-top:5%;
+                    margin-left:30px;
+                    }
+                    .margin-perso-left-right{
+                    margin-left:-10px;
+                    /*margin-right: 40%;*/
+                    }
+                    .myborder{
+                    border: 7px solid black;
+                    width: 1000%;
+                    margin-left:5px;
+                    }
+                    th{
+                    border: 4px solid black;
+
+                    }
+                    td{
+                    border: 4px solid black;
+
+                    }
+                    tr{
+                    border: 2px solid black;
+
+                    }
+                    table{
+                    width: 100%;
+                    margin-left:-10px;
+                    margin-right:0px;
+                    margin-top:10px;
+                    margin-bottom: 30px;
+
+                    }
+                    .lefth6{
+                    margin-left: -105px;
+                    }
+                    #margin-end{
+                    margin-left:75px;
+                    margin-top: 17px;
+                    }
+                    .paragraphe{
+                    margin:1px;
+                    padding:1px;
+                    }
+
+                    th{
+                    text-align:center;
+                    margin:10px;
+                    }
+                    td{
+                    margin:10px;
+                    }
+                </style>
+<!--
+                <div class="Row" style="margin-top:20%; ">
+
+                    <hr style="border:2px solid black; background-color:black;"/>
+                </div>
+                <div class="Row" style="margin-top:5px;">
+                    <p class="normal_paragraph text-center">
+                        <span>Original du Bon de Commande à joindre à l’appui de la Facture en
+                            trois (03)
+                            exemplaires
+                        </span>
+                    </p>
+                </div>-->
+            </div>
+
+        </template>
+    </data>
+</odoo>
