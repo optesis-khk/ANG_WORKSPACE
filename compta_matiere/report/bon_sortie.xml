@@ -186,47 +186,55 @@
                                             </td>
                                          </tr>
                                     
-                                    <table style="width:100%">
+                                    <table style="width:100%;border-collapse:collapse;s">
                                         <tr style="border:1px solid;"> 
                                         <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
-                                                <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>CERTIFICATION</p>
-                                                <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>Arrêté le présent bon à <![CDATA[&nbsp;]]> ......................... <![CDATA[&nbsp;]]> unités</p>
-                                            <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>représentant ue valeur de .........................   <![CDATA[&nbsp;]]>  francs </p>
+                                                <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px;width:25%;font-size:13px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>CERTIFICATION</p><div style="border-top:1px solid;width:25%;margin-left:30%;margin-top:-10px;font-size:13px"></div>
+                                                <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>Arrêté le présent bon à <![CDATA[&nbsp;]]> .............</p>
+                                            <p class="text-left" style="font-size:13px">................................. <![CDATA[&nbsp;]]> unités</p>
+                                            <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>représentant ue valeur de ......... </p>
+                                          <p class="text-left" style="font-size:13px">................................................   <![CDATA[&nbsp;]]>  francs </p>
                                           
-                                               <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>dont je certifie l'entrée</p>
-                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>A <![CDATA[&nbsp;]]> ......................, le ...........................20........</p>
-                                              <p class="text-center" style="font-size:15px;font-weight:bold;font-style:italic"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>l'ordonnateur des matiéres</p>
+                                               <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>dont je certifie la sortie définitive.</p>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>A <![CDATA[&nbsp;]]> ................., le .....................20........</p>
+                                              <p class="text-center" style="font-size:13px;font-weight:bold;font-style:italic"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>l'ordonnateur des matières</p>
                                           
                                         </td>
                                         
-                                         <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
-                                               <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>AUGMENTATION DES PRISES EN CHARGE</p><div style="border-top:1px solid;width:25%;margin-left:30%;margin-top:-10px"></div>
-                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> Le Comptable Matiéres soussigné déclare ce jour  </p>
-                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> augmenter ses prises enCharge de ........................ unités représentant une valeur de  ........................................... francs  </p>
-                                               <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>A <![CDATA[&nbsp;]]> ......................, le ...........................20........</p>
-                                             <p class="text-left" style="font-size:15px;font-weight:bold;font-style:italic"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> Le Comptable Matiéres</p>
+                                         <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top;width:25%;">
+                                               <p class="" style="font-weight:bold;margin-top:-20px;margin-top:10px;font-size:13px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>DIMUNITION  DES PRISES EN CHARGE</p><div style="border-top:1px solid;width:25%;margin-left:30%;margin-top:-10px;font-size:13px"></div>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> Le Comptable Matières soussigné déclare ce jour  </p>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> diminuer ses prises en charge de ..................... </p>
+                                              <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> ............... unités représentant une valeur  </p>
+                                             <p class="text-left" style="font-size:13px">de .................................... francs</p>
+                                               <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>  A ......................, le ...........................20........</p>
+                                             <p class="text-left" style="font-size:13px;font-weight:bold;font-style:italic;margin-top:25px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> Le Comptable Matières(5)</p>
                                              
                                         </td>
-                                             <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
-                                                <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>RECEPISSE</p>
-                                                <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]>Je soussigné ........................................  </p> <p>........................................ <![CDATA[&nbsp;]]> (4)</p>
-                                            <p class="text-left" style="font-size:15px">reconnais avoir reçus les matiéres portées au present bon. </p>
+                                             <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top;">
+                                                <p class="text-center" style="font-weight:bold;margin-top:-20px;margin-top:10px;font-size:13px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>RECEPISSE</p><div style="border-top:1px solid;width:25%;margin-left:26%;margin-top:-10px;font-size:13px"></div>
+                                                <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>Je soussigné ..................................................  </p> <p class="text-left" style="font-size:13px">......................................................  <![CDATA[&nbsp;]]> (4)</p>
+                                            <p class="text-left" style="font-size:13px">reconnais avoir reçus les matiéres portées au</p>
+                                                  <p class="text-left" style="font-size:13px"> present bon. </p>
                                           
-                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>A <![CDATA[&nbsp;]]> ......................, le ...........................20........</p>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>A......................, le ...........................20........</p>
                                               
                                           
                                         </td>
                                             
                                             
                                          <td  height="100px" style="border:1px solid;border-right:2px solid;vertical-align:top">
-                                                <p class="text-center" style="font-weight:bold;margin-top:10px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>EMPLOI DE L 'IMPRIME</p>
-                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (1) Numérotation ininterrompue pour la gestion.  </p>
-                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (2) Dans l'ordre des piéces décrits sur les piéces justificatives ou  </p>
-                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> dans l'ordre des comptes de la nomenclature.  </p>
-                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (3) Nombre de litres ,de Kgs ,de Métres ,Nombre,etc ...... ou objets</p>
-                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (4) Timbre et Signature</p>
-                                             <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> (5) Marque,Code ,etc .....</p>
-                                              <p class="text-left" style="font-size:15px"><![CDATA[&nbsp;]]> NB: Bon à établir  en trois exemplaires dont un destiné aux archives du Service.</p>
+                                                <p class="text-center" style="font-weight:bold;margin-top:10px;font-size:13px"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>EMPLOI DE L 'IMPRIME</p><div style="border-top:1px solid;width:25%;margin-left:26%;margin-top:-10px;font-size:13px"></div>
+                                              <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> <strong>(1) </strong>Numérotation ininterrompue pour la gestion. </p>
+                                              <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> <strong>(2) </strong> Dans l'ordre des piéces décrits sur les piéces justificatives</p>
+                                             
+                                              <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> ou  dans l'ordre des comptes de la nomenclature.  </p>
+                                              <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> <strong>(3) </strong> Nombre de litres ,de Kgs ,de Métres ,Nombre,etc ...</p>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>  ou objets</p>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> <strong>(4) </strong> Nom et qualité</p>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> <strong>(5) </strong> Timbre et Signature</p>
+                                              <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]> NB: Bon à établir  en trois exemplaires dont un destiné </p>
+                                             <p class="text-left" style="font-size:13px"><![CDATA[&nbsp;]]>  aux archives du Service.</p>
                                         </td>
                                         
                                         

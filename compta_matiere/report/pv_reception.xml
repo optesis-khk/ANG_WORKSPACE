@@ -4,13 +4,629 @@
       <template id="pv_reception">
           <t t-call="web.html_container">
               <t t-foreach="docs" t-as="o">
-                  <t t-call="web.external_layout">
-                      <div class="page">
-                          <h2>PV reception en attende de Anta</h2>
+                  
+                       <t t-call="compta_matiere.pv_reception_external_view">
+                      <div class="page" style="padding-top:-30%">
+                                       <style>
+                                .Row
+                                {
+                                display: table;
+                                table-layout: fixed; /*Optional*/
+                                width:100%;
+
+                                }
+                                .Column
+                                {
+                                display: table-cell;
+                                background-color: white;
+
+                                /*Optional*/
+                                }
+                                .mytop{
+                                margin-top:-30px;
+                                }
+                                .petit_titre{
+                                font-size: 15px;
+                                }
+                                .reglagage_hr{
+                                border: 0.5px solid black;
+                                width:25%;
+                                height:1px;
+                                background-color:black;
+
+                                margin-left: 10%;
+                                }
+
+                                .normal_paragraph{
+                                font-size: 16px;
+                                }
+                                .margin-add{
+                                margin-top: 20px;
+                                }
+                                .margin-retrait{
+                                margin-top: 10px;
+                                }
+                                h6{
+                                text-align: center;
+                                margin-top:20%;
+                                }
+                                .margin-perso{
+                                margin-top:5%;
+                                margin-left:30px;
+                                }
+                                .margin-perso-left-right{
+                                margin-left:-10px;
+                                /*margin-right: 40%;*/
+                                }
+                                .myborder{
+                                border: 7px solid black;
+                                width: 1000%;
+                                margin-left:5px;
+                                }
+                                th{
+                           
+                                text-align:center;
+                                padding:3px;
+                        
+                                }
+                               
+                            </style>
+                          <div class="Row" style="margin-top:-5px;">
+
+
+                                <!--<h5 class="normal_paragraph">
+                                    <strong>Le Chef de Service Administratif
+                                        <br/>
+                                        <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>
+                                        <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>
+                                        <![CDATA[&nbsp;]]>et Financier
+                                    </strong>
+                                </h5>-->
+
+                                <div class="Column" style="width:60%;">
+                                    <p class="normal_paragraph">
+                                        Arrêté le présent p.v à: ............... unités que nous certifions avoir
+                                        récéptionnées
+                                    </p>
+                                </div>
+
+
+                                <div class="Column text-center" id="margin-end" style="width:35%; padding-left:30px; ">
+
+                                    <p  style="font-size:16px;margin-left:50px">
+                                        RÉPUBLIQUE DU SENEGAL
+                                    </p>
+                                    <div style="border-top:1px solid;width:15%;align:center;margin-top:-5px;margin-left:100px;margin-top:-10px;"></div>
+                                    <p style="font-size:16px; margin-top:5px;margin-left:-5px">
+                                        MINISTERE:  <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>
+                                        ..............................................
+                                    </p>
+                                    <p  style="font-size:16px;margin-top:10px; margin-left:40px;">
+                                        SERVICE OU ETABLISSEMENT:  <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>
+
+                                    </p>
+                                     <p style="font-size:16px; margin-top:5px;margin-left:-5px">
+            
+                                        ............................................................................
+                                    </p>
+                                      <div style="border-top:1px solid;width:15%;align:center;margin-top:-5px;margin-left:100px;margin-top:-10px;"></div>
+                                    
+            
+                                </div>
+
+                                <div class="Column text-right" style="; width:25%; margin-right:-40px;">
+                                  
+                                        <p class=" text-right" style="font-size:18px;margin-left:50px;padding-left:40px;">
+                                            MODELE N° 3
+                                        </p>
+                                  
+                                   
+                                        <p class="" style="font-size:20px;margin-left:18px;margin-left:40px;padding-left:50px;margin-top:-10px">
+                                            <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>Art.2b,7b,7c,<![CDATA[&nbsp;]]>19
+                                        </p>
+                                   
+                                </div>
+
+                            </div>
+                            <div class="Row" style="margin-top:50px;">
+
+
+                                <div class="Column text-left" style="margin-top:40px; width:100%;">
+
+                                    <p class="normal_paragraph text-left" style="margin-left:5px;margin-top:40px;">
+                                        Visa de l'I.O.F ou du C.R.F.
+                                    </p>
+
+                                </div>
+
+                            </div>
+                            <div class="Row" style="margin-top:-5px;  margin-top:30px;margin-top:40px;">
+
+
+                                <div class="Column text-left" style="; width:60%;padding-top:40px">
+
+                                    <p class="normal_paragraph text-left" style=" margin-left:10px;margin-top:40px;">
+                                        Enumération des piéces justificatives jointes (1)
+                                    </p>
+
+
+                                </div>
+                                <div class="Column" style="width:40%;margin-top:-30px;">
+
+                                 
+                                        <h1 class="" style="font-size:30px; font-style: italic;margin-top:-60px;">
+                                           <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> PROCES-VERBAL
+                                        </h1>
+                                        <h1 class="" style="font-size:30px;font-style: italic;">
+                                            <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>DE RECEPTION
+                                        </h1>
+                                        
+                                        <h1 class="" style="font-size:30px;  margin-top:10px;">
+                                             <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>N°.........
+                                        </h1>
+
+                                
+
+                                </div>
+
+                            </div>
+                            <div class="Row" style="margin-top:160px;margin-left:20px;">
+
+
+                                <div class="Column text-left" style="width:100%;padding-left:7%">
+
+
+                                    <p class="text-left normal_paragraph" style=" margin-left:54%;padding-botom:25px;">
+                                        Date de réception:
+
+                                    </p>
+                                    <p class="text-left normal_paragraph" style=" margin-left:54%;margin-top:45px">
+                                        Noms et qualités du fournisseur :
+                                    </p>
+                                    <p class="text-left normal_paragraph" style=" margin-left:54%;margin-top:45px">
+                                        Noms et qualités des membres de la Commission :
+                                    </p>
+
+
+                                </div>
+
+                            </div>
+                            <div class="Row text-right" style="margin-top:160px;">
+
+
+                                <div class="Column text-right" style="; width:100%;">
+
+                                    <p class="normal_paragraph text-left" style=" margin-left:10px;margin-bottom:10px;margin-top:-100px">
+                                        (1) Pieces justificatives jontes :1 Facture n°........................du..................................
+                                    </p>
+
+                                 <p class="normal_paragraph text-left" style=" margin-left:5px;margin-left:215px;margin-top:-5px;"><![CDATA[&nbsp;]]>1 Exemplaire du marché..................du .....................
+                                    </p>
+
+
+                                </div>
+
+
+                            </div>
+                      <div class="Row" style="width:100%;margin-top:140%">
+                                <h1 class="text-right" style="font-size:35px; margin-left:30px;font-style: italic;">
+                                            PROCES-VERBAL DE RECEPTION
+                                 </h1>
+                                     <p class="text-right" style="font-size:20px;margin-left:18px;margin-left:40px;margin-left:75%;margin-top:20px;align:right;">
+                                           MODELE N° 3 -Art.2b, 7b,7c,19b
+                                        </p>
+                            </div>
+                            <div class="" style="border:2px solid;width:100%;padding:3px;margin-left:-7px ">
+                                <table style="width:100%;border:1px solid;padding:2px;border-collapse:collapse;">
+                                    <th class="text-center" rowspan="2" style="font-size:20px;width:35%;height:30px;border:2px solid;">DESIGNATION DES MATIÉRES (2) </th>
+                                        <th  colspan="2" class="text-center"  style="font-size:20px;width:15%;height:30px;border:2px solid;">UNITÉS</th>
+                                                                      
+                                    <th  rowspan="2" class="text-center"  style="font-size:20px;width:10%;height:30px;border:2px solid;">PRIX UNITAIRES </th>
+                                                                       
+                                    <th  rowspan="2" class="text-center"  style="font-size:20px;width:10%;height:30px;border:2px solid;">MONTANT </th>
+                                                                         
+                                    <th  rowspan="2" class="text-center"  style="font-size:20px;width:30%;height:30px;border:2px solid;">OBSERVATIONS </th>
+                                    <tr style="border:1px solid">
+                                                 <td style="border:2px solid;width:7%" class="text-center">NOMBRE</td>
+                                           <td style="border:2px solid ;width:7%" class="text-center">NATURE</td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                              
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr><tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                                    <tr style="border:1px solid;">
+                                            <td style="border:2px dotted;border-right:2px solid ;width:35%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted; border-right:2px solid;width:7%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;10%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px dotted;border-right:2px solid;width:30%;border-left:2px solid">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+
+
+                                     <tr style="border:1px solid;">
+                                            <td style="border:2px solid;font-size:20px;padding-left:25px;width:35%">
+                                                    TOTAUX .....................................
+                                            </td>
+                                            <td style="border:2px solid;width:7%">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px solid; font-size:20px;background-color:#A9A9A9;width:7%">
+                                                .............................
+                                                .............................
+                                                .............................
+                                              
+                                             
+                                            </td>
+                                            <td style="border:2px solid;font-size:20px;background-color:#A9A9A9;width:10%">
+                                                .............................
+                                                .............................
+                                                .............................
+                                               
+                                            </td>
+                                            <td style="border:2px solid;width:10%">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                            <td style="border:2px solid;width:30%">
+                                                <![CDATA[&nbsp;]]>
+                                            </td>
+                                    </tr>
+                
+                                </table>
+                            </div>
+                            <div class="Row text-center" style="width:100%;padding-top:5px">
+                                <strong>
+                                    <p class="text-center" style="font-size:15px;margin-left:300px">
+                                          (2) -Dans le même ordre que celui qui existe sur les piéces justificatives
+                                        </p>
+                                </strong>
+                                
+                            </div>
+                                   
+                          
+                          
+                          
+                          
+                          
+                        
                       </div>
                   </t>
               </t>
-          </t>
+         </t>
+          
       </template>
     </data>
 </odoo>
+
+
+
+
+
