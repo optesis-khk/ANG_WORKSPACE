@@ -10,6 +10,14 @@
           name="compta_matiere.pv_reception"
           file="compta_matiere.pv_reception"
       />
+        <report
+          id="id_livre_journal"
+          model="stock.picking"
+          string="Livre-Journal"
+          report_type="qweb-pdf"
+          name="compta_matiere.livre_journal"
+          file="compta_matiere.livre_journal"
+      />
 
       <report
           id="id_bon_entree"
