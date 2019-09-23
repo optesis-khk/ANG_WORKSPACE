@@ -17,7 +17,7 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="Template_Bichri.bichri_external_view">   
                         
-                        <div class="page" style="background-image:url('/Template_Bichri/static/img/last.png');background-size:100% 100%;background-position: center; ">
+                        <div class="page" style="background-image:url('/Template_Bichri/static/img/last.png');background-size:100% 120%;background-position: top 100px; ">
             <div class="oe_structure"/>
 
             <h2 t-if="o.state == 'draft'">Demande d'offre #<span t-field="o.name"/></h2>
