@@ -46,6 +46,7 @@
                         <th><strong>Description</strong></th>
                         <th class="text-center"><strong>Date Req.</strong></th>
                         <th class="text-right"><strong>Quantité</strong></th>
+                        <th class="text-right"><strong>Prix Unitaire</strong></th>
                         <th class="text-right"><strong>Montant</strong></th>
                     </tr>
                 </thead>
@@ -62,6 +63,10 @@
                             <span t-field="line.product_qty"/>
                             <span t-field="line.product_uom.name" groups="uom.group_uom"/>
                         </td>
+                         <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                    <span t-field="line.price_unit"
+                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                                </td>
                         <td class="text-right">
                             <span t-field="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                         </td>
@@ -73,16 +78,18 @@
                 <div class="col-4">
                     <table class="table table-sm">
                         <tr class="border-black">
-                            <td><strong>Total</strong></td>
+                            <td><strong>Sous-total</strong></td>
                             <td class="text-right">
                                 <span t-field="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                             </td>
                         </tr>
                       
-                        <tr class="border-black o_total">
-                            <td><![CDATA[&nbsp;]]></td>
+                        <tr class="border-black">
+                             <td>
+                               <strong>Total</strong>
+                            </td>
                             <td class="text-right">
-                                <![CDATA[&nbsp;]]>
+                            <span t-field="o.amount_total"/>
                             </td>
                         </tr>
                     </table>
@@ -91,6 +98,9 @@
 
             <p t-field="o.notes"/>
             <div class="oe_structure"/>
+            <p  style="padding-top:400px">
+                            <![CDATA[&nbsp;]]>
+            </p>
         </div>
                         
                     </t>
