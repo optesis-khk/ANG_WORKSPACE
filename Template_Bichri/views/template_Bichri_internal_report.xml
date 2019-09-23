@@ -15,13 +15,83 @@
         <template id="report_Template_Bichri_header_view">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="Template_Bichri.bichri_external_view">
+                    <t t-call="Template_Bichri.bichri_external_view">   
                         
-                        <div class="page">
-                            <div class="backgroundimage" style="width:100%;">
-                                <img src="/Template_Bichri/static/img/last.png" style="width:100%;height:auto"/>
-                            </div>
-                        </div>
+                        <div class="page" style="background-image:url('/Template_Bichri/static/img/last.png');background-size:100% 100%;background-position: center; ">
+            <div class="oe_structure"/>
+
+            <h2 t-if="o.state == 'draft'">Demande d'offre #<span t-field="o.name"/></h2>
+            <h2 t-if="o.state in ['sent', 'to approve']">Purchase Order #<span t-field="o.name"/></h2>
+            <h2 t-if="o.state in ['purchase', 'done']">Purchase Order Confirmation #<span t-field="o.name"/></h2>
+            <h2 t-if="o.state == 'cancel'">Cancelled Purchase Order #<span t-field="o.name"/></h2>
+
+            <div id="informations" class="row mt32 mb32">
+                <div t-if="o.name" class="col-3 bm-2">
+                    <strong>Reference:</strong>
+                    <p t-field="o.name" class="m-0"/>
+                </div>
+                <div t-if="o.partner_ref" class="col-3 bm-2">
+                    <strong>Reference:</strong>
+                    <p t-field="o.partner_ref" class="m-0"/>
+                </div>
+                <div t-if="o.date_order" class="col-3 bm-2">
+                    <strong>Date Commande:</strong>
+                    <p t-field="o.date_order" class="m-0"/>
+                </div>
+            </div>
+
+            <table class="table table-sm o_main_table">
+                <thead>
+                    <tr>
+                        <th><strong>Description</strong></th>
+                        <th class="text-center"><strong>Date Req.</strong></th>
+                        <th class="text-right"><strong>Quantité</strong></th>
+                        <th class="text-right"><strong>Montant</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.order_line" t-as="line">
+                        <td>
+                            <span t-field="line.name"/>
+                        </td>
+                       
+                        <td class="text-center">
+                            <span t-field="line.date_planned" t-field-options='{"format": "dd-MMM-yyyy"}'/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.product_qty"/>
+                            <span t-field="line.product_uom.name" groups="uom.group_uom"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="total" class="row justify-content-end">
+                <div class="col-4">
+                    <table class="table table-sm">
+                        <tr class="border-black">
+                            <td><strong>Total</strong></td>
+                            <td class="text-right">
+                                <span t-field="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                        </tr>
+                      
+                        <tr class="border-black o_total">
+                            <td><![CDATA[&nbsp;]]></td>
+                            <td class="text-right">
+                                <![CDATA[&nbsp;]]>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <p t-field="o.notes"/>
+            <div class="oe_structure"/>
+        </div>
                         
                     </t>
                 </t>
