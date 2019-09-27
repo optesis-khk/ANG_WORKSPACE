@@ -1,8 +1,8 @@
 {
-    'name': 'Template Bichri',
+    'name': 'Template Speedy',
 
     'description': """
-               Bichri Template
+               Speedy Template
             """,
 
     'author': 'OPTESIS SA BY ANG',
@@ -18,8 +18,9 @@
     'depends': ['base', 'hr'],
 
     'data': [
-        'views/template_Bichri_internal_report.xml',
-        'views/bichri_external_view.xml',
+        'views/custom_format.xml',
+        'views/speedy_external_view.xml',
+        'views/template_speedy_internal_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
