@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- by ang -->
+<odoo>
+    <data>
+
+        <report
+                id="optesis_report_header_api_afrique"
+                model="sale.order"
+                string="Facture Api Afrique"
+                report_type="qweb-pdf"
+                name="api_afrique.api_afrique_header_view"
+                file="api_afrique.api_afrique_header"
+                menu="True"
+        />
+        
+       
+        <template id="api_afrique_header_view">
+            <t t-call="web.html_container">
+                <t t-call="api_afrique.api_afrique_external_view"/>
+                <t t-foreach="docs" t-as="o">
+            
+                        <div class="page">
+                            <div class="row">
+                                 <table>
+                                      <tr>
+                                     <th style="width:50%;"><![CDATA[&nbsp;]]></th>
+                                      <th style="width:20%;"><p style="font-size:14px;color:#0DA20D">Saisissez le numéro de facture:</p></th>
+                                        <th style="width:10%;"><p style="font-size:14px;color:#0DA20D"><![CDATA[&nbsp;]]></p></th>
+
+                                      <th style="width:20%;"><p style="font-size:14px;border:1px solid;background-color:#0DA20D"><span t-field="o.name"/></p></th>
+                                      </tr>
+                                      <tr>
+                                          <th style="width:50%;color:#0DA20D;font-size:14px"><p>Vous pouvez consultez,imprimer ou transformer en pdf cette facture</p></th>
+                                      <th style="width:20%;"><p style="font-size:14px;color:#0DA20D"><![CDATA[&nbsp;]]></p></th>
+                                      <th style="width:10%;"><p style="font-size:14px;color:#0DA20D"><![CDATA[&nbsp;]]></p></th>
+                                     <th style="width:20%;"><p style="font-size:14px;color:#0DA20D"><![CDATA[&nbsp;]]></p></th>
+
+                                      </tr>
+                                  </table>
+                            </div>
+                            <div style="border:1px solid #429294;padding:2px">
+                              <div style="border:1px solid #429294">
+                                  <div class="row" style="margin:30px">
+                                      
+                                    <div class="col-12">
+                                            <img class="img img-responsive" src="/api_afrique/static/img/logo_api_afrique.jpg"
+                                                 style="width:20%; margin-bottom:2px;height:50px" align="left"/>
+                                           <p style="font-size:15px;" align="right" ><strong> FACTURE N° FAA<span>FAA190620192</span></strong></p>
+                                        <p style="font-size:13px;margin-top:30px" align="right"><strong>Date:<span t-field="o.date_order"/></strong></p>
+                                    </div>
+
+                                  </div>
+                                  <table style="width:98%;padding:2px;border-collapse:collapse;margin:14px">
+                                      <td height="150" style="width:50%;border:1px solid;padding-left:14px;margin-top:-50px" align="left">
+                                          <p style="font-size:14px;margin:0;padding:0;margin-top:-15px">APIAFRIQUE</p>
+                                          <p style="font-size:14px;margin:0;padding:0">S.A.S au capital de 500 000 CFA</p>
+                                          <p style="font-size:14px;margin:0;padding:0">Keur Nabady au quartier Ngane</p>
+                                          <p style="font-size:14px;margin:0;padding:0">23000 Ngaparou /Sénégal</p>
+                                          <p style="font-size:14px ;margin:0;padding:0">Téléphone :77 831 29 08</p>
+                                          <p style="font-size:14px;margin:0;padding:0">Email:contact@apiafrique.com</p>
+                                          <p style="font-size:14px ;margin:0;padding:0">NINEA:006512885X1</p>
+                                          
+                                          
+                                      </td> 
+                                      <td height="150" style="width:50%;border:1px solid;padding-left:14px;" align="left">
+                                          <p style="font-size:14px ;margin:0;padding:0;margin-top:-15px">A: <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span  align="right" t-field="o.partner_id"/></p>
+                                          <p style="font-size:14px ;margin:0;padding:0">Adresse: <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> 
+                                              <span>
+                                                  
+                                              </span>
+                                              </p>
+                                          <p style="font-size:14px;margin:0;padding:0"><![CDATA[&nbsp;]]></p>
+                                          <p style="font-size:14px;margin:0;padding:0"><![CDATA[&nbsp;]]></p>
+                                          <p style="font-size:14px;margin:0;padding:0"><![CDATA[&nbsp;]]></p>
+                                          <p style="font-size:14px;margin:0;padding:0"><![CDATA[&nbsp;]]></p>
+                                            <p style="font-size:14px;margin:0;padding:0">Tél: <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <span>Télephone</span></p>
+                                            <p style="font-size:14px ;margin:0;padding:0">Code Client: <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> <span t-field="o.user_id"/></p>
+                                          
+                                      </td>
+                                  </table>
+                                  <table  style="width:98%;padding:2px;border-collapse:collapse;margin:14px;border:1px solid">
+                                      <thead>
+                                          <tr>
+                                              <th style="font-size:14px;color:white;border:1px solid black;border-right:1px solid white;background-color:#429294" align="left">Référence</th>
+                                    <th style="font-size:14px;color:white;border:1px solid black ;border-right:1px solid white;background-color:#429294" align="left">Description</th>
+                                                 <th style="font-size:14px;color:white;border:1px solid black;border-right:1px solid white;background-color:#429294" align="left">PU HT</th>
+                                                 <th style="font-size:14px;color:white;border:1px solid black;border-right:1px solid white;background-color:#429294" align="left">Quantité</th>
+                                                 <th style="font-size:14px;color:white;border:1px solid black;border-right:1px solid white;background-color:#429294" align="left">Montant HT</th>
+                                                 <th style="font-size:14px;color:white;border:1px solid black;border-right:1px solid white;background-color:#429294" align="left">Taux TVA</th>
+
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr t-foreach="o.order_line" t-as="prod">
+                                                  <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:15%" align="left"><p><span t-field="prod.product_id.default_code" /></p></td>
+                                           <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:40%" align="left"><p><span t-field="prod.product_id.type" /></p></td>
+                                           <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:10%" align="left"><p><span t-field="prod.price_unit" /></p></td>
+                                           <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:10%" align="left"><p><span t-field="prod.product_uom_qty" /></p></td>
+                                           <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:15%" align="left"><p><span t-field="prod.price_subtotal" /></p></td>
+                                           <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:10%" align="left"><p>18.00%</p></td>
+                                          </tr>
+                                       
+                                      </tbody>
+                                  </table>
+                                  <table>
+                                      <tr>
+                                          <td style="width:10%;font-size:1Opx;" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-weight:bold;margin-left:14px">Échéance:</p>
+                                          </td>
+                                          <td><p style="width:5%;" align="left"><![CDATA[&nbsp;]]></p></td>
+                                          <td style="font-size:1Opx;width:10%;" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;"><span>19/06/2019</span></p>
+                                          </td>
+                                          <td><p style="font-size:1Opx;width:20%;" align="left"><![CDATA[&nbsp;]]></p></td>
+                                          <td><p style="font-size:1Opx;width:15%;" align="left"><![CDATA[&nbsp;]]></p></td>
+                                          <td><p style="font-size:1Opx;width:10%;" align="left"><![CDATA[&nbsp;]]></p></td>
+                                          <td><p style="font-size:1Opx;width:20%;" align="left"><![CDATA[&nbsp;]]></p></td>
+                                          <td><p style="font-size:1Opx;width:15%;" align="left"><![CDATA[&nbsp;]]></p></td>
+                                          <td><p style="font-size:1Opx;width:10%;" align="left"><![CDATA[&nbsp;]]></p></td>
+                                          <td tyle="font-size:1Opx;width:15%;" colspan="2" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-weight:bold;margin-right:-30px">TOTAL HT</p>
+                                          </td>
+                                          <td style="font-size:14px;width:10%;" align="left">
+                                             <p style="font-size:14px;margin:0;padding:0;font-weight:bold;margin-left:-40px"><span>49576,27</span></p>
+                                          </td>
+                                         
+                                          
+                                      </tr>
+                                      <tr>
+                                          <td style="font-size:1Opx;width:10%;" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-weight:bold;margin-left:14px">Réglement</p>
+                                          </td>
+                                          <td style="width:5%;"><p ><![CDATA[&nbsp;]]></p></td>
+                                        <td style="font-size:1Opx;width:10%;" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;"><span>19/06/2019</span></p>
+                                          </td>
+                                          <td><p><![CDATA[&nbsp;]]></p></td>
+                                          <td><p><![CDATA[&nbsp;]]></p></td>
+                                          <td><p><![CDATA[&nbsp;]]></p></td>
+                                          <td><p><![CDATA[&nbsp;]]></p></td>
+                                          
+                                          <td><p><span><![CDATA[&nbsp;]]></span></p></td>
+                                         
+                                          
+                                      </tr>
+                                  </table>
+                                  <table>
+                                      <tr>
+                                          <th>
+                                           <p style="font-size:14px;margin:0;padding:0;font-weight:bold;margin-left:14px">Coordonnées bancaire:</p> 
+                                            </th>
+                                          <th>
+                                           <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">                                                       <span>Coordonnées bancaire:</span>
+                                              </p> 
+                                          </th>
+                                           
+                        
+                                      </tr>
+                                      
+                                  </table>
+                                   <table style="border-collapse:collapse">
+                                      <tr>
+                                          <td>
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">APIAFRIQUE-BNDE Agence Principale Dakar/Sénégal
+                                              </p> 
+                                            </td>
+                                          <td>
+                                           <p style="font-size:14px;margin:0;padding:0;margin-left:180px;font-style:italic">                                                       <span>Livraison:</span>
+                                              </p> 
+                                          </td>
+                                          <td>
+                                           <p style="font-size:14px;margin:0;padding:0;margin-left:50px;font-style:italic">                                                       <span><![CDATA[&nbsp;]]></span>
+                                              </p> 
+                                          </td>
+                                          
+                                           <td>
+                                           <p style="font-size:14px;margin:0;padding:0;margin-left:14px;font-style:italic;margin-right:-30px">                                                       <span>0,00</span>
+                                              </p> 
+                                          </td>
+                                           
+                        
+                                      </tr>
+                                      
+                                  </table>
+                                   <table style="border-collapse:collapse;margin-bottom:14px">
+                                      <tr>
+                                          <td style="width:30%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">RIB:SN169 01001 001801649201 67
+                                              </p> 
+                                            </td>
+                                  <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">
+                                              </p> 
+                                            </td>
+                                          <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">
+                                              </p> 
+                                            </td>
+                                          <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">
+                                              </p> 
+                                            </td>
+                                          <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">
+                                              </p> 
+                                            </td>
+                                          <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">
+                                              </p> 
+                                            </td>
+                                          <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:14px">
+                                              </p> 
+                                            </td>
+                                          <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:20px">
+                                              </p> 
+                                            </td>
+                                                  <td align="left" style="width:25%;color:white;background-color:#429294;border:1px solid black;padding-left:3px;margin-left:500px"><p style="font-size:14px">TOTAL TTC (en CFA)</p></td>
+                                                    <td align="right" style="width:10%;color:white;background-color:#429294;border:1px solid black;font-size:14px"><p style="font-size:14px"><span>58 500</span></p></td>
+                                            
+                                           
+                        
+                                      </tr>
+                                      
+                                  </table>
+                                  <table style="border-collapse:collapse;width:40%">
+                                      <tr>
+                                          <td align="left" style="width:25%;padding-left:3px;"><p style="font-size:14px;margin-left:60px;color:#B014D0">Ensemble,Changeons les règles !</p></td>
+                                           <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:50px">
+                                              </p> 
+                                            </td>
+                                          
+                                      </tr>
+                                        <tr>
+                                          <td align="left" style="width:25%;padding-left:3px;"><p style="font-size:14px;margin-left:100px;color:#429294">www.apiafrique.com</p></td>
+                                           <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:50px">
+                                              </p> 
+                                            </td>
+                                          
+                                      </tr>
+                                  </table>
+                                  <table style="border-collapse:collapse;margin-top:-20px;width:70%;margin-bottom:14px">
+                                      <tr>
+                                      <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:350px">
+                                                  <![CDATA[&nbsp;]]>
+                                              </p> 
+                                        </td>
+                                          <td align="left" style="width:10%;border:1px solid black;padding-left:3px;font-style:italic;border-right:1px dotted black;border-bottom:1px dotted black;"><p style="font-size:14px">TVA à 18 %</p>
+                                          </td>
+                                           <td align="right" style="width:15%;border:1px solid black;padding-left:3px;font-style:italic;border-bottom:1px dotted black;"><p style="font-size:14px"><span>8 923,73</span></p>
+                                          </td>
+                                      </tr>
+                                       <tr>
+                                      <td style="width:5%" align="left">
+                                              <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:100px"><![CDATA[&nbsp;]]>
+                                              </p> 
+                                        </td>
+                                          <td align="left" style="width:10%;border:1px solid black;padding-left:3px;font-style:italicfont-weight:bold"><p style="font-size:14px">Total TVA</p>
+                                          </td>
+                                           <td align="right" style="width:15%;border:1px solid black;padding-left:3px;font-style:italic;font-weight:bold"><p style="font-size:14px"><span>8 923,73</span></p>
+                                          </td>
+                                      </tr>
+                                  </table>
+                                  
+                                  
+                                  
+                            </div>  
+                            </div>
+                        </div>    
+                    </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+
+
+

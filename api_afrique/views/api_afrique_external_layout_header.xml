@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="api_afrique_external_layout_header">
+            <div class="header">
+                
+               
+            </div>
+
+            <div class="footer" style="padding-top:30px;">
+               
+            </div>
+        </template>
+    </data>
+</odoo>
