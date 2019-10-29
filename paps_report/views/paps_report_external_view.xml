@@ -3,7 +3,6 @@
 <odoo>
     <data>
         <template id="paps_report_external_view">
-
             <t t-if="not company">
                 <!-- Multicompany -->
                 <t t-if="company_id">
@@ -20,7 +19,6 @@
             <div class="header" style="margin-left:20px;padding-left:20px">
                 <div class="row">
                     <div class="col-12">
-                
                     </div>
                 </div>
             </div>
@@ -31,31 +29,7 @@
                 <t t-raw="0"/>
             </div>
          
-                 
-
-            <div class="footer o_standard_footer">
-               
-                
-               
-                        <div class="row"  style="">
-                            <div class="col-3 text-left" name="company_address" style="padding-left:5px;font-size:13px" t-if="report_type == 'pdf'">
-                                
-                                <span style="padding:0px;padding:0px">N°WAFA0031062019</span>
-                                <br/>
-                            Page:
-                            <span class="page"/>
-                            /
-                            <span class="topage"/>
-                        </div>
-                            <div  class="col-6 text-center">
-                                <span style="font-size:13px">Gift SAS-SN DAKAR 2016  B 22188 -Paps-www.paps.sn-Tel 78120 30 20 -hello@paps-app.com</span>
-                            </div>
-                             <div  class="col-3 text-right">
-                                <span style="font-size:13px">Facturation en ligne sur VosFactures.fr</span>
-                            </div>
-                          </div>
-            </div>
-          
+            
         </template>
     </data>
 </odoo>
