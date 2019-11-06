@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+
+           <record model="ir.ui.view" id="agent_tree">
+        <field name="name">agent.tree</field>
+        <field name="model">optesis.agent</field>
+        <field name="arch" type="xml">
+            <tree string="agent_list">
+                <field name="name"/>
+                <field name="service" />
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+        <record model="ir.ui.view" id="agent_form">
+        <field name="name">agent.form</field>
+        <field name="model">optesis.agent</field>
+        <field name="arch" type="xml">
+
+            <form string="agent_form">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2">
+                        <separator string="Agent" colspan="2"/>
+                        <field name="name"/>
+                        <field name="service"/>
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                    </group>
+                </group>
+
+            </form>
+
+        </field>
+    </record>
+
+         <act_window id="win002" name="Employés" res_model="optesis.agent" view_mode="tree,form"/>
+         <menuitem id="agent_menu_2" name="Employés" parent="asset_menu_3" action="win002" sequence="19"/>
+
+
+    </data>
+</odoo>

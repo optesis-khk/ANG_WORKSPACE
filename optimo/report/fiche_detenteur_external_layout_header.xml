@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- by ANG -->
+<odoo>
+    <data>
+
+        <template id="fiche_detenteur_external_view">
+
+
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="optimo.fiche_detenteur_external_layout_header"/>
+            <t t-raw="0"/>
+         
+
+
+            <!--            <div class="header">-->
+            <!--                <div class="row">-->
+            <!--                    <div class="col-xs-3">-->
+            <!--                       hello yes-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+            <!--            </div>-->
+
+            <!--            <div class="footer">-->
+
+            <!--            </div>-->
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,262 @@
+<odoo>
+    <data>
+
+       <record model="ir.ui.view" id="site_tree">
+        <field name="name">site.tree</field>
+        <field name="model">optesis.site</field>
+        <field name="arch" type="xml">
+            <tree string="site_list">
+                <field name="name"/>
+                <field name="region_id"/>
+                <field name="localite_id"/>
+                <field name="commune_id"/>
+                <field name="address"/>
+                <field name="description"/>
+                <field name="long"/>
+                <field name="lat"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="site_form">
+        <field name="name">site.form</field>
+        <field name="model">optesis.site</field>
+        <field name="arch" type="xml">
+            <form string="site_form">
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Site">
+                        <field name="name"/>
+                        <field name="region_id"/>
+                        <field name="localite_id" String="Localité" domain="[('region_id', '=', region_id)]"/>
+                        <field name="commune_id" String="Commune" domain="[('localite_id', '=', localite_id)]"/>
+                        <field name="address"/>
+                        <field name="description"/>
+                        <field name="long"/>
+                        <field name="lat"/>
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+         <record model="ir.ui.view" id="building_tree">
+        <field name="name">building.tree</field>
+        <field name="model">optesis.building</field>
+        <field name="arch" type="xml">
+            <tree string="building_list">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="site_id"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="building_form">
+        <field name="name">building.form</field>
+        <field name="model">optesis.building</field>
+        <field name="arch" type="xml">
+            <form string="building_form">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Building">
+                        <field name="name"/>
+                         <field name="description"/>
+                        <field name="site_id"/>
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+          <record model="ir.ui.view" id="level_tree">
+        <field name="name">level.tree</field>
+        <field name="model">optesis.level</field>
+        <field name="arch" type="xml">
+            <tree string="level_list">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="building_id" />
+                <field name="site_level"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="level_form">
+        <field name="name">level.form</field>
+        <field name="model">optesis.level</field>
+        <field name="arch" type="xml">
+            <form string="level_form">
+                <group>
+                    <group string="Level">
+                        <field name="name"/>
+                         <field name="description"/>
+                        <field name="site_level"/>
+                        <field name="building_id" domain="[('site_id', '=', site_level)]"/>
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+           <record model="ir.ui.view" id="room_tree">
+        <field name="name">room.tree</field>
+        <field name="model">optesis.room</field>
+        <field name="arch" type="xml">
+            <tree string="room_list">
+                 <field name="name"/>
+                 <field name="description"/>
+                 <field name="level_id"/>
+                 <field name="room_building"/>
+                 <field name="room_site"/>
+                 <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="room_form">
+        <field name="name">room.form</field>
+        <field name="model">optesis.room</field>
+        <field name="arch" type="xml">
+            <form string="room_form">
+
+                <group colspan="4">
+                    <group colspan="2" rowspan="2" string="Room">
+                        <field name="name"/>
+                         <field name="description"/>
+                         <field name="room_site"/>
+                         <field name="room_building" domain="[('site_id','=', room_site)]"/>
+                        <field name="level_id" domain="[('building_id','=', room_building)]"/>
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="optesis_region_tree">
+          <field name="priority" eval="15"/>
+          <field name="name">optesis.region.tree</field>
+          <field name="model">optesis.region</field>
+          <field name="arch" type="xml">
+              <tree string="Domaines">
+                  <field name="name"/>
+                  <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+              </tree>
+          </field>
+      </record>
+
+      <record model="ir.ui.view" id="optesis_region_form">
+        <field name="name">optesis.region.form</field>
+        <field name="model">optesis.region</field>
+        <field name="arch" type="xml">
+          <form string="Régions">
+            <group>
+              <group>
+                <field name="name"/>
+              </group>
+              <group>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+              </group>
+            </group>
+          </form>
+        </field>
+      </record>
+
+      <record model="ir.ui.view" id="optesis_localite_tree">
+            <field name="priority" eval="15"/>
+            <field name="name">optesis.localite.tree</field>
+            <field name="model">optesis.localite</field>
+            <field name="arch" type="xml">
+                <tree string="Domaines">
+                    <field name="name"/>
+                    <field name="region_id"/>
+                    <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="optesis_localite_form">
+          <field name="name">optesis.localite.form</field>
+          <field name="model">optesis.localite</field>
+          <field name="arch" type="xml">
+            <form string="Régions">
+              <group>
+                <group>
+                  <field name="name"/>
+                  <field name="region_id"/>
+                </group>
+                <group>
+                  <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                </group>
+              </group>
+            </form>
+          </field>
+        </record>
+
+        <record model="ir.ui.view" id="optesis_commune_tree">
+              <field name="priority" eval="15"/>
+              <field name="name">optesis.commune.tree</field>
+              <field name="model">optesis.commune</field>
+              <field name="arch" type="xml">
+                  <tree string="Domaines">
+                      <field name="name"/>
+                      <field name="localite_id"/>
+                      <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                  </tree>
+              </field>
+          </record>
+
+          <record model="ir.ui.view" id="optesis_commune_form">
+            <field name="name">optesis.commune.form</field>
+            <field name="model">optesis.commune</field>
+            <field name="arch" type="xml">
+              <form string="Régions">
+                <group>
+                  <group>
+                    <field name="name"/>
+                    <field name="localite_id"/>
+                  </group>
+                  <group>
+                    <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                  </group>
+                </group>
+              </form>
+            </field>
+          </record>
+
+        <act_window id="win0001" name="Régions" res_model="optesis.region" view_mode="tree,form"/>
+        <menuitem id="region_menu_2" name="Régions" parent="asset_menu_4" action="win0001" sequence="9"/>
+
+        <act_window id="action_localite" name="Localités" res_model="optesis.localite" view_mode="tree,form"/>
+        <menuitem id="localite_menu_2" name="Localités" parent="asset_menu_4" action="action_localite" sequence="10"/>
+
+        <act_window id="action_commune" name="Communes" res_model="optesis.commune" view_mode="tree,form"/>
+        <menuitem id="commune_menu_2" name="Communes" parent="asset_menu_4" action="action_commune" sequence="11"/>
+
+         <act_window id="win007" name="Sites" res_model="optesis.site" view_mode="tree,form"/>
+        <menuitem id="site_menu_2" name="Sites" parent="asset_menu_4" action="win007" sequence="12"/>
+
+        <act_window id="win008" name="Bâtiments" res_model="optesis.building" view_mode="tree,form"/>
+        <menuitem id="building_menu_2" name="Bâtiments" parent="asset_menu_4" action="win008" sequence="13"/>
+
+         <act_window id="win009" name="Niveaux" res_model="optesis.level" view_mode="tree,form"/>
+        <menuitem id="level_menu_2" name="Niveaux" parent="asset_menu_4" action="win009" sequence="14"/>
+
+        <act_window id="win010" name="Locaux" res_model="optesis.room" view_mode="tree,form"/>
+        <menuitem id="room_menu_2" name="Locaux" parent="asset_menu_4" action="win010" sequence="15"/>
+
+    </data>
+</odoo>

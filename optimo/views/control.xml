@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <record id="asset_control_form" model="ir.ui.view">
+            <field name="name">asset.control.form</field>
+            <field name="model">optesis.asset.control</field>
+            <field name="arch" type="xml">
+                <form string="Control">
+                    <sheet>
+                        <group>
+                            <field name="code_bar"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Chercher"  type="object" name="asset_search" class="oe_highlight"/>
+                        OU
+                        <button string="Annuler"  class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
