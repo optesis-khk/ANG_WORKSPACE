@@ -22,13 +22,12 @@ Ce module permet de faire l'inventaire des immobilisations de votre entreprise d
        'security/multi_company_view.xml',
        'views/sequence_control.xml',
        'views/sequence_transfert.xml',
-       'report/fiche_detenteur_header_view.xml',
-       'report/fiche_detenteur_external_layout_header.xml',
-       'report/custom_paper_format.xml',
-       'report/fiche_detenteur.xml',
+       'report/fiche_immobilisation_header_view.xml',
+       'report/fiche_immobilisation_external_layout_header.xml',
+       'report/fiche_immobilisation.xml',
+        'report/custom_paper_format.xml',
        'report/report.xml',
        'views/sequence_immo.xml',
-
     ],
     'test': [
     ],

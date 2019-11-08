@@ -1,0 +1,71 @@
+<odoo>
+  <data>
+    <report
+      id="asset_inv"
+      model="optesis.asset.asset"
+      name="optimo.asset_inventory"
+      report_type="qweb-pdf"
+      file="optimo.report"
+      string="Fiche d'inventaire"
+      />
+      <template id="asset_inventory">
+        <t t-call="web.html_container">
+          <t t-call="web.external_layout">
+            <div class="page">
+              <center><h4>FICHE INVENTAIRE DES IMMOBILISATIONS</h4></center>
+              <t t-set="rooms" t-value="[]"/>
+              <t t-foreach="docs" t-as="o">
+                <t t-set="rooms" t-value="rooms+[o.room]"/>
+              </t>
+              <br/>
+              <t t-set="temoin" t-value="0"/>
+              <t t-foreach="set(rooms)" t-as="room">
+                <t t-foreach="docs" t-as="o">
+                  <t t-if="temoin != o.room.id">
+                    <t t-if="room.id == o.room.id">
+                      <table class="table table-bordered table-condensed">
+                        <tr class="active">
+                          <td>Site: <span t-field="room.room_site"/></td>
+                          <td>Batiment: <span t-field="room.room_building"/></td>
+                          <td>Niveau:<span t-field="room.level_id"/> </td>
+                          <td>Local: <span t-field="room.name"/></td>
+                        </tr>
+                      </table>
+
+                      <table class="table table-bordered table-condensed">
+                        <thead>
+                          <tr>
+                            <th>Code Barre</th>
+                            <th>Standard</th>
+                            <th>Service</th>
+                            <th>Etat</th>
+                            <th>Marque</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <t t-foreach="docs" t-as="d">
+                            <t t-if="room.id == d.room.id">
+                              <tr>
+                                <td><span t-field="d.code_bar"/></td>
+                                <td><span t-field="d.product_id.name"/></td>
+                                <td><span t-field="d.service.name"/></td>
+                                <td><span t-field="d.condition"/> </td>
+                                <td><span t-field="d.brand"/> </td>
+                              </tr>
+                            </t>
+                          </t>
+                        </tbody>
+                      </table>
+
+                      <t t-set="temoin" t-value="o.room.id"/>
+                    </t>
+                  </t>
+                </t>
+              </t>
+            </div>
+          </t>
+        </t>
+      </template>
+
+    </data>
+  </odoo>

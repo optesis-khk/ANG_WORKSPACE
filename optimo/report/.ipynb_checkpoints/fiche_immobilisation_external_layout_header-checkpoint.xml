@@ -3,7 +3,7 @@
 <odoo>
     <data>
 
-        <template id="fiche_detenteur_external_view">
+        <template id="fiche_immobilisation_external_view">
 
 
             <t t-if="not o and doc">
@@ -16,7 +16,7 @@
                 <t t-set="company" t-value="res_company"/>
             </t>
 
-            <t t-call="optimo.fiche_detenteur_external_layout_header"/>
+            <t t-call="optimo.fiche_immobilisation_external_layout_header"/>
             <t t-raw="0"/>
          
 
