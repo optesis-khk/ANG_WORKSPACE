@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<report
+      id="fiche_immo"
+      model="optesis.asset.asset"
+      name="optimo.fiche_immobilisation"
+      report_type="qweb-pdf"
+      file="optimo.fiche_immobilisation"
+      string="Fiche Immobilisation"
+      />
+      <template id="fiche_immobilisation">
+          <t t-call="web.html_container">
+
+                  <t t-call="optimo.fiche_immobilisation_external_view">
+
+                      <div class="page" style="padding-top:20px">
+
+                              <style>
+                    .Row
+                    {
+                    display: table;
+                    table-layout: fixed; /*Optional*/
+                    width:100%;
+
+                    }
+                    .Column
+                    {
+                    display: table-cell;
+                    background-color: white;
+
+                    /*Optional*/
+                    }
+                    .mytop{
+                    margin-top:-30px;
+                    }
+                    .petit_titre{
+                    font-size: 15px;
+                    }
+                    .reglagage_hr{
+                    border: 0.5px solid black;
+                    width:25%;
+                    height:1px;
+                    background-color:black;
+
+                    margin-left: 10%;
+                    }
+
+                    .normal_paragraph{
+                    font-size: 17px;
+                    }
+                    .margin-add{
+                    margin-top: 20px;
+                    }
+                    .margin-retrait{
+                    margin-top: 10px;
+                    }
+                    h6{
+                    text-align: center;
+                    margin-top:20%;
+                    }
+                    .margin-perso{
+                    margin-top:5%;
+                    margin-left:30px;
+                    }
+                    .margin-perso-left-right{
+                    margin-left:-10px;
+                    /*margin-right: 40%;*/
+                    }
+                    .myborder{
+                    border: 7px solid black;
+                    width: 1000%;
+                    margin-left:5px;
+                    }
+
+                    .lefth6{
+                    margin-left: -105px;
+                    }
+                    #margin-end{
+                    margin-left:75px;
+                    margin-top: 17px;
+                    }
+                    .paragraphe{
+                    margin:1px;
+                    padding:1px;
+                    }
+
+
+
+                    .italic{
+                        font-style:italic;
+                    }
+                    .small_paragraph1{
+                         font-size:13px;
+
+
+                    }
+                    .marg0{
+                        padding:0px;
+                        margin:0px;
+                    }
+                 </style>
+
+             <t t-set="counter" t-value="0"/>
+             <t t-set="rooms" t-value="[]"/>
+              <t t-foreach="docs" t-as="o">
+                <t t-set="rooms" t-value="rooms+[o.room]"/>
+              </t>
+                 <t t-set="temoin" t-value="0"/>
+              <t t-foreach="set(rooms)" t-as="room">
+                <t t-foreach="docs" t-as="o">
+                  <t t-if="temoin != o.room.id">
+                    <t t-if="room.id == o.room.id">
+                        <div style="border:2px solid;padding:2px;margin-bottom:10px;">
+
+                              <table class="table table-bordered table-condensed " style="border:1px solid;width:100%;border-collapse:collapse;">
+                        <tr class="active">
+                          <td style="border:1px solid;padding:2px" align="left">Site: <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-field="room.room_site"/></td>
+                          <td  style="border:1px solid;padding:2px" align="left">Batiment: <span t-field="room.room_building"/></td>
+                        </tr>
+                         <tr class="active">
+                          <td  style="border:1px solid;padding:2px" align="left">Niveau:<span t-field="room.level_id"/> </td>
+                          <td  style="border:1px solid;padding:2px" align="left">Local: <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-field="room.name"/></td>
+                        </tr>
+                      </table>
+                        </div>
+             <div class="row" style="border:2px solid;padding:2px">
+
+
+                    <table style="width:100%;border:1px solid;border-collapse:collapse; ">
+                            <th style="border:1px solid">Code Barre</th>
+                            <th style="border:1px solid">Standard</th>
+                            <th style="border:1px solid">Service</th>
+                            <th style="border:1px solid">Etat</th>
+                            <th style="border:1px solid">Marque</th>
+                        <tbody>
+
+
+                             <t t-foreach="docs" t-as="d">
+                            <t t-set="counter" t-value="counter + 1"/>
+                            <t t-if="room.id == d.room.id">
+                              <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><span t-field="d.code_bar"/></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><span t-field="d.product_id.name"/></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><span t-field="d.service.name"/></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><span t-field="d.condition"/> </td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><span t-field="d.brand"/> </td>
+                              </tr>
+                            </t>
+                          </t>
+
+                        </tbody>
+                    <t t-if="counter &lt;15">
+                          <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                         <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        <tr>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:10%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:30%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:23%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:16%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                                <td align="center" class="small_paragraph1" style="border:1px solid ;width:21%;border-bottom:2px dotted"><![CDATA[&nbsp;]]></td>
+                              </tr>
+                        </t>
+                 </table>
+                  </div>
+                    <t t-set="temoin" t-value="o.room.id"/>
+                    </t>
+                  </t>
+                </t>
+              </t>
+            </div>
+         </t>
+
+          </t>
+      </template>
+    </data>
+</odoo>
