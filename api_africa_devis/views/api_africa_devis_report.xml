@@ -76,7 +76,8 @@
 
 
                                           <tr t-foreach="o.order_line" t-as="prod">
-                                           <t t-set="current_discount" t-value="current_discount+prod.discount"/>
+                                           <t t-set="current_discount" t-value="prod.discount"/>
+                                           <t t-set="total" t-value="total+o.amount_untaxed"/>
 
                                                   <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:15%" align="left"><p><span t-field="prod.product_id.default_code" /></p></td>
                                            <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:40%" align="left"><p><span t-field="prod.product_id.type" /></p></td>
@@ -84,8 +85,6 @@
                                            <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:10%" align="left"><p><span t-field="prod.product_uom_qty" /></p></td>
                                            <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:15%" align="left"><p><span t-field="prod.price_subtotal" /></p></td>
                                            <td style="font-size:14px;border-right:1px solid black;border-left:1px solid black;width:10%" align="left"><p>18.00%</p></td>
-
-
                                           </tr>
 
                                       </tbody>
@@ -108,7 +107,8 @@
                                             </p>
                                           </td>
                                             <td style="font-size:14px;width:30%;">
-                                             <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">                                                       <span>49576,27</span>
+                                             <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">
+                                                  <span t-field="o.amount_untaxed"/>
                                             </p>
                                           </td>
                                       </tr>
@@ -129,7 +129,8 @@
                                             </p>
                                           </td>
                                             <td style="font-size:14px;width:30%;">
-                                             <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">                                                                        <span  t-esc="current_discount"/><span>%</span>
+                                             <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">
+                                                <span  t-esc="current_discount"/><span>%</span>
                                             </p>
                                           </td>
                                       </tr>
@@ -151,9 +152,11 @@
                                               Montant de la Remise:
                                             </p>
                                           </td>
-                                            <td style="font-size:14px;width:30%;">
-                                             <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">                                                      <span  t-esc="current_discount * o.amount_untaxed " />                                            </p>
-                                          </td>
+                                          <td style="font-size:14px;width:30%;">
+                                           <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">
+                                              <span  t-esc="current_discount*o.amount_untaxed"/><span>%</span>
+                                          </p>
+                                        </td>
                                       </tr>
                                       <tr style="">
                                           <td style="width:40%" align="left">
@@ -205,7 +208,6 @@
                                               <p style="font-size:14px;margin:0;padding:0;font-style:italic;margin-left:50px">
                                               </p>
                                             </td>
-
                                       </tr>
                                         <tr>
                                           <td align="left" style="width:25%;padding-left:3px;"><p style="font-size:14px;margin-left:100px;color:#7034A0">www.apiafrique.com</p></td>

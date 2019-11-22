@@ -14,6 +14,7 @@
         'views/api_africa_external_view.xml',
         'views/custom_paper_format.xml',
         'views/api_africa_devis_report.xml',
+        'views/api_africa_facture_report.xml',
 
     ],
     'images': ['static/description/banner.jpg'],
