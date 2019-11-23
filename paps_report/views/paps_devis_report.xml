@@ -139,13 +139,13 @@
                                                 </p></td>
                                         </tr>
                                           <tr>
-                                            <td align="right"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px"><span>Montant de la remise <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span><span   t-esc="'{0:,.2f}'.format((current_subtotal * (discount_value))).replace(',', ' ')" /></p></td>
+                                            <td align="right"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px"><span>Montant de la remise <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span><span   t-esc="'{0:,.2f}'.format((current_subtotal * (discount_value/100))).replace(',', ' ')" /></p></td>
                                         </tr>
                                          <tr>
                                             <td align="right"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px"><span>Montant TVA(18%) <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span> <span  t-esc="'{0:,.2f}'.format(current_total_tva).replace(',', ' ')"/></p></td>
                                         </tr>
                                              <tr>
-                                            <td align="right"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px"><span>Total TTC<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span> <span t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value))).replace(',', ' ')"/></p></td>
+                                            <td align="right"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px"><span>Total TTC<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span> <span t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value/100))).replace(',', ' ')"/></p></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -154,7 +154,7 @@
                                 <div class="col-12 text-left">
                                     <table style="width:70%" align="left">
                                         <tr>
-                                            <td align="left"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px"><span>À payer <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span><span t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value))).replace(',', ' ')"/><span style="font-size:22px">Franc CFA</span></p></td>
+                                            <td align="left"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px"><span>À payer <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span><span t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value/100))).replace(',', ' ')"/><span style="font-size:22px">Franc CFA</span></p></td>
                                         </tr>
                                          <tr>
                                             <td align="left"> <p style="font-size:16px;font-weight:bold;margin:0px;padding:0px;">
@@ -168,7 +168,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="row text-center" style="margin-left:15%;padding-top:5%;margin-right:-5%">
+                            <div class="row text-center" style="margin-left:15%;padding-top:2%;margin-right:-5%">
                                 <div class="col-12">
                                     <p style="font-size:15px;font-weight:bold;padding:0;margin:0;margin-left:5%">Date et signature du client précédée de la mention</p>
                                      <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><p style="font-size:15px;font-weight:bold;margin-top:-20px;margin-left:5%">'Bon pour accord'</p>

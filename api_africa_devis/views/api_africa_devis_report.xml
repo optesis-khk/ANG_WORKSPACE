@@ -25,7 +25,7 @@
 
                                     <div class="col-12">
                                 <div class="">
-                                <img src="/api_africa_devis/static/img/log.jpg" style="width:25%;height:auto;margin-left:-5%"/>
+                                <img src="/api_africa_devis/static/src/images/log.jpg" style="width:25%;height:auto;margin-left:-5%"/>
                             </div>
                                            <p style="font-size:15px;padding-top:-7%;margin-top:-7%" align="right" ><strong> Devis N° FAA<span t-field="o.name"/></strong></p>
                                         <p style="font-size:13px;margin-top:-20px" align="right"><strong>Date:<span t-field="o.date_order"/></strong></p>
@@ -154,7 +154,7 @@
                                           </td>
                                           <td style="font-size:14px;width:30%;">
                                            <p style="font-size:14px;margin:0;padding:0;font-weight:bold;">
-                                              <span  t-esc="current_discount*o.amount_untaxed"/><span>%</span>
+                                              <span  t-esc="(current_discount/100)*o.amount_untaxed"/>
                                           </p>
                                         </td>
                                       </tr>

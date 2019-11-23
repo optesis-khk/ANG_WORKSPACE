@@ -235,7 +235,7 @@
                           <span>Montant de la Remise
                             <![CDATA[&nbsp;]]>
                             <![CDATA[&nbsp;]]>
-                          </span><span t-esc="'{0:,.2f}'.format(current_subtotal*(discount_value)).replace(',', ' ')"/></p>
+                          </span><span t-esc="'{0:,.2f}'.format(current_subtotal*(discount_value/100)).replace(',', ' ')"/></p>
                       </td>
                     </tr>
                     <tr>
@@ -254,7 +254,7 @@
                           <span>Total TTC<![CDATA[&nbsp;]]>
                             <![CDATA[&nbsp;]]>
                           </span>
-                          <span t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value))).replace(',', ' ')"/></p>
+                          <span t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value/100))).replace(',', ' ')"/></p>
                       </td>
                     </tr>
                   </table>
@@ -269,7 +269,7 @@
                           <span>À payer
                             <![CDATA[&nbsp;]]>
                             <![CDATA[&nbsp;]]>
-                          </span><span style="font-size:22px" t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value))).replace(',', ' ')"/>
+                          </span><span style="font-size:22px" t-esc="'{0:,.2f}'.format(current_total_ttc-(current_subtotal * (discount_value/100))).replace(',', ' ')"/>
                           <span style="font-size:22px">Franc CFA</span>
                         </p>
                       </td>
