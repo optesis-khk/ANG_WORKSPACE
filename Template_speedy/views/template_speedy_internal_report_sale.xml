@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- by ang -->
+<odoo>
+    <data>
+
+        <report
+                id="optesis_report_header_sale"
+                model="sale.order"
+                string="Template Speedy"
+                report_type="qweb-pdf"
+                name="Template_speedy.report_Template_speedy_header_view_sale"
+                file="Template_Bichri.template_speedy_internal_report_sale"
+                menu="True"
+        />
+        <template id="report_Template_speedy_header_view_sale">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="Template_speedy.speedy_external_view">   
+                        
+                           <div class="page" style="background-image:url('/Template_speedy/static/img/Speedy_foot.png');background-size:100% 100%;">
+
+        
+            <h2 align="right">
+                <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                 
+                    <span t-if="doc.state in ['draft','sent']">Devis # </span>
+                </t>
+                <span t-field="doc.name"/>
+            </h2>
+
+            <div class="row mt32 mb32" id="informations">
+                <div t-if="doc.client_order_ref" class="col-auto mw-100 mb-2">
+                    <strong>Reference:</strong>
+                    <p class="m-0" t-field="doc.client_order_ref"/>
+                </div>
+                <div t-if="doc.confirmation_date and doc.state not in ['draft','sent']" class="col-auto mw-100 mb-2">
+                    <strong>Date de Commande:</strong>
+                    <p class="m-0" t-field="doc.confirmation_date"/>
+                </div>
+                <div t-if="doc.date_order and doc.state in ['draft','sent']" class="col-auto mw-100 mb-2">
+                    <strong>Date de Devis:</strong>
+                    <p class="m-0" t-field="doc.date_order"/>
+                </div>
+                <div t-if="doc.user_id.name" class="col-auto mw-100 mb-2">
+                    <strong>Vendeur:</strong>
+                    <p class="m-0" t-field="doc.user_id"/>
+                </div>
+                <div name="payment_term" t-if="doc.payment_term_id" class="col-auto mw-100 mb-2">
+                    <strong>Modalités de paiement:</strong>
+                    <p class="m-0" t-field="doc.payment_term_id"/>
+                </div>
+                <div t-if="doc.validity_date and doc.state in ['draft', 'sent']" class="col-auto mw-100 mb-2">
+                    <strong>Date d'expiration:</strong>
+                    <p class="m-0" t-field="doc.validity_date"/>
+                </div>
+            </div>
+
+            <!-- Is there a discount on at least one line? -->
+            <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
+
+            <table class="table table-sm o_main_table">
+                <thead>
+                    <tr>
+                        <!-- TODO: remove in master -->
+                        <t t-set="colspan" t-value="5"/>
+                        <th class="text-left">Description</th>
+                        <th class="text-right">Quantité</th>
+                        <th class="text-right">Prix Unitaire</th>
+                        <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+                            <span>Disc.(%)</span>
+                            <!-- TODO: remove in master -->
+                            <t t-set="colspan" t-value="colspan+1"/>
+                        </th>
+                        <th class="text-right">
+                            <t groups="account.group_show_line_subtotals_tax_excluded">Montant</t>
+                            <t groups="account.group_show_line_subtotals_tax_included">Total</t>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="sale_tbody">
+
+                    <t t-set="current_subtotal" t-value="0"/>
+
+                    <t t-foreach="doc.order_line" t-as="line">
+
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+
+                        <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                            <t t-if="not line.display_type">
+                                <td><span t-field="line.name"/></td>
+                                <td class="text-right">
+                                    <span t-field="line.product_uom_qty"/>
+                                    <span t-field="line.product_uom" groups="uom.group_uom"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.price_unit"/>
+                                </td>
+                                <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+                                    <span t-field="line.discount"/>
+                                </td>
+                               
+                                <td class="text-right o_price_total">
+                                    <span t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                    <span t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                </td>
+                            </t>
+                            <t t-if="line.display_type == 'line_section'">
+                                <td colspan="99">
+                                    <span t-field="line.name"/>
+                                </td>
+                                <t t-set="current_section" t-value="line"/>
+                                <t t-set="current_subtotal" t-value="0"/>
+                            </t>
+                            <t t-if="line.display_type == 'line_note'">
+                                <td colspan="99">
+                                    <span t-field="line.name"/>
+                                </td>
+                            </t>
+                        </tr>
+
+                        <t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section')">
+                            <tr class="is-subtotal text-right">
+                                <td colspan="99">
+                                    <strong class="mr16">Sous total</strong>
+                                    <span t-esc="current_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </tbody>
+            </table>
+
+            <div class="clearfix">
+                <div id="total" class="row" name="total">
+                    <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                        <table class="table table-sm">
+                            <tr class="border-black o_subtotal" style="">
+                                <td><strong>Sous Total</strong></td>
+                                <td class="text-right">
+                                    <span t-field="doc.amount_untaxed"/>
+                                </td>
+                            </tr>
+                            <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
+                                <tr style="">
+                                    <t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
+                                        <td>
+                                            <span t-esc="amount_by_group[0]"/>
+                                            <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/></span>
+                                        </td>
+                                        <td class="text-right o_price_total">
+                                            <span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td>
+                                            <span t-esc="amount_by_group[0]"/>
+                                        </td>
+                                        <td class="text-right o_price_total">
+                                            <span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                            <tr class="border-black o_total">
+                                <td><strong>Total</strong></td>
+                                <td class="text-right">
+                                    <span t-field="doc.amount_total"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <p  style="padding-top:400px">
+                            <![CDATA[&nbsp;]]>
+            </p>
+        </div>
+                        
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
