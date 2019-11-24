@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- by khk -->
+<odoo>
+    <data>
+
+        <report
+                id="optesis_report_header"
+                model="purchase.order"
+                string="Bon De Commande Pikine"
+                report_type="qweb-pdf"
+                name="boncommandepikine.report_purchase_header_view"
+                file="boncommandepikine.report_purchase_header"
+                menu="True"
+        />
+        <template id="report_purchase_header_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+
+                    <t t-call="boncommandepikine.optesis_external_view">
+            <div class="page">
+                 <div class="" style="border:2px solid;color:#31B1CE;width:32%;align:center;margin-top:10%;padding:2px;margin-left:100px;margin-top:-10px;">
+                    
+                    <div class=" text-center" style="border:1px solid;color:#31B1CE;margin:2px;">
+                        <strong><h1 style="font-weight:bold;font-size:25px;margin-left:15px">BON DE COMMANDE</h1></strong>
+                    </div>
+                   
+                </div>
+                 <div style="margin-top:-10%" align="right" >
+                        
+                            <table  style="border 1px solid #31B1CE;width:35%;align:right;margin-left:40px;height:300px;margin-top:-130px;margin-bottom:40px;margin-right:15px">
+                           <thead style="border:1px solid #31B1CE" >
+                            <tr style="font-weight:bold;font-size:18px;color:#31B1CE;border 1px solid #31B1CE">
+                                <td class="text-center" style="font-weight:bold;font-size:20px;color:#31B1CE;border-right:1px solid #31B1CE" colspan="3">CONTROLE DE GESTION</td>
+                                
+                            </tr>
+                        </thead> 
+                            <tbody style="border:1px solid #31B1CE">
+
+                            <tr style="font-size:15px;color:#31B1CE;border 1px solid #31B1CE">
+                                 <td style="font-size:15px;color:#31B1CE;border-right:1px solid ;padding:2px;" >GESTION</td>
+                                  <td style="font-size:15px;color:#31B1CE;border-right:1px solid;padding:2px;" colspan="2"> <![CDATA[&nbsp;]]>
+      </td>
+                            </tr>
+                                 <tr style="font-size:15px;color:#31B1CE;border:1px solid ">
+                                 <td style="bold;font-size:15px;color:#31B1CE;border-right:1px solid;padding:2px; ">BUDGET</td>
+                              
+                         <td class=" text-center" style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE;padding:2px;">F</td>   
+                                     <td class=" text-center" style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE;padding:2px;">L</td>
+                                     
+                            </tr>
+                                
+                                   <tr style="font-size:15px;color:#31B1CE;border:1px solid ">
+                                 <td style="font-size:15px;color:#31B1CE;border-right: 1px solid #31B1CE;padding:2px;" >IMPUTATION</td>
+                                  <td style="font-size:15px;color:#31B1CE;border-right: 1px solid #31B1CE;padding:2px;" colspan="2"> <![CDATA[&nbsp;]]>
+      </td>
+                            </tr>
+                                
+                                
+                                  <tr style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE">
+                                 <td style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE;padding:2px;">TYPE DE DEPENSE</td>
+                            <td class=" text-center" style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE;padding:2px;">Marché</td>   
+                                     <td class=" text-center" style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE;padding:2px;">Eng.S</td>
+                                     
+                            </tr>
+                                   <tr style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE">
+                                 <td style="font-size:15px;color:#31B1CE;border 1px solid #31B1CE;padding:2px;" >PREVISION</td>
+                                  <td style="font-size:15px;color:#31B1CE;border: 1px solid #31B1CE;padding:2px;" colspan="2"> <![CDATA[&nbsp;]]>
+      </td>
+                            </tr>
+                                  <tr style="font-size:18px;color:#31B1CE;border: 1px solid #31B1CE;">
+                                 <td style="font-size:15px;color:#31B1CE;border :1px solid #31B1CE;padding:2px;" >ENGAGEMENTS ANTERIEURS</td>
+                                  <td style="font-size:15px;color:#31B1CE;border :1px solid #31B1CE;padding:2px;" colspan="2"> <![CDATA[&nbsp;]]>
+      </td>
+                            </tr>
+                                 <tr style="font-size:15px;color:#31B1CE;border :1px solid #31B1CE;">
+                                 <td style="font-size:15px;color:#31B1CE;border :1px solid #31B1CE;padding:2px;" >DISPONIBLE</td>
+                                  <td style="font-size:15px;color:#31B1CE;border :1px solid #31B1CE;padding:2px;" colspan="2"> <![CDATA[&nbsp;]]>
+      </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        
+                    </div>
+                <div  class="row" style="margin-top:-10%;padding-top:-10%;">
+                    <div class="col-6" style="margin-top:-7%;padding-top:-7%">
+                        <div style="height:30px;padding-left:10px;font-weight:bold;margin-top:-40px;color:#31B1CE">Références: ..................................................................................................................</div>
+                        <div style="height:30px;padding-left:10px;font-weight:bold;color:#31B1CE">Fournisseur: ...............................................................................................................</div>
+                        <div style="height:30px;padding-left:10px;font-weight:bold;color:#31B1CE">Service demandeur: .......................................................................................................</div>
+                    </div>
+               
+                    
+                  
+                <div class="row">
+                <div style="border:2px solid #31B1CE;padding:2px;color:#31B1CE">
+                    <table class="table table-condensed table-bordered" style="height:600px;border:1px solid #31B1CE;border-color:#31B1CE ">
+                        <thead>
+                            <tr>
+                                <td class="description-title" style="color:#31B1CE;border:1px solid #31B1CE ">N° D'ORDRE</td>
+                                <td class="quantity-title" style="color:#31B1CE;border:1px solid #31B1CE ">DESIGNATION</td>
+                                <td class="quantity-title" style="color:#31B1CE;border:1px solid #31B1CE ">QUANTITE</td>
+                                <td class="price-title" style="color:#31B1CE;border:1px solid #31B1CE ">PRIX UNITAIRE</td>
+                                <td class="total-title" style="color:#31B1CE;border:1px solid #31B1CE ">MONTANT</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr t-foreach="o.order_line" t-as="l" style="border-right:1px solid #31B1CE;color:#31B1CE">
+                                <td style="border:1px solid #31B1CE;color:#31B1CE">
+                                    <span t-field="l.product_id"></span>
+                                </td>
+                                <td style="border:1px solid #31B1CE ;text-align:center;color:#31B1CE">
+                                    ---
+                                </td>
+                                <td style="text-align:center;border:1px solid #31B1CE;color:#31B1CE">
+                                    <span t-field="l.product_qty"></span>
+                                </td>
+                                <td style="text-align:right;border:1px solid #31B1CE;color:#31B1CE">
+                                    <span t-field="l.price_unit"/>
+                                </td>
+                                <td style="text-align:right;border:1px solid #31B1CE;color:#31B1CE">
+                                    <span t-field="l.price_subtotal"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                    </table>
+
+                    <table>
+                    <tr style="border:1px solid #31B1CE">
+                        <td style="font-weight: bold;font-style: italic;color:#31B1CE">TOTAL</td>
+                        <td style="font-weight: bold;font-style: italic;color:#31B1CE">
+                                    <span t-field="o.amount_total"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </tr>
+                    </table>
+                    </div>
+
+
+                    <span style="font-weight: bold;margin-top:10px;color:#31B1CE">Arrété le présent Bon de Commande à la somme de: </span><span t-field="o.amount_text" style="color:#31B1CE"></span>
+                 <div style="display: table-cell;padding-top:20px;">
+                        <div style="display: table-cell;font-weight: bold;color:#31B1CE"><span><u style="color:#31B1CE">Le SAF</u></span></div>
+                        <div style="display: table-cell;padding-left:95px;font-weight: bold;color:#31B1CE"><span><u style="color:#31B1CE">Le Contrôleur de Gestion</u></span></div>
+                        <div style="display: table-cell;padding-left:240px;font-weight: bold;color:#31B1CE"><span><u style="color:#31B1CE">Le Directeur</u></span></div>
+                    </div>
+                </div>
+                </div>
+         </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
