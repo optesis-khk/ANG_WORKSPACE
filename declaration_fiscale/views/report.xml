@@ -1,0 +1,12 @@
+<odoo>
+  <data>
+    <report
+       id="action_report_trimestre_tier"
+       model="report.declaration_fiscale.report_trimestre_tier"
+       string="Etat trimestriel des sommes versées a des tiers"
+       report_type="qweb-pdf"
+       name="declaration_fiscale.report_trimestre_tier"
+       file="declaration_fiscale.report_trimestre_tier"
+  />
+  </data>
+</odoo>

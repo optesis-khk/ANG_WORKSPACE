@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- wizard pour Etat trimestriel des sommmes versées à des tiers -->
+    <record id="trimestriel_loyer_report_view" model="ir.ui.view">
+      <field name="name">trimestriel loyer Wizard</field>
+      <field name="model">trimestriel.loyer.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Période">
+              <group>
+                <field name="debut"/>
+              </group>
+              <group>
+                <field name="fin"/>
+              </group>
+            </group>
+          </sheet>
+          <footer>
+            <button name="action_save" type="object" string="Imprimer" class="oe_highlight pull-right"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_trimestriel_loyer_wizard" model="ir.actions.act_window">
+      <field name="name">Généré raport trimestriel pour un tier</field>
+      <field name="res_model">trimestriel.loyer.wizard</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="trimestriel_loyer_report_view"/>
+      <field name="target">new</field>
+    </record>
+
+    <!-- wizard pour Etat annuel des sommmes versées à des tiers -->
+    <record id="annuel_loyer_report_view" model="ir.ui.view">
+      <field name="name">annuel loyer Wizard</field>
+      <field name="model">annuel.loyer.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Période">
+              <group>
+                <field name="debut"/>
+              </group>
+              <group>
+                <field name="fin"/>
+              </group>
+            </group>
+          </sheet>
+          <footer>
+            <button name="action_save" type="object" string="Imprimer" class="oe_highlight pull-right"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_annuel_loyer_wizard" model="ir.actions.act_window">
+      <field name="name">Généré raport annuel pour un tier</field>
+      <field name="res_model">annuel.loyer.wizard</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="annuel_loyer_report_view"/>
+      <field name="target">new</field>
+    </record>
+
+  </data>
+</odoo>

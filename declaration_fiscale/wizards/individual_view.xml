@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- wizard pour Etat trimestriel des sommmes versées à des tiers -->
+    <record id="trimestriel_individual_report_view" model="ir.ui.view">
+      <field name="name">trimestriel Individual Wizard</field>
+      <field name="model">trimestriel.individual.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+
+            <group string="Période">
+              <group>
+                <field name="debut"/>
+              </group>
+              <group>
+                <field name="fin"/>
+              </group>
+            </group>
+
+            <footer>
+              <button name="check_report" type="object" string="Imprimer" default_focus="1" class="oe_highlight"/>
+              or
+              <button string="Cancel" class="oe_link" special="cancel" />
+            </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_trimestriel_individual_wizard" model="ir.actions.act_window">
+      <field name="name">Généré raport trimestriel pour un tier</field>
+      <field name="res_model">trimestriel.individual.wizard</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="trimestriel_individual_report_view"/>
+      <field name="target">new</field>
+    </record>
+
+    <!-- wizard pour Etat annuel des sommmes versées à des tiers -->
+    <record id="annuel_individual_report_view" model="ir.ui.view">
+      <field name="name">annuel Individual Wizard</field>
+      <field name="model">annuel.individual.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Période">
+              <group>
+                <field name="debut"/>
+              </group>
+              <group>
+                <field name="fin"/>
+              </group>
+            </group>
+          </sheet>
+          <footer>
+            <button name="action_save" type="object" string="Imprimer" class="oe_highlight pull-right"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_annuel_individual_wizard" model="ir.actions.act_window">
+      <field name="name">Généré raport annuel pour un tier</field>
+      <field name="res_model">annuel.individual.wizard</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="annuel_individual_report_view"/>
+      <field name="target">new</field>
+    </record>
+
+  </data>
+</odoo>

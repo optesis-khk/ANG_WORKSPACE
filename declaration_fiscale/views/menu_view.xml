@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <menuitem id="menu_declaration_fiscale" name="Etat des déclarations fiscales" parent="account.menu_finance_reports" sequence="10"/>
+    <menuitem id="trimestriel_individual_report" name="Etat trimestriel des sommmes versées à des tiers" action="action_trimestriel_individual_wizard" parent="menu_declaration_fiscale" sequence="1"/>
+    <menuitem id="trimestriel_loyer_report" name="Etat trimestriel des sommmes versées à des loyer" action="action_trimestriel_loyer_wizard" parent="menu_declaration_fiscale" sequence="2"/>
+    <menuitem id="annuel_individual_report" name="Etat annuel des sommmes versées à des tiers" action="action_annuel_individual_wizard" parent="menu_declaration_fiscale" sequence="3"/>
+    <menuitem id="annuel_loyer_report" name="Etat annuel des sommmes versées à des loyer" action="action_annuel_loyer_wizard" parent="menu_declaration_fiscale" sequence="4"/>
+  </data>
+</odoo>
