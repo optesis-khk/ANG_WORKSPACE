@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_annuel_loyer">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-call="web.internal_layout">
+          <div class="page">
+            <center><h1>Hello World</h1></center>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>

@@ -6,14 +6,26 @@
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
+        <field name="vat" position="after">
+          <field name="nature" required="1"/>
+          <field name="qualite" required="1"/>
+        </field>
         <xpath expr="//notebook[last()]" position="inside">
           <page string="Déclarations fiscales">
-            <group string="Déclarations">
+            <group string="Déclarations trimestriel" attrs="{'invisible':[('company_type', '=', 'company')]}">
               <group>
-                <field name="honoraire"/>
+                <field name="honoraire_trim"/>
               </group>
               <group>
-                <field name="loyer"/>
+                <field name="loyer_trim"/>
+              </group>
+            </group>
+            <group string="Déclarations annuel">
+              <group>
+                <field name="honoraire_annuel"/>
+              </group>
+              <group>
+                <field name="loyer_annuel"/>
               </group>
             </group>
           </page>

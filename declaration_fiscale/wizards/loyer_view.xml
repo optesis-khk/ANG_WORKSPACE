@@ -8,24 +8,21 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <group string="Période">
-              <group>
-                <field name="debut"/>
-              </group>
-              <group>
-                <field name="fin"/>
-              </group>
+            <group string="Selection periode fiscale">
+              <field name="exercice_id" required="1"/>
             </group>
           </sheet>
           <footer>
-            <button name="action_save" type="object" string="Imprimer" class="oe_highlight pull-right"/>
+            <button name="check_report" type="object" string="Imprimer" default_focus="1" class="oe_highlight"/>
+            or
+            <button string="Annuler" class="oe_link" special="cancel" />
           </footer>
         </form>
       </field>
     </record>
 
     <record id="action_trimestriel_loyer_wizard" model="ir.actions.act_window">
-      <field name="name">Généré raport trimestriel pour un tier</field>
+      <field name="name">Généré raport trimestriel pour un loyer</field>
       <field name="res_model">trimestriel.loyer.wizard</field>
       <field name="type">ir.actions.act_window</field>
       <field name="view_type">form</field>
@@ -41,24 +38,21 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <group string="Période">
-              <group>
-                <field name="debut"/>
-              </group>
-              <group>
-                <field name="fin"/>
-              </group>
+            <group string="Selection periode fiscale">
+              <field name="exercice_id" required="1"/>
             </group>
           </sheet>
           <footer>
-            <button name="action_save" type="object" string="Imprimer" class="oe_highlight pull-right"/>
+            <button name="check_report" type="object" string="Imprimer" default_focus="1" class="oe_highlight"/>
+            or
+            <button string="Annuler" class="oe_link" special="cancel" />
           </footer>
         </form>
       </field>
     </record>
 
     <record id="action_annuel_loyer_wizard" model="ir.actions.act_window">
-      <field name="name">Généré raport annuel pour un tier</field>
+      <field name="name">Généré raport annuel pour un loyer</field>
       <field name="res_model">annuel.loyer.wizard</field>
       <field name="type">ir.actions.act_window</field>
       <field name="view_type">form</field>
