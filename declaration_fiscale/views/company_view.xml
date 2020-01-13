@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_company_form_inherit">
+      <field name="name">res.company.form.inherit</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="arch" type="xml">
+        <field name="vat" position="after">
+          <field name="lc"/>
+        </field>
+        <xpath expr="//notebook[last()]" position="inside">
+          <page string="Autres informations">
+            <group string="Informations complémentaire">
+              <group>
+                <field name="sigle"/>
+                <field name="forme"/>
+              </group>
+              <group>
+                <field name="profession"/>
+              </group>
+            </group>
+            <group string="Nom et adresse du comptable">
+              <group>
+                <field name="nom_comptable" domain="[('supplier', '=', True)]"/>
+                <field name="tel_comptable"/>
+              </group>
+              <group>
+                <field name="bp_comptable"/>
+              </group>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

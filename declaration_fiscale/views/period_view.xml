@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="period_form_view">
+      <field name="name">period.form</field>
+      <field name="model">optesis.period</field>
+      <field name="arch" type="xml">
+        <form string="Période fiscale">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="name" placeholder="Période fiscale" required="1"/>
+              </h1>
+            </div>
+
+            <group>
+              <group>
+                <label for="debut" string="Période"/>
+                <div>
+                  <field name="debut" required="1" class="oe_inline"/> - <field name="fin" required="1" class="oe_inline"/>
+                </div>
+              </group>
+              <group>
+                <field name="code"/>
+              </group>
+            </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="period_tree_view">
+      <field name="name">period.tree</field>
+      <field name="model">optesis.period</field>
+      <field name="arch" type="xml">
+        <tree string="liste période fiscale">
+          <field name="name"/>
+          <field name="debut"/>
+          <field name="fin"/>
+          <field name="code"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>

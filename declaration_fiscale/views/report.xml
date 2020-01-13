@@ -1,0 +1,39 @@
+<odoo>
+  <data>
+    <report
+       id="action_report_trimestre_tier"
+       model="report.declaration_fiscale.report_trimestre_tier"
+       string="Etat trimestriel des sommes versées a des tiers"
+       report_type="qweb-pdf"
+       name="declaration_fiscale.report_trimestre_tier"
+       file="declaration_fiscale.report_trimestre_tier"
+  />
+
+  <report
+     id="action_report_annuel_tier"
+     model="report.declaration_fiscale.report_annuel_tier"
+     string="Etat annuel des sommes versées a des tiers"
+     report_type="qweb-pdf"
+     name="declaration_fiscale.report_annuel_tier"
+     file="declaration_fiscale.report_annuel_tier"
+  />
+
+  <report
+     id="action_report_trimestre_loyer"
+     model="report.declaration_fiscale.report_trimestre_loyer"
+     string="Etat trimestriel des sommes versées a des loyers"
+     report_type="qweb-pdf"
+     name="declaration_fiscale.report_trimestre_loyer"
+     file="declaration_fiscale.report_trimestre_loyer"
+  />
+
+  <report
+     id="action_report_annuel_loyer"
+     model="report.declaration_fiscale.report_annuel_loyer"
+     string="Etat annuel des sommes versées a des loyer"
+     report_type="qweb-pdf"
+     name="declaration_fiscale.report_annuel_loyer"
+     file="declaration_fiscale.report_annuel_loyer"
+  />
+  </data>
+</odoo>

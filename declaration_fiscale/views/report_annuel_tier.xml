@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_annuel_tier">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <div class="page">
+          <div class="row" style="width:100%">
+
+            <div class="col-12" align="center">
+              <table style="width:100%;">
+                <tr>
+                  <td align="center" style=";width:30%">
+                    <p style="font-size:20px;margin:0px padding:0px;margin-top:-5px">
+                      <span>
+                        RÉPUBLIQUE DU SENEGAL
+                      </span>
+                    </p>
+                    <p style="width:30%;align:center;border-bottom:2px solid;font-size:20px;margin-left:40px;margin-top:-5px"></p>
+                    <p style="align:left;font-size:20px;margin-top:-5px">
+                      <span>
+                        MINISTERE DE L'ECONOMIE
+                        <br/>
+                        <![CDATA[&nbsp;]]>
+                        <![CDATA[&nbsp;]]>
+                        <![CDATA[&nbsp;]]>
+                        <![CDATA[&nbsp;]]>
+                        <![CDATA[&nbsp;]]>
+                        ET DES FINANCES
+                      </span>
+                    </p>
+                    <p style="width:30%;align:center;border-bottom:2px solid;font-size:20px;margin-left:40px;margin-top:-5px"></p>
+                    <p style="align:left;font-size:20px;margin-top:-5px">
+                      <span>
+                        DIRECTION GENERALE
+                        <br/>
+                        DES IMPOTS ET DES DOMAINES
+                      </span>
+                    </p>
+                    <p style="width:30%;align:center;border-bottom:2px solid;margin-left:40px;font-weight:bold;margin-top:-5px"></p>
+                    <p style="align:left;font-size:23px;margin-top:5px;font-weight:bold;">
+                      <span>
+                        DIRECTION DES IMPOTS
+                      </span>
+                    </p>
+s   </td>
+                  <td align="left" style="width:65%">
+
+                    <p style="align:left;font-weight:bold;font-size:30px;margin-top:-10px;margin-left:55px;margin-top:-20px">
+                      <span>
+                        ETAT RECAPITULATIF ANNUEL <br/> Des REMUNERATIONS Versées en
+                      </span>
+                    </p>
+                    <p style="align:center;font-size:16px;margin:0px padding:0px;margin-left:50px;font-weight:bold;margin-top:-20px">
+                      <span>
+
+                        </span>
+                    </p>
+                    <p style="align:center;font-size:17px;margin:0px padding:0px;margin-left:60px;font-weight:bold">
+                      <span>
+                         à des contribuables n'ayant de qualité de salaires de l'entreprise
+                         (Rétributions diverses du personnel non salarié,des sociétés de capitaux,courtages
+                              Commissions,ristournes à des intérmediares,honoraires et vacations versés
+                             aux membres des professions libérales ,droit d'auteur ou d'inventeur etc ...<br/>
+                              Article 185 du Code Général des Impôts).
+                      </span>
+                    </p>
+                    <p style="align:center;font-size:23px;margin:0px padding:0px;margin-left:90px;">
+                      <span>
+
+                      </span>
+                    </p>
+                    <p style="align:center;font-size:22px;font-weight:bold;margin:0px padding:0px;margin-left:90px;">
+                      <span>
+
+                      </span>
+                    </p>
+
+                  </td>
+                  <td align="center;width:10%">
+
+                    <p style="align:right;border:1px solid;height:50px;font-size:20px;margin-top:-100px;padding-top:-100px">
+                      20<span>.....................</span>
+                    </p>
+
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+
+          </div>
+              <div class="row">
+            <table style="width:100%">
+              <tr>
+                <td align="center" style="padding:10px;width:20%;border:1px solid;" height="150px">
+                  <p class="" style="font-size:20px;margin-left:50px;font-size:20px;padding:0px;margin:0px;margin-top:5px ;width:90%;height:150px;padding:10px;padding-left:2">
+                    TIMBRE A DATE
+                  </p>
+                </td>
+                <td align="center" style="padding-left:2px;width:80%;font-size:20px;margin:0px;padding:0px;" height="50px">
+                  <p class="" style="font-size:20px;margin-left:50px;padding:0px;margin:0px;margin-top:-5px;width:90%;height:50px;margin-left:-50%;margin-top:-30px;padding-top:10px;margin-left:-100%;border:1px solid;">
+                    A transmettre au service des impôts appuyè des bulletins individuels<br/> le 31 janvier(dèlai de rigueur) de                       chaque année,
+
+
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+            <div class="row">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr>
+                <td align="left" style="width:27%">
+                    <p style="font-size:20px;">
+                        <span> Prènom,NOM ou Raison Sociale:</span>
+                    </p>
+                </td>
+                <td align="left" style="width:75%">
+                    <p style="border-bottom:3px dotted;font-size:20px">
+                        <span style="font-weight:bold;">
+                            <span t-field="o.company_id.name"/>
+                      </span>
+                    </p>
+                </td>
+              </tr>
+            </table>
+            </div>
+             <div class="row" style="margin-top:10px">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr>
+                <td align="left" style="width:20%">
+                    <p style="font-size:20px;">
+                        <span> Sigle pour les sociètès:</span>
+                    </p>
+                </td>
+                <td align="left" style="width:40%">
+                    <p style="border-bottom:3px dotted;font-size:20px">
+                        <span style="font-weight:bold;">
+                            <span t-field="o.company_id.sigle"/>
+                      </span>
+                    </p>
+                </td>
+                  <td align="left" style="width:5%">
+                    <p style="font-size:22px">
+                        <span style="">
+                            Forme
+                      </span>
+                    </p>
+                </td>
+                  <td align="left" style="width:15%">
+                    <p style="border-bottom:3px dotted;font-size:20px">
+                        <span style="font-weight:bold;">
+                            <span t-field="o.company_id.forme"/>
+                      </span>
+                    </p>
+                </td>
+                    <td align="left" style="width:5%">
+                    <p style="font-size:22px">
+                        <span style="">
+                            NINEA
+                      </span>
+                    </p>
+                </td>
+                  <td align="left" style="width:15%">
+                    <p style="border-bottom:3px dotted;font-size:20px">
+                        <span style="font-weight:bold;">
+                            <![CDATA[&nbsp;]]>
+                      </span>
+                    </p>
+                </td>
+
+              </tr>
+            </table>
+            </div>
+             <div class="row" style="margin-top:10px">
+                 <table style="width:100%;border-collapse:collapse;margin-top:3px">
+<tr>
+ <td align="left" style="width:10%">
+     <p style="font-size:20px;">
+         <span> Profession:</span>
+     </p>
+ </td>
+ <td align="left" style="width:50%">
+     <p style="border-bottom:3px dotted;font-size:20px">
+         <span t-field="o.company_id.profession"/>
+     </p>
+ </td>
+   <td align="left" style="width:15%">
+     <p style="font-size:23px;margin-top:5px">
+         <span>N° de Compte :</span>
+     </p>
+ </td>
+
+   <td align="left" style="width:20%">
+     <p style="border-bottom:1px solid;border-left:1px solid;border-right:1px solid;font-size:20px;margin-top:5px">
+      <span t-field="o.company_id.vat"/>
+     </p>
+  </td>
+  <td align="left" style="width:15%">
+       <p style="font-size:20px;">
+           <span>LC:</span>
+       </p>
+   </td>
+     <td align="left" style="width:15%">
+       <p style="border-bottom:3px dotted;font-size:20px">
+         <span style="font-weight:bold;">
+             <span t-field="o.company_id.lc"/>
+         </span>
+       </p>
+    </td>
+</tr>
+                 </table>
+ </div>
+            <div class="row" style="margin-top:10px">
+                <table style="width:100%;border-collapse:collapse;">
+<tr>
+  <td align="left" style="width:10%">
+      <p style="font-size:20px;">
+          <span> Adresse:</span>
+      </p>
+  </td>
+  <td align="left" style="width:25%">
+      <p style="border-bottom:3px dotted;font-size:20px">
+          <span style="font-weight:bold;">
+              <span t-field="o.company_id.country_id"/>
+        </span>
+      </p>
+  </td>
+    <td align="left" style="width:15%">
+      <p style="font-size:20px;">
+          <span>Rue ,Av.,Bd.,Rte</span>
+      </p>
+  </td>
+  <td align="left" style="width:20%">
+      <p style="border-bottom:3px dotted;font-size:20px">
+          <span style="font-weight:bold;">
+              <span t-field="o.company_id.city"/>,<span t-field="o.company_id.street"/>.
+        </span>
+      </p>
+  </td>
+    <td align="left" style="width:10%">
+      <p style="font-size:20px;">
+          <span>Quartier:</span>
+      </p>
+  </td>
+  <td align="left" style="width:20%">
+      <p style="border-bottom:3px dotted;font-size:20px">
+          <span style="font-weight:bold;">
+          <span t-field="o.company_id.street2"/>
+        </span>
+      </p>
+  </td>
+</tr>
+</table>
+
+            </div>
+            <div class="row" style="margin-top:10px">
+                <table style="width:100%;border-collapse:collapse;">
+<tr>
+ <td align="left" style="width:10%">
+     <p style="font-size:20px;">
+         <span> Localitè:</span>
+     </p>
+ </td>
+ <td align="left" style="width:40%">
+     <p style="border-bottom:3px dotted;font-size:20px">
+         <span style="font-weight:bold;">
+             <span t-field="o.company_id.state_id"/>
+       </span>
+     </p>
+ </td>
+   <td align="left" style="width:5%">
+     <p style="font-size:20px;">
+         <span>B.P:</span>
+     </p>
+ </td>
+ <td align="left" style="width:25%">
+     <p style="border-bottom:3px dotted;font-size:20px">
+         <span style="font-weight:bold;">
+             <span t-field="o.company_id.zip"/>
+       </span>
+     </p>
+ </td>
+   <td align="left" style="width:5%">
+     <p style="font-size:20px;">
+         <span>Tél:</span>
+     </p>
+ </td>
+ <td align="left" style="width:15%">
+     <p style="border-bottom:3px dotted;font-size:20px">
+         <span style="font-weight:bold;">
+           <span t-field="o.company_id.phone"/>
+       </span>
+     </p>
+ </td>
+</tr>
+</table>
+            </div>
+            <div class="row" style="margin-top:10px">
+                <table style="width:100%;border-collapse:collapse;">
+ <tr>
+   <td align="left" style="width:25%">
+       <p style="font-size:20px;">
+           <span> Nom et adresse du comptable:</span>
+       </p>
+   </td>
+   <td align="left" style="width:25%">
+       <p style="border-bottom:3px dotted;font-size:20px">
+           <span style="font-weight:bold;">
+               <span t-field="o.company_id.nom_comptable"/>
+         </span>
+       </p>
+   </td>
+     <td align="left" style="width:5%">
+       <p style="font-size:20px;">
+           <span>B.P:</span>
+       </p>
+   </td>
+   <td align="left" style="width:20%">
+       <p style="border-bottom:3px dotted;font-size:20px">
+           <span style="font-weight:bold;">
+               <span t-field="o.company_id.bp_comptable"/>
+         </span>
+       </p>
+   </td>
+     <td align="left" style="width:5%">
+       <p style="font-size:20px;">
+           <span>Tél:</span>
+       </p>
+   </td>
+   <td align="left" style="width:20%">
+       <p style="border-bottom:3px dotted;font-size:20px">
+           <span style="font-weight:bold;">
+             <span t-field="o.company_id.tel_comptable"/>
+         </span>
+       </p>
+   </td>
+ </tr>
+</table>
+            </div>
+            <div class="row" style="margin-top:10px">
+
+                <table style="width:100%;border-collapse:collapse;">
+ <tr>
+   <td align="left" style="width:25%">
+       <p style="font-size:20px;">
+           <span> Exercice comptable du:</span>
+       </p>
+   </td>
+   <td align="left" style="width:25%">
+       <p style="border-bottom:3px dotted;font-size:20px">
+           <span style="font-weight:bold;">
+               <span t-field="o.exercice_id.debut"/>
+         </span>
+       </p>
+   </td>
+     <td align="left" style="width:5%">
+       <p style="font-size:20px;">
+           <span>au</span>
+       </p>
+   </td>
+   <td align="left" style="width:20%">
+       <p style="border-bottom:3px dotted;font-size:20px">
+           <span style="font-weight:bold;">
+               <span t-field="o.exercice_id.fin"/>
+         </span>
+       </p>
+   </td>
+     <!-- <td align="left" style="width:3%">
+       <p style="font-size:20px;">
+           <span>20</span>
+       </p>
+   </td>
+   <td align="left" style="width:22%">
+       <p style="border-bottom:3px dotted;font-size:20px">
+           <span style="font-weight:bold;">
+             <![CDATA[&nbsp;]]>
+         </span>
+       </p>
+   </td> -->
+ </tr>
+</table>
+            </div>
+            <div class="row" style="margin-top:20px;padding:2px;border:3px solid">
+              <table style="width:100%;border-collapse:collapse;border:1px solid">
+                 <thead>
+     <tr>
+   <th align="center" style="border:1px solid;" colspan="3">
+       <p style="font-size:20px;">
+           <span> DESIGNATIONS DES PERSONNES RETRIBUEES</span>
+       </p>
+
+   </th>
+    <th align="center" style="border:1px solid;" colspan="2">
+         <p style="font-size:20px;">
+           <span>RETRIBUTIONS</span>
+       </p>
+   </th>
+   <th align="center"  style="border:1px solid;">
+       <p style="font-size:20px;">
+           <span><![CDATA[&nbsp;]]></span>
+       </p>
+   </th>
+
+     </tr>
+
+  </thead>
+    <tbody>
+        <tr>
+         <td align="left" style="width:35%;border:1px solid;padding-left:3px" height="70px">
+       <p style="font-size:20px;">
+           <span> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>Prénoms et Noms</span>
+               <br/>
+           <span><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>précédés de la mention</span>
+           <br/>
+           <span><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>-M pour Monsieur</span><br/>
+           <span><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>-Mme pour Madame</span><br/>
+           <span><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>-Mle pour Mademoiselle</span>
+       </p>
+
+   </td>
+     <td align="center" style="width:10%;border:1px solid;" height="70px">
+        <p style="font-size:20px;">
+           <span>Qualité</span>
+       </p>
+
+   </td>
+    <td align="center" style="width:15%;border:1px solid;" height="70px">
+        <p style="font-size:20px;">
+           <span>Adresse <br/> au 1er janvier 20......</span>
+       </p>
+
+   </td>
+    <td align="center" style="width:10%;border:1px solid;" height="70px">
+        <p style="font-size:20px;">
+           <span>Nature</span>
+       </p>
+
+   </td>
+    <td align="center" style="width:13%;border:1px solid;" height="70px">
+        <p style="font-size:20px;">
+           <span>Montant</span>
+       </p>
+
+   </td>
+     <td align="center" style="width:17%;border:1px solid;" height="70px">
+        <p style="font-size:20px;">
+           <span>Numéro de <br/> compte contribuable <br/> des Bénéficiaires</span>
+       </p>
+
+   </td>
+        </tr>
+           <t t-set="total_amount_untaxed" t-value="0"/>
+           <t t-foreach="lines" t-as="line">
+           <tr>
+         <td align="left" style="width:35%;border:1px solid;padding-left:3px;border-bottom:3px dotted" >
+       <p style="font-size:20px;">
+          <span t-esc="line['name']"/>
+       </p>
+
+   </td>
+     <td align="center" style="width:10%;border:1px solid;border-bottom:3px dotted">
+        <p style="font-size:20px;">
+           <span t-esc="line['qualite']"/>
+       </p>
+
+   </td>
+    <td align="center" style="width:15%;border:1px solid;border-bottom:3px dotted">
+        <p style="font-size:20px;">
+           <span t-esc="line['street']"/>
+       </p>
+
+   </td>
+    <td align="center" style="width:10%;border:1px solid;border-bottom:3px dotted">
+        <p style="font-size:20px;">
+           <span t-esc="line['nature']"/>
+       </p>
+
+   </td>
+    <td align="center" style="width:13%;border:1px solid;border-bottom:3px dotted">
+        <p style="font-size:20px;">
+           <span t-esc="line['amount_untaxed']"/>
+       </p>
+
+   </td>
+     <td align="center" style="width:17%;border:1px solid;border-bottom:3px dotted">
+        <p style="font-size:20px;">
+           <span t-esc="line['vat']"/>
+       </p>
+
+   </td>
+        </tr>
+        <t t-set="total_amount_untaxed" t-value="total_amount_untaxed+line['amount_untaxed']"/>
+      </t>
+    </tbody>
+</table>
+
+
+            </div>
+   <div class="row" style="margin-top:2px;margin-left:210px">
+                <table style="width:80%;border-collapse:collapse;">
+      <tr>
+
+       <td  align="right"  style="width:40%;padding-right:3px" height="20px">
+               <p style="font-size:20px;font-style:italic;font-weight:bold">
+                   <span>TOTAL GENERAL OU A REPORTER</span>
+               </p>
+       </td>
+        <td  align="center"  style="width:10%;border:2px solid;padding:2px" height="20px">
+               <p style="font-size:20px;font-weight:bold;border:1px solid;height:40px;padding-top:20px">
+                   <span t-esc="total_amount_untaxed"/>
+               </p>
+       </td>
+
+
+        </tr>
+        <tr>
+
+        </tr>
+ </table>
+            </div>
+            <div class="row" style="margin-top:10px">
+                <table style="width:100%;margin-top:20px">
+    <tr>
+         <td  align="center"  style="width:30%;border:2px solid" height="100px">
+              <p style="font-size:20px;">
+                  <span>CACHET DECLARANT</span>
+              </p>
+      </td>
+       <td  align="center"  style="width:2%;" >
+              <p style="font-size:20px;">
+                  <span>A</span>
+              </p>
+      </td>
+       <td  align="center"  style="width:15%;">
+              <p style="font-size:20px;font-weight:bold;border-bottom:3px dotted;">
+                  <span><![CDATA[&nbsp;]]></span>
+              </p>
+      </td>
+        <td  align="center"  style="width:2%;" height="30px">
+              <p style="font-size:20px;">
+                  <span>,le</span>
+              </p>
+      </td>
+      <td  align="center"  style="width:25%;">
+              <p style="font-size:20px;font-weight:bold;border-bottom:3px dotted;">
+                  <span><![CDATA[&nbsp;]]></span>
+              </p>
+      </td>
+  </tr>
+    <tr>
+        <td  align="center"  style="width:100%;margin-top:10px" colspan="5">
+              <p style="font-size:20px;margin-top:10px;margin-left:100px">
+                  <span><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>Signature ,</span>
+              </p>
+      </td>
+    </tr>
+</table>
+
+ </div>
+
+        </div>
+      </t>
+    </t>
+  </template>
+</odoo>
