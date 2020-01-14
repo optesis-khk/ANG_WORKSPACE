@@ -1,7 +1,7 @@
 {
     'name': 'Declarations Fiscales',
     'author': 'Optesis SA',
-    'version': '1.4.0',
+    'version': '1.5.0',
     'category': 'account',
     'description': """
     permet de faire une descripotion ...
@@ -17,8 +17,11 @@
         'wizards/loyer_view.xml',
         'views/menu_view.xml',
         'views/period_view.xml',
-        'views/report.xml',
+        'views/sequence_location.xml',
+        'views/location_view.xml',
+        'views/account_invoice_view.xml',
         'views/custom_format.xml',
+        'views/report.xml',
         'views/report_trimestre_tier.xml',
         'views/report_annuel_tier.xml',
         'views/report_trimestre_loyer.xml',

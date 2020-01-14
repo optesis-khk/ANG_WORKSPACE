@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="location_form_view">
+      <field name="name">optesis.location.form</field>
+      <field name="model">optesis.location</field>
+      <field name="arch" type="xml">
+        <form string="Contrat de location">
+          <div class="oe_title">
+              <h1>
+                <field name="name" readonly="1"/>/<field name="adresse" placeholder="Adresse de la location" required="1"/>
+              </h1>
+          </div>
+          <group>
+              <group>
+                <field name="partner_id" domain="[('supplier', '=', True),('loyer_annuel', '=', True)]" required="1"/>
+                <field name="usage"/>
+              </group>
+              <group>
+                <field name="loyer" required="1"/>
+                <label for="debut" string="Durée du contrat"/>
+                <div>
+                  <field name="debut" class="oe_inline" required="1"/> - <field name="fin" class="oe_inline" required="1"/>
+                </div>
+              </group>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="location_tree_view">
+      <field name="name">optesis.location.tree</field>
+      <field name="model">optesis.location</field>
+      <field name="arch" type="xml">
+        <tree string="Vu liste">
+          <field name="name"/>
+          <field name="adresse"/>
+          <field name="partner_id"/>
+          <field name="usage"/>
+          <field name="loyer"/>
+          <field name="debut"/>
+          <field name="fin"/>
+        </tree>
+      </field>
+
+    </record>
+  </data>
+</odoo>
