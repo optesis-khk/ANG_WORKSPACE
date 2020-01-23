@@ -1,4 +1,1 @@
-[submodule "optesis/addons"]
-	path = optesis/addons
-	url = git@github.com:optesis/addons.git
-	branch = addons_v12
+
