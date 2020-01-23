@@ -2,3 +2,8 @@
 	path = optesis/optipaie
 	url = git@github.com:optesis/optipaie.git
 	branch = optipaie_prod
+
+[submodule "optesis/l10n_sn_hr_payroll"]
+	path = optesis/l10n_sn_hr_payroll
+	url = git@github.com:optesis/optipaie.git
+	branch = optipaie_prod
