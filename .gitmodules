@@ -1,0 +1,4 @@
+[submodule "optesis/optipaie"]
+	path = optesis/optipaie
+	url = git@github.com:optesis/optipaie.git
+	branch = optipaie_prod
