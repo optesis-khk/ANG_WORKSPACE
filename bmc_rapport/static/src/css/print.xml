@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="print_css">
+      <style type="text/css">
+          body {
+  margin: 2em;
+  color: #fff;
+  background-color: #000;
+}
+
+/* override styles when printing */
+@media print {
+  body {
+    margin: 0;
+    color: #000;
+    background-color: #fff;
+  }
+}
+/* main.css */
+
+/* on-screen styles */
+@media screen {
+  body {
+    margin: 2em;
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+/* print styles */
+@media print {
+  body {
+    margin: 0;
+    color: #000;
+    background-color: #fff;
+  }
+}
+hr{
+  float:left;
+  color:black;
+  border-top: 4px solid black;
+  width:20%;
+
+  }
+      </style>
+    </template>
+  </data>
+</odoo>
