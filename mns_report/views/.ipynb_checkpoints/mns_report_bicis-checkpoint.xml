@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report
+                id="mns_report_bicis_header"
+                model="purchase.order"
+                string="RAPPORT MNS BGFI"
+                report_type="qweb-pdf"
+                name="mns_report.mns_report_bicis"
+                file="mns_report.mns_report_bicis"
+                menu="True"
+        />
+        <template id="mns_report_bicis">
+            <t t-call="web.html_container">
+                <t t-call="mns_report.mns_external_view">
+
+                <t t-foreach="docs" t-as="doc">
+                    
+                           <div class="page" style="padding-top:77%">
+
+                               <div class="row">
+                                   <table style="width:100%;border-collapse:collapse">
+                                       <tr>
+                                           <td align="center" height="20px" style="background-color:#C0C0C0;border:1px solid;">Titulaire du Compte</td>
+                                           <td colspan="3" height="20px" style="border:1px solid;padding:3px">MNS CONSULTING AFRICA SASU</td>
+                                       </tr>
+                                       <tr>
+                                           <td align="center" height="20px" style="background-color:#C0C0C0;border:1px solid;padding:3px">Banque</td>
+                                           <td colspan="3" height="20px" style="border:1px solid;padding:3px">BICIS, Agence Lamine Gueye, 143 Avenue Lamine Gueye - Dakar - Sénégal</td>
+                                       </tr>
+                                        <tr>
+                                           <td height="20px" style="background-color:#C0C0C0;border:1px solid;" align="center">Code Banque</td>
+                                           <td  height="20px" style="border:1px solid;background-color:#C0C0C0;" align="center">Code Agence</td>
+                                           <td height="20px" style="background-color:#C0C0C0;border:1px solid;" align="center">Numéro de Compte</td>
+                                             <td height="20px" style="background-color:#C0C0C0;border:1px solid;" align="center">Clé RIB</td>
+                                            
+                                       </tr>
+                                      <tr>
+                                           <td height="20px" style="border:1px solid;" align="center">SN010</td>
+                                           <td  height="20px" style="border:1px solid;" align="center">01524</td>
+                                           <td height="20px" style="border:1px solid;" align="center">007755300049</td>
+                                             <td height="20px" style="border:1px solid;" align="center">40</td>
+                                            
+                                       </tr>
+                                       <tr>
+                                           <td align="center" height="20px" style="background-color:#C0C0C0;border:1px solid;padding:3px">IBAN</td>
+                                           <td colspan="3" height="20px" style="border:1px solid;padding:3px">SN08 SN01 0015 2400 7755 3000 4940</td>
+                                       </tr>
+                                        <tr>
+                                           <td align="center" height="20px" style="background-color:#C0C0C0;border:1px solid;padding:3px">BIC</td>
+                                           <td colspan="3" height="20px" style="border:1px solid;padding:3px">BICISNDXXXX</td>
+                                       </tr>
+                                   </table>
+                               </div>
+
+                           </div>
+
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
