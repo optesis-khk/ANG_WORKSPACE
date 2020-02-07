@@ -3,7 +3,7 @@
     'version': '12.0.1',
     'summary': """MNS REPORT V1""",
     'description': """""",
-    'category': 'accounting',
+    'category': 'reporting',
     'author': 'Optesis SA',
     'maintainer': 'Optesis',
     'company': 'Optesis SA',
